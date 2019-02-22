@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
-// import logo from '../logo.svg';
 import {Route} from 'react-router-dom';
+
 import '../App.css';
 
 import NavBar from '../components/NavBar';
 import HomePage from './HomePage';
 import QuestionContainer from './QuestionContainer';
 import ResultsPage from './ResultsPage';
+
+
 
 class App extends Component {
   state = {

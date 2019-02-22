@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+
 import Question1 from '../components/Question1';
 import Question2 from '../components/Question2';
 import Question3 from '../components/Question3';
@@ -8,9 +9,10 @@ import Question6 from '../components/Question6';
 import Question7 from '../components/Question7';
 import Question8 from '../components/Question8';
 
+
 class QuestionContainer extends Component {
   state = {
-    questionNum: 6,
+    questionNum: 1,
     boldRedScore: 0,
     mediumRedScore: 0,
     lightRedScore: 0,
@@ -22,10 +24,25 @@ class QuestionContainer extends Component {
     dessertScore: 0
   }
 
-  questionComponent() {
+  goToNextQuestion = () => {
+    this.setState({
+      questionNum: this.state.questionNum + 1
+    })
+  }
+
+  skipToDessertQuestion = () => {
+    this.setState({
+      questionNum: 8
+    })
+  }
+
+  questionComponentToRender() {
     switch(this.state.questionNum) {
       case 1:
-        return <Question1 />
+        return <Question1
+          skipToDessertQuestion={this.skipToDessertQuestion}
+          goToNextQuestion={this.goToNextQuestion}
+          />
       case 2:
         return <Question2 />
       case 3:
@@ -47,7 +64,7 @@ class QuestionContainer extends Component {
   render() {
     return (
       <div>
-        {this.questionComponent()}
+        {this.questionComponentToRender()}
       </div>
     );
   }
