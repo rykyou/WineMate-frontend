@@ -52,6 +52,18 @@ class Question2 extends Component {
     return checkboxComponents
   }
 
+  handleNextButtonClick = () => {
+    this.props.goToNextQuestion();
+    let chosenFoodNames = [];
+    for (const key in this.state) {
+      if (this.state[key]) {
+        chosenFoodNames.push(key)
+      }
+    }
+
+    this.props.updateWineScores(chosenFoodNames);
+  }
+
   render() {
     return (
       <div>
@@ -67,7 +79,7 @@ class Question2 extends Component {
           Back
         </Button>
 
-        <Button variant="contained" color="primary" onClick={this.props.goToNextQuestion}>
+        <Button variant="contained" color="primary" onClick={this.handleNextButtonClick}>
           Next
         </Button>
 

@@ -57,8 +57,8 @@ class QuestionContainer extends Component {
     })
   }
 
-  updateWineScores = () => {
-    
+  updateWineScores = (chosenFoodArr) => {
+    console.log(chosenFoodArr)
   }
 
   questionComponentToRender() {
