@@ -12,7 +12,7 @@ const styles = {
 class Question7 extends Component {
 
   handlePrepButtonClick = (prepName) => {
-    this.props.goToNextQuestion();
+    this.props.goToResultsPage();
     this.props.updateWineScores([prepName]);
   }
 
@@ -46,13 +46,6 @@ class Question7 extends Component {
           color="primary"
           onClick={this.props.goToPreviousQuestion}>
             Back
-        </Button>
-
-        <Button
-          variant="contained"
-          color="primary"
-          onClick={this.goToResultsPage}>
-            Find My Pairing!
         </Button>
 
       </div>

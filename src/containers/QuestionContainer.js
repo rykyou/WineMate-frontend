@@ -8,6 +8,7 @@ import Question5 from '../components/Question5';
 import Question6 from '../components/Question6';
 import Question7 from '../components/Question7';
 import Question8 from '../components/Question8';
+import ResultsPage from './ResultsPage';
 
 
 class QuestionContainer extends Component {
@@ -64,7 +65,9 @@ class QuestionContainer extends Component {
   }
 
   goToResultsPage = () => {
-
+    this.setState({
+      questionNum: 9
+    })
   }
 
   updateWineScores = (chosenFoodArr) => {
@@ -164,6 +167,8 @@ class QuestionContainer extends Component {
           goToResultsPage={this.goToResultsPage}
           updateWineScores={this.updateWineScores}
           />
+      case 9:
+        return <ResultsPage />
       default:
     }
   }
