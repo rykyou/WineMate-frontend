@@ -58,7 +58,44 @@ class QuestionContainer extends Component {
   }
 
   updateWineScores = (chosenFoodArr) => {
-    console.log(chosenFoodArr)
+    let foodArr = [];
+    chosenFoodArr.forEach(foodName => {
+      foodArr.push(this.state.allFood.find(food => food.name === foodName))
+    })
+
+    let updatedboldRedScore = 0
+    let updatedmediumRedScore = 0
+    let updatedlightRedScore = 0
+    let updatedroseScore = 0
+    let updatedrichWhiteScore = 0
+    let updatedlightWhiteScore = 0
+    let updatedsparklingScore = 0
+    let updatedsweetWhiteScore = 0
+    let updateddessertScore = 0
+
+    foodArr.map(food => {
+      updatedboldRedScore += food.matches[0].match_score
+      updatedmediumRedScore += food.matches[1].match_score
+      updatedlightRedScore += food.matches[2].match_score
+      updatedroseScore += food.matches[3].match_score
+      updatedrichWhiteScore += food.matches[4].match_score
+      updatedlightWhiteScore += food.matches[5].match_score
+      updatedsparklingScore += food.matches[6].match_score
+      updatedsweetWhiteScore += food.matches[7].match_score
+      updateddessertScore += food.matches[8].match_score
+    })
+
+    this.setState({
+      boldRedScore: updatedboldRedScore,
+      mediumRedScore: updatedmediumRedScore,
+      lightRedScore: updatedlightRedScore,
+      roseScore: updatedroseScore,
+      richWhiteScore: updatedrichWhiteScore,
+      lightWhiteScore: updatedlightWhiteScore,
+      sparklingScore: updatedsparklingScore,
+      sweetWhiteScore: updatedsweetWhiteScore,
+      dessertScore: updateddessertScore
+    })
   }
 
   questionComponentToRender() {
