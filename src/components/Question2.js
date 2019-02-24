@@ -1,40 +1,54 @@
 import React, { Component } from 'react';
-import Checkbox from 'material-ui/Checkbox';
-import RaisedButton from 'material-ui/RaisedButton';
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
+import FormGroup from '@material-ui/core/FormGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Checkbox from '@material-ui/core/Checkbox';
+import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
+import CheckBoxIcon from '@material-ui/icons/CheckBox';
+import Button from '@material-ui/core/Button';
 
+
+const styles = {
+  checked: {},
+};
 
 class Question2 extends Component {
   state = {
-    checked1: false,
-    checked2: false,
-    checked3: false,
-    checked4: false,
-    checked5: false,
-    checked6: false,
-    checked7: false
+    "Red Meat": false,
+    "Cured Meat": false,
+    "Pork": false,
+    "Poultry": false,
+    "Mollusk": false,
+    "Fish": false,
+    "Lobster & Shellfish": false
   }
 
-  updateCheck() {
-    this.setState(oldState => {
-      return {
-        checked: !oldState.checked
-      }
-    })
-  }
+  handleChange = (event, meatName) => {
+    this.setState({ [event.target.value]: event.target.checked });
+  };
 
   meatCheckboxes = () => {
     const meatArr = this.props.allFood.filter(food => food.category === "Meat")
 
     let checkboxComponents = meatArr.map((meat, index) => (
-      <Checkbox
-        key={meat.id}
-        label={meat.name + ` (${meat.examples})`}
-        onCheck={this.updateCheck.bind(this)}
-        style={styles.checkbox}
-      />
+
+        <FormControlLabel
+          key={meat.id}
+          control={
+            <Checkbox
+              icon={<CheckBoxOutlineBlankIcon fontSize="large" />}
+              checkedIcon={<CheckBoxIcon fontSize="large" />}
+              checked={this.state[meat.name]}
+              value={meat.name}
+              onChange={e => this.handleChange(e, meat.name)}
+            />
+          }
+          label={meat.name}
+        />
+
     ))
 
-    checkboxComponents.map(comp => comp.checked = this.state.checked)
     return checkboxComponents
   }
 
@@ -45,30 +59,26 @@ class Question2 extends Component {
         <h3>Does it include meat?</h3>
         <h3>Choose as many protein options as needed...</h3>
 
-        {this.meatCheckboxes()}
+        <FormGroup>
+          {this.meatCheckboxes()}
+        </FormGroup>
 
-        <RaisedButton
-          label="Back"
-          style={{margin: 50}}
-          onClick={this.props.goToPreviousQuestion}
-        />
-        <RaisedButton
-          label="Next"
-          style={{margin: 50}}
-          onClick={this.props.goToNextQuestion}
-        />
+        <Button variant="contained" color="primary" onClick={this.props.goToPreviousQuestion}>
+          Back
+        </Button>
+
+        <Button variant="contained" color="primary" onClick={this.props.goToNextQuestion}>
+          Next
+        </Button>
+
       </div>
     )
   }
 }
 
-const styles = {
-  block: {
-    maxWidth: 250,
-  },
-  checkbox: {
-    marginBottom: 16,
-  },
+
+Question2.propTypes = {
+  classes: PropTypes.object.isRequired,
 };
 
-export default Question2;
+export default withStyles(styles)(Question2);

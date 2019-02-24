@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import RaisedButton from 'material-ui/RaisedButton';
+
+import Button from '@material-ui/core/Button';
+import '../index.css';
 
 
 class Question1 extends Component {
@@ -8,16 +10,14 @@ class Question1 extends Component {
       <div>
         <h1>Question1</h1>
         <h3>What are you eating today?</h3>
-        <RaisedButton
-          label="Something Sweet"
-          style={{margin: 50}}
-          onClick={this.props.skipToDessertQuestion}
-        />
-        <RaisedButton
-          label="Something Savory"
-          style={{margin: 50}}
-          onClick={this.props.goToNextQuestion}
-        />
+
+        <Button onClick={this.props.skipToDessertQuestion} variant="contained" color="secondary" className="button-margin">
+          Something Sweet
+        </Button>
+        <div className="divider"/>
+        <Button onClick={this.props.goToNextQuestion} variant="contained" color="secondary" className="button-margin">
+          Something Savory
+        </Button>
       </div>
     )
   }

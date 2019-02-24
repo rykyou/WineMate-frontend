@@ -57,6 +57,10 @@ class QuestionContainer extends Component {
     })
   }
 
+  updateWineScores = () => {
+    
+  }
+
   questionComponentToRender() {
     switch(this.state.questionNum) {
       case 1:
@@ -69,6 +73,7 @@ class QuestionContainer extends Component {
           allFood={this.state.allFood}
           goToNextQuestion={this.goToNextQuestion}
           goToPreviousQuestion={this.goToPreviousQuestion}
+          updateWineScores={this.updateWineScores}
           />
       case 3:
         return <Question3
