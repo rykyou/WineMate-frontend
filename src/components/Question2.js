@@ -24,7 +24,7 @@ class Question2 extends Component {
     "Lobster & Shellfish": false
   }
 
-  handleChange = (event, meatName) => {
+  handleChange = (event) => {
     this.setState({ [event.target.value]: event.target.checked });
   };
 
@@ -41,10 +41,10 @@ class Question2 extends Component {
               checkedIcon={<CheckBoxIcon fontSize="large" />}
               checked={this.state[meat.name]}
               value={meat.name}
-              onChange={e => this.handleChange(e, meat.name)}
+              onChange={this.handleChange}
             />
           }
-          label={meat.name}
+          label={`${meat.name} (${meat.examples})`}
         />
 
     ))
@@ -54,13 +54,13 @@ class Question2 extends Component {
 
   handleNextButtonClick = () => {
     this.props.goToNextQuestion();
+
     let chosenFoodNames = [];
     for (const key in this.state) {
       if (this.state[key]) {
         chosenFoodNames.push(key)
       }
     }
-
     this.props.updateWineScores(chosenFoodNames);
   }
 
@@ -75,12 +75,18 @@ class Question2 extends Component {
           {this.meatCheckboxes()}
         </FormGroup>
 
-        <Button variant="contained" color="primary" onClick={this.props.goToPreviousQuestion}>
-          Back
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={this.props.goToPreviousQuestion}>
+            Back
         </Button>
 
-        <Button variant="contained" color="primary" onClick={this.handleNextButtonClick}>
-          Next
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={this.handleNextButtonClick}>
+            Next
         </Button>
 
       </div>

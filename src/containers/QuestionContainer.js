@@ -51,10 +51,20 @@ class QuestionContainer extends Component {
     })
   }
 
+  goBackToFirstQuestion = () => {
+    this.setState({
+      questionNum: 1
+    })
+  }
+
   skipToDessertQuestion = () => {
     this.setState({
       questionNum: 8
     })
+  }
+
+  goToResultsPage = () => {
+
   }
 
   updateWineScores = (chosenFoodArr) => {
@@ -63,38 +73,38 @@ class QuestionContainer extends Component {
       foodArr.push(this.state.allFood.find(food => food.name === foodName))
     })
 
-    let updatedboldRedScore = 0
-    let updatedmediumRedScore = 0
-    let updatedlightRedScore = 0
-    let updatedroseScore = 0
-    let updatedrichWhiteScore = 0
-    let updatedlightWhiteScore = 0
-    let updatedsparklingScore = 0
-    let updatedsweetWhiteScore = 0
-    let updateddessertScore = 0
+    let updatedBoldRedScore = this.state.boldRedScore
+    let updatedMediumRedScore = this.state.mediumRedScore
+    let updatedLightRedScore = this.state.lightRedScore
+    let updatedRoseScore = this.state.roseScore
+    let updatedRichWhiteScore = this.state.richWhiteScore
+    let updatedLightWhiteScore = this.state.lightWhiteScore
+    let updatedSparklingScore = this.state.sparklingScore
+    let updatedSweetWhiteScore = this.state.sweetWhiteScore
+    let updatedDessertScore = this.state.dessertScore
 
-    foodArr.map(food => {
-      updatedboldRedScore += food.matches[0].match_score
-      updatedmediumRedScore += food.matches[1].match_score
-      updatedlightRedScore += food.matches[2].match_score
-      updatedroseScore += food.matches[3].match_score
-      updatedrichWhiteScore += food.matches[4].match_score
-      updatedlightWhiteScore += food.matches[5].match_score
-      updatedsparklingScore += food.matches[6].match_score
-      updatedsweetWhiteScore += food.matches[7].match_score
-      updateddessertScore += food.matches[8].match_score
+    foodArr.forEach(food => {
+      updatedBoldRedScore += food.matches[0].match_score
+      updatedMediumRedScore += food.matches[1].match_score
+      updatedLightRedScore += food.matches[2].match_score
+      updatedRoseScore += food.matches[3].match_score
+      updatedRichWhiteScore += food.matches[4].match_score
+      updatedLightWhiteScore += food.matches[5].match_score
+      updatedSparklingScore += food.matches[6].match_score
+      updatedSweetWhiteScore += food.matches[7].match_score
+      updatedDessertScore += food.matches[8].match_score
     })
 
     this.setState({
-      boldRedScore: updatedboldRedScore,
-      mediumRedScore: updatedmediumRedScore,
-      lightRedScore: updatedlightRedScore,
-      roseScore: updatedroseScore,
-      richWhiteScore: updatedrichWhiteScore,
-      lightWhiteScore: updatedlightWhiteScore,
-      sparklingScore: updatedsparklingScore,
-      sweetWhiteScore: updatedsweetWhiteScore,
-      dessertScore: updateddessertScore
+      boldRedScore: updatedBoldRedScore,
+      mediumRedScore: updatedMediumRedScore,
+      lightRedScore: updatedLightRedScore,
+      roseScore: updatedRoseScore,
+      richWhiteScore: updatedRichWhiteScore,
+      lightWhiteScore: updatedLightWhiteScore,
+      sparklingScore: updatedSparklingScore,
+      sweetWhiteScore: updatedSweetWhiteScore,
+      dessertScore: updatedDessertScore
     })
   }
 
@@ -108,38 +118,51 @@ class QuestionContainer extends Component {
       case 2:
         return <Question2
           allFood={this.state.allFood}
-          goToNextQuestion={this.goToNextQuestion}
           goToPreviousQuestion={this.goToPreviousQuestion}
+          goToNextQuestion={this.goToNextQuestion}
           updateWineScores={this.updateWineScores}
           />
       case 3:
         return <Question3
-          goToNextQuestion={this.goToNextQuestion}
+          allFood={this.state.allFood}
           goToPreviousQuestion={this.goToPreviousQuestion}
+          goToNextQuestion={this.goToNextQuestion}
+          updateWineScores={this.updateWineScores}
           />
       case 4:
         return <Question4
-          goToNextQuestion={this.goToNextQuestion}
+          allFood={this.state.allFood}
           goToPreviousQuestion={this.goToPreviousQuestion}
+          goToNextQuestion={this.goToNextQuestion}
+          updateWineScores={this.updateWineScores}
           />
       case 5:
         return <Question5
-          goToNextQuestion={this.goToNextQuestion}
+          allFood={this.state.allFood}
           goToPreviousQuestion={this.goToPreviousQuestion}
+          goToNextQuestion={this.goToNextQuestion}
+          updateWineScores={this.updateWineScores}
           />
       case 6:
         return <Question6
-          goToNextQuestion={this.goToNextQuestion}
+          allFood={this.state.allFood}
           goToPreviousQuestion={this.goToPreviousQuestion}
+          goToNextQuestion={this.goToNextQuestion}
+          updateWineScores={this.updateWineScores}
           />
       case 7:
         return <Question7
-          goToNextQuestion={this.goToNextQuestion}
+          allFood={this.state.allFood}
           goToPreviousQuestion={this.goToPreviousQuestion}
+          goToResultsPage={this.goToResultsPage}
+          updateWineScores={this.updateWineScores}
           />
       case 8:
         return <Question8
-          goToPreviousQuestion={this.goToPreviousQuestion}
+          allFood={this.state.allFood}
+          goBackToFirstQuestion={this.goBackToFirstQuestion}
+          goToResultsPage={this.goToResultsPage}
+          updateWineScores={this.updateWineScores}
           />
       default:
     }
