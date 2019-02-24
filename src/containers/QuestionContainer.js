@@ -12,6 +12,7 @@ import Question8 from '../components/Question8';
 
 class QuestionContainer extends Component {
   state = {
+    allFood: [],
     questionNum: 1,
     boldRedScore: 0,
     mediumRedScore: 0,
@@ -24,9 +25,29 @@ class QuestionContainer extends Component {
     dessertScore: 0
   }
 
+  componentDidMount() {
+    this.getAllFood()
+  }
+
+  getAllFood = () => {
+    fetch('http://localhost:3000/api/v1/foods')
+    .then(res => res.json())
+    .then(data => {
+      this.setState({
+        allFood: data
+      })
+    })
+  }
+
   goToNextQuestion = () => {
     this.setState({
       questionNum: this.state.questionNum + 1
+    })
+  }
+
+  goToPreviousQuestion = () => {
+    this.setState({
+      questionNum: this.state.questionNum - 1
     })
   }
 
@@ -44,19 +65,40 @@ class QuestionContainer extends Component {
           goToNextQuestion={this.goToNextQuestion}
           />
       case 2:
-        return <Question2 />
+        return <Question2
+          allFood={this.state.allFood}
+          goToNextQuestion={this.goToNextQuestion}
+          goToPreviousQuestion={this.goToPreviousQuestion}
+          />
       case 3:
-        return <Question3 />
+        return <Question3
+          goToNextQuestion={this.goToNextQuestion}
+          goToPreviousQuestion={this.goToPreviousQuestion}
+          />
       case 4:
-        return <Question4 />
+        return <Question4
+          goToNextQuestion={this.goToNextQuestion}
+          goToPreviousQuestion={this.goToPreviousQuestion}
+          />
       case 5:
-        return <Question5 />
+        return <Question5
+          goToNextQuestion={this.goToNextQuestion}
+          goToPreviousQuestion={this.goToPreviousQuestion}
+          />
       case 6:
-        return <Question6 />
+        return <Question6
+          goToNextQuestion={this.goToNextQuestion}
+          goToPreviousQuestion={this.goToPreviousQuestion}
+          />
       case 7:
-        return <Question7 />
+        return <Question7
+          goToNextQuestion={this.goToNextQuestion}
+          goToPreviousQuestion={this.goToPreviousQuestion}
+          />
       case 8:
-        return <Question8 />
+        return <Question8
+          goToPreviousQuestion={this.goToPreviousQuestion}
+          />
       default:
     }
   }
