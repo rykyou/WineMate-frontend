@@ -12,8 +12,7 @@ import WineShowPage from './WineShowPage';
 
 class App extends Component {
   state = {
-    allWineStyles: [],
-    selectedWineStyle: null
+    allWineStyles: []
   }
 
   componentDidMount() {
@@ -35,23 +34,24 @@ class App extends Component {
       <div>
         <NavBar />
 
-        <Route exact path="/" render={() => {return (<HomePage
+        <Route exact path="/" render={() => {
+          return (<HomePage
             allWineStyles={this.state.allWineStyles}
           />)}}
         />
 
-        <Route exact path="/questionnaire" render={() => {return (<QuestionContainer
+        <Route exact path="/questionnaire" render={() => {
+          return (<QuestionContainer
             allWineStyles={this.state.allWineStyles}
           />)}}
         />
 
-        <Route exact path='/winestyle/:winestyleId' render={(props) => {
-          const winestyleIdInUrl = parseInt(props.match.params.winestyleId)
-          const chosenWineStyleObj = this.state.allWineStyles.find(winestyleObj => winestyleObj.id === winestyleIdInUrl )
+        <Route exact path='/winestyles/:slug' render={(props) => {
+          let wineStyleSlugInUrl = props.match.params.slug
+          let chosenWineStyleObj = this.state.allWineStyles.find(winestyleObj => winestyleObj.slug === wineStyleSlugInUrl )
           return (<WineShowPage
             chosenWineStyleObj={chosenWineStyleObj}
-              />)
-          }}
+          />)}}
         />
 
       </div>

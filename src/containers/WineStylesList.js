@@ -4,14 +4,14 @@ import WineCard from '../components/WineCard';
 
 class WineStylesList extends Component {
 
-  wineStyleCards = () => {
-    this.props.allWineStyles.map(wineStyle => {return(
-      <WineCard />
-    )})
-  }
+  // wineStyleCards = () => {
+  //   this.props.allWineStyles.map(wineStyle => {return(
+  //     <WineCard />
+  //   )})
+  // }
 
   render() {
-    console.log(this.props.allWineStyles)
+    // console.log(this.props.allWineStyles)
     return (
       <div>
         {this.props.allWineStyles.map(wineStyle => <WineCard key={wineStyle.id} wineStyle={wineStyle}/>)}

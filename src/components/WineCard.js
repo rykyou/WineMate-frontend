@@ -1,10 +1,11 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
+// import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
+// import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
-import Button from '@material-ui/core/Button';
+// import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
 const styles = {
@@ -27,17 +28,19 @@ const styles = {
 };
 
 function WineCard(props) {
-  console.log(props)
+  // console.log(props)
   const { classes } = props;
 
   return (
     <Card onClick={() => console.log('clicked')} className={classes.card}>
-      <CardContent>
-        <Typography className={classes.title} color="textSecondary" gutterBottom>
-          {props.wineStyle.name}
-          <img src={imageURL(props.wineStyle.short_name)} alt={props.wineStyle.name}/>
-        </Typography>
-      </CardContent>
+      <Link to={`/winestyles/${props.wineStyle.slug}`}>
+        <CardContent>
+          <Typography className={classes.title} color="textSecondary" gutterBottom>
+            {props.wineStyle.name}
+            <img src={imageURL(props.wineStyle.short_name)} alt={props.wineStyle.name}/>
+          </Typography>
+        </CardContent>
+      </Link>
     </Card>
   );
 }
