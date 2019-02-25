@@ -111,6 +111,29 @@ class QuestionContainer extends Component {
     })
   }
 
+  finalScoresArray = () => {
+    let finalScoresArr = [];
+    const boldRedScore = this.state.boldRedScore;
+    finalScoresArr.push({wine_id: 1, finalScore: boldRedScore})
+    const mediumRedScore = this.state.mediumRedScore;
+    finalScoresArr.push({wine_id: 2, finalScore: mediumRedScore})
+    const lightRedScore = this.state.lightRedScore;
+    finalScoresArr.push({wine_id: 3, finalScore: lightRedScore})
+    const roseScore = this.state.roseScore;
+    finalScoresArr.push({wine_id: 4, finalScore: roseScore})
+    const richWhiteScore = this.state.richWhiteScore;
+    finalScoresArr.push({wine_id: 5, finalScore: richWhiteScore})
+    const lightWhiteScore = this.state.lightWhiteScore;
+    finalScoresArr.push({wine_id: 6, finalScore: lightWhiteScore})
+    const sparklingScore = this.state.sparklingScore;
+    finalScoresArr.push({wine_id: 7, finalScore: sparklingScore})
+    const sweetWhiteScore = this.state.sweetWhiteScore;
+    finalScoresArr.push({wine_id: 8, finalScore: sweetWhiteScore})
+    const dessertScore = this.state.dessertScore;
+    finalScoresArr.push({wine_id: 9, finalScore: dessertScore})
+    return finalScoresArr
+  }
+
   questionComponentToRender() {
     switch(this.state.questionNum) {
       case 1:
@@ -168,7 +191,10 @@ class QuestionContainer extends Component {
           updateWineScores={this.updateWineScores}
           />
       case 9:
-        return <ResultsPage />
+        return <ResultsPage
+          allWineStyles={this.props.allWineStyles}
+          finalScoresArray={this.finalScoresArray}
+          />
       default:
     }
   }
