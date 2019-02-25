@@ -15,33 +15,35 @@ const styles = {
 
 class Question6 extends Component {
   state = {
-    "White Starches": false,
-    "Whole Wheat Grains": false,
-    "Sweet Starchy Vegetables": false,
-    "Potato": false,
+    "Black Pepper": false,
+    "Red Pepper": false,
+    "Hot & Spicy": false,
+    "Herbs": false,
+    "Baking Spices": false,
+    "Exotic & Aromatic Spices": false,
   }
 
   handleChange = (event) => {
     this.setState({ [event.target.value]: event.target.checked });
   };
 
-  starchCheckboxes = () => {
-    const starchArr = this.props.allFood.filter(food => food.category === "Starch")
+  herbsCheckboxes = () => {
+    const herbsArr = this.props.allFood.filter(food => food.category === "Herb & Spice")
 
-    let checkboxComponents = starchArr.map((starch, index) => (
+    let checkboxComponents = herbsArr.map((herb, index) => (
 
         <FormControlLabel
-          key={starch.id}
+          key={herb.id}
           control={
             <Checkbox
               icon={<CheckBoxOutlineBlankIcon fontSize="large" />}
               checkedIcon={<CheckBoxIcon fontSize="large" />}
-              checked={this.state[starch.name]}
-              value={starch.name}
+              checked={this.state[herb.name]}
+              value={herb.name}
               onChange={this.handleChange}
             />
           }
-          label={(starch.examples) ? `${starch.name} (${starch.examples})` : `${starch.name}`}
+          label={(herb.examples) ? `${herb.name} (${herb.examples})` : `${herb.name}`}
         />
 
     ))
@@ -65,10 +67,10 @@ class Question6 extends Component {
     return (
       <div>
         <h1>Question6</h1>
-        <h3>Starch:</h3>
+        <h3>Herb & Spice:</h3>
 
         <FormGroup>
-          {this.starchCheckboxes()}
+          {this.herbsCheckboxes()}
         </FormGroup>
 
         <Button

@@ -5,7 +5,7 @@ import React, { Component } from 'react';
 class WineShowPage extends Component {
 
   render() {
-    console.log(this.props.chosenWineStyleObj)
+    // console.log(this.props.chosenWineStyleObj)
 
     return (
       <div>
