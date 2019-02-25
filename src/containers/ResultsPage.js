@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-
+// import * as pictures from '../images'
 
 class ResultsPage extends Component {
 
@@ -21,6 +21,7 @@ class ResultsPage extends Component {
   }
 
   render() {
+
     console.log(this.props.finalScoresArray())
     console.log(this.wineIdWithHighestScore())
     console.log(this.wineObjWithHighestScore())
@@ -30,6 +31,7 @@ class ResultsPage extends Component {
         <h1>ResultsPage</h1>
         <h3>Here's your perfect wine style match for your meal!</h3>
         <h4>{wineStyle.name}</h4>
+
       </div>
     )
   }

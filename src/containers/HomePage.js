@@ -5,8 +5,6 @@ import wine from '../images/wineeee.jpeg';
 import WineStylesList from './WineStylesList';
 import Button from '@material-ui/core/Button';
 
-
-
 class HomePage extends Component {
   render() {
     return (

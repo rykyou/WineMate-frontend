@@ -11,7 +11,7 @@ const styles = {
   card: {
     minWidth: 275,
     width: 20,
-  
+
   },
   bullet: {
     display: 'inline-block',
@@ -31,17 +31,20 @@ function WineCard(props) {
   const { classes } = props;
 
   return (
-    <Card className={classes.card}>
+    <Card onClick={() => console.log('clicked')} className={classes.card}>
       <CardContent>
         <Typography className={classes.title} color="textSecondary" gutterBottom>
           {props.wineStyle.name}
+          <img src={imageURL(props.wineStyle.short_name)} alt={props.wineStyle.name}/>
         </Typography>
       </CardContent>
-      <CardActions>
-        <Button size="small">Learn More</Button>
-      </CardActions>
     </Card>
   );
+}
+
+function imageURL(wineName) {
+    let formattedName = wineName.toLowerCase().split(" ").join('-')
+    return require(`../images/${formattedName}.png`)
 }
 
 export default withStyles(styles)(WineCard);

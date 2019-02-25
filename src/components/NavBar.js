@@ -1,19 +1,3 @@
-// import React from 'react';
-// import { Link } from 'react-router-dom'
-// import AppBar from 'material-ui/AppBar';
-//
-//
-//
-// const NavBar = () => (
-//   <AppBar
-//     title="Food+Wine"
-//     iconElementLeft=<img src="" alt=""/>
-//     iconClassNameRight="muidocs-icon-navigation-expand-more"
-//   />
-// );
-//
-// export default NavBar;
-
 import React from 'react';
 import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types';
