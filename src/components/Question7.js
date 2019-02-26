@@ -41,13 +41,6 @@ class Question7 extends Component {
 
         {this.prepButtons()}
 
-        <Button
-          variant="contained"
-          color="primary"
-          onClick={this.props.goToPreviousQuestion}>
-            Back
-        </Button>
-
       </div>
     )
   }
@@ -59,3 +52,11 @@ Question7.propTypes = {
 
 export default withStyles(styles)(Question7);
 // export default Question7;
+
+
+        // <Button
+        //   variant="contained"
+        //   color="primary"
+        //   onClick={this.props.goToPreviousQuestion}>
+        //     Back
+        // </Button>

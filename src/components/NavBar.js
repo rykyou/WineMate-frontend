@@ -6,9 +6,9 @@ import {AppBar, Button, IconButton, Menu, MenuItem, Toolbar, Typography} from '@
 
 import MenuIcon from '@material-ui/icons/Menu';
 import AccountCircle from '@material-ui/icons/AccountCircle';
-import Switch from '@material-ui/core/Switch';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormGroup from '@material-ui/core/FormGroup';
+// import Switch from '@material-ui/core/Switch';
+// import FormControlLabel from '@material-ui/core/FormControlLabel';
+// import FormGroup from '@material-ui/core/FormGroup';
 
 
 const styles = {
@@ -49,14 +49,7 @@ class MenuAppBar extends React.Component {
 
     return (
       <div className={classes.root}>
-        <FormGroup>
-          <FormControlLabel
-            control={
-              <Switch checked={auth} onChange={this.handleChange} aria-label="LoginSwitch" />
-            }
-            label={auth ? 'Logout' : 'Login'}
-          />
-        </FormGroup>
+
         <AppBar position="static">
           <Toolbar>
             <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
@@ -106,3 +99,12 @@ MenuAppBar.propTypes = {
 };
 
 export default withStyles(styles)(MenuAppBar);
+
+// <FormGroup>
+//   <FormControlLabel
+//     control={
+//       <Switch checked={auth} onChange={this.handleChange} aria-label="LoginSwitch" />
+//     }
+//     label={auth ? 'Logout' : 'Login'}
+//   />
+// </FormGroup>

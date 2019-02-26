@@ -2,13 +2,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 // import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-// import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-// import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
+import Paper from '@material-ui/core/Paper';
+import Grid from '@material-ui/core/Grid';
 
-const styles = {
+
+const styles = theme => ({
   card: {
     minWidth: 275,
     width: 20,
@@ -25,23 +23,22 @@ const styles = {
   pos: {
     marginBottom: 12,
   },
-};
+  paper: {
+    padding: theme.spacing.unit * 2,
+    textAlign: 'center',
+    color: theme.palette.text.secondary,
+  },
+});
 
 function WineCard(props) {
-  // console.log(props)
   const { classes } = props;
 
   return (
-    <Card onClick={() => console.log('clicked')} className={classes.card}>
-      <Link to={`/winestyles/${props.wineStyle.slug}`}>
-        <CardContent>
-          <Typography className={classes.title} color="textSecondary" gutterBottom>
-            {props.wineStyle.name}
-            <img src={imageURL(props.wineStyle.short_name)} alt={props.wineStyle.name}/>
-          </Typography>
-        </CardContent>
-      </Link>
-    </Card>
+    <Grid component={Link} to={`/winestyles/${props.wineStyle.slug}`} item xs>
+      <Paper className={classes.paper}>
+        <img src={imageURL(props.wineStyle.short_name)} alt={props.wineStyle.name}/>
+      </Paper>
+    </Grid>
   );
 }
 

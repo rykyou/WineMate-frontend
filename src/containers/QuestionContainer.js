@@ -179,7 +179,6 @@ class QuestionContainer extends Component {
       case 7:
         return <Question7
           allFood={this.state.allFood}
-          goToPreviousQuestion={this.goToPreviousQuestion}
           goToResultsPage={this.goToResultsPage}
           updateWineScores={this.updateWineScores}
           />
