@@ -19,12 +19,15 @@ const styles = {
     card: {
       width: "500px",
       height: "200px",
-      marginLeft: "1300px",
-      paddingTop: "500px"
+      marginLeft: "1400px",
+      paddingTop: "150px"
     },
     button: {
       marginLeft: "160px",
     },
+    empty: {
+      height: "400px"
+    }
 };
 
 class HomePage extends Component {
@@ -34,6 +37,8 @@ class HomePage extends Component {
     return (
       <div>
         <div className={classes.paperContainer}>
+          <div className={classes.empty}>
+          </div>
           <Card className={classes.card}>
             <Button className={classes.button} variant="contained" color="secondary" component={Link} to="/questionnaire">
               Find Your Pairing!
