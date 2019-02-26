@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import {AppBar, Button, IconButton, Menu, MenuItem, Toolbar, Typography} from '@material-ui/core';
+import {AppBar, Button, IconButton, Menu, MenuItem, Toolbar} from '@material-ui/core';
 
 import MenuIcon from '@material-ui/icons/Menu';
 import AccountCircle from '@material-ui/icons/AccountCircle';
@@ -56,8 +56,8 @@ class MenuAppBar extends React.Component {
               <MenuIcon />
             </IconButton>
             <Button className={classes.button} color="inherit" component={Link} to="/">Wine+Food</Button>
-            <Typography variant="h6" color="inherit" className={classes.grow}>
-            </Typography>
+            <div color="inherit" className={classes.grow}>
+            </div>
             {auth && (
               <div>
                 <IconButton
