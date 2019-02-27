@@ -14,55 +14,36 @@ const styles = {
 };
 
 class Question3 extends Component {
-  state = {
-    "Alliums": false,
-    "Green Vegetables": false,
-    "Root Vegetables & Squash": false,
-    "Nightshades": false,
-    "Funghi": false,
-    "Nuts & Seeds": false,
-    "Beans & Peas": false
-  }
-
-  handleChange = (event) => {
-    this.setState({ [event.target.value]: event.target.checked });
-  };
-
   vegetableCheckboxes = () => {
     const veggieArr = this.props.allFood.filter(food => food.category === "Vegetable")
-
-    let checkboxComponents = veggieArr.map((veggie, index) => (
-
-        <FormControlLabel
+    return veggieArr.map((veggie, index) => (
+      <FormControlLabel
           key={veggie.id}
+          label={`${veggie.name} (${veggie.examples})`}
           control={
             <Checkbox
               icon={<CheckBoxOutlineBlankIcon fontSize="large" />}
               checkedIcon={<CheckBoxIcon fontSize="large" />}
-              checked={this.state[veggie.name]}
+              checked={this.props.foodChecks[veggie.name]}
               value={veggie.name}
-              onChange={this.handleChange}
+              onChange={(e) => this.props.handleCheckboxClick(e)}
             />
           }
-          label={`${veggie.name} (${veggie.examples})`}
-        />
-
-    ))
-
-    return checkboxComponents
+      />)
+    )
   }
 
-  handleNextButtonClick = () => {
-    this.props.goToNextQuestion();
-
-    let chosenFoodNames = [];
-    for (const key in this.state) {
-      if (this.state[key]) {
-        chosenFoodNames.push(key)
-      }
-    }
-    this.props.updateWineScores(chosenFoodNames);
-  }
+  // handleNextButtonClick = () => {
+  //   this.props.goToNextQuestion();
+  //
+  //   let chosenFoodNames = [];
+  //   for (const key in this.state) {
+  //     if (this.state[key]) {
+  //       chosenFoodNames.push(key)
+  //     }
+  //   }
+  //   this.props.updateWineScores(chosenFoodNames);
+  // }
 
   render() {
     return (
@@ -83,7 +64,7 @@ class Question3 extends Component {
         <Button
           variant="contained"
           color="secondary"
-          onClick={this.handleNextButtonClick}>
+          onClick={this.props.goToNextQuestion}>
             Next
         </Button>
 

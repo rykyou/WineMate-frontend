@@ -23,7 +23,39 @@ class QuestionContainer extends Component {
     lightWhiteScore: 0,
     sparklingScore: 0,
     sweetWhiteScore: 0,
-    dessertScore: 0
+    dessertScore: 0,
+    foodChecks: {
+      "Red Meat": false,
+      "Cured Meat": false,
+      "Pork": false,
+      "Poultry": false,
+      "Mollusk": false,
+      "Fish": false,
+      "Lobster & Shellfish": false,
+      "Alliums": false,
+      "Green Vegetables": false,
+      "Root Vegetables & Squash": false,
+      "Nightshades": false,
+      "Funghi": false,
+      "Nuts & Seeds": false,
+      "Beans & Peas": false,
+      "White Starches": false,
+      "Whole Wheat Grains": false,
+      "Sweet Starchy Vegetables": false,
+      "Potato": false,
+      "Soft Cheese & Cream": false,
+      "Pungent Cheese": false,
+      "Hard Cheese": false,
+      "Black Pepper": false,
+      "Red Pepper": false,
+      "Hot & Spicy": false,
+      "Herbs": false,
+      "Baking Spices": false,
+      "Exotic & Aromatic Spices": false,
+      "Fruit & Berries": false,
+      "Vanilla & Caramel": false,
+      "Chocolate & Coffee": false
+    }
   }
 
   componentDidMount() {
@@ -40,6 +72,16 @@ class QuestionContainer extends Component {
     })
   }
 
+
+  handleCheckboxClick = (event) => {
+    this.setState({
+      foodChecks: {
+        ...this.state.foodChecks,
+        [event.target.value]: event.target.checked
+      }
+    });
+  };
+
   goToNextQuestion = () => {
     this.setState({
       questionNum: this.state.questionNum + 1
@@ -53,17 +95,11 @@ class QuestionContainer extends Component {
   }
 
   goBackToFirstQuestion = () => {
+    let resetfoodChecks = {};
+    for (const key in this.state.foodChecks) { resetfoodChecks[key] = false }
     this.setState({
       questionNum: 1,
-      boldRedScore: 0,
-      mediumRedScore: 0,
-      lightRedScore: 0,
-      roseScore: 0,
-      richWhiteScore: 0,
-      lightWhiteScore: 0,
-      sparklingScore: 0,
-      sweetWhiteScore: 0,
-      dessertScore: 0
+      foodChecks: resetfoodChecks
     })
   }
 
@@ -153,13 +189,17 @@ class QuestionContainer extends Component {
       case 2:
         return <Question2
           allFood={this.state.allFood}
-          goToPreviousQuestion={this.goToPreviousQuestion}
+          foodChecks={this.state.foodChecks}
+          handleCheckboxClick={this.handleCheckboxClick}
+          goBackToFirstQuestion={this.goBackToFirstQuestion}
           goToNextQuestion={this.goToNextQuestion}
           updateWineScores={this.updateWineScores}
           />
       case 3:
         return <Question3
           allFood={this.state.allFood}
+          foodChecks={this.state.foodChecks}
+          handleCheckboxClick={this.handleCheckboxClick}
           goToPreviousQuestion={this.goToPreviousQuestion}
           goToNextQuestion={this.goToNextQuestion}
           updateWineScores={this.updateWineScores}
@@ -167,6 +207,8 @@ class QuestionContainer extends Component {
       case 4:
         return <Question4
           allFood={this.state.allFood}
+          foodChecks={this.state.foodChecks}
+          handleCheckboxClick={this.handleCheckboxClick}
           goToPreviousQuestion={this.goToPreviousQuestion}
           goToNextQuestion={this.goToNextQuestion}
           updateWineScores={this.updateWineScores}
@@ -174,6 +216,8 @@ class QuestionContainer extends Component {
       case 5:
         return <Question5
           allFood={this.state.allFood}
+          foodChecks={this.state.foodChecks}
+          handleCheckboxClick={this.handleCheckboxClick}
           goToPreviousQuestion={this.goToPreviousQuestion}
           goToNextQuestion={this.goToNextQuestion}
           updateWineScores={this.updateWineScores}
@@ -181,6 +225,8 @@ class QuestionContainer extends Component {
       case 6:
         return <Question6
           allFood={this.state.allFood}
+          foodChecks={this.state.foodChecks}
+          handleCheckboxClick={this.handleCheckboxClick}
           goToPreviousQuestion={this.goToPreviousQuestion}
           goToNextQuestion={this.goToNextQuestion}
           updateWineScores={this.updateWineScores}
@@ -194,6 +240,8 @@ class QuestionContainer extends Component {
       case 8:
         return <Question8
           allFood={this.state.allFood}
+          foodChecks={this.state.foodChecks}
+          handleCheckboxClick={this.handleCheckboxClick}
           goBackToFirstQuestion={this.goBackToFirstQuestion}
           goToResultsPage={this.goToResultsPage}
           updateWineScores={this.updateWineScores}

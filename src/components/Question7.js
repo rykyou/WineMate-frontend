@@ -9,15 +9,8 @@ const styles = {
 };
 
 class Question7 extends Component {
-
-  handlePrepButtonClick = (prepName) => {
-    this.props.goToResultsPage();
-    this.props.updateWineScores([prepName]);
-  }
-
   prepButtons = () => {
     const prepArr = this.props.allFood.filter(food => food.category === "Preparation")
-
     let prepButtons = prepArr.map((prep, index) => (
       <div>
         <Button
@@ -51,12 +44,3 @@ Question7.propTypes = {
 };
 
 export default withStyles(styles)(Question7);
-// export default Question7;
-
-
-        // <Button
-        //   variant="contained"
-        //   color="primary"
-        //   onClick={this.props.goToPreviousQuestion}>
-        //     Back
-        // </Button>

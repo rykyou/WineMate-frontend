@@ -14,55 +14,38 @@ const styles = {
 };
 
 class Question2 extends Component {
-  state = {
-    "Red Meat": false,
-    "Cured Meat": false,
-    "Pork": false,
-    "Poultry": false,
-    "Mollusk": false,
-    "Fish": false,
-    "Lobster & Shellfish": false
-  }
-
-  handleChange = (event) => {
-    this.setState({ [event.target.value]: event.target.checked });
-  };
-
   meatCheckboxes = () => {
     const meatArr = this.props.allFood.filter(food => food.category === "Meat")
-
-    let checkboxComponents = meatArr.map((meat, index) => (
-
-        <FormControlLabel
+    return meatArr.map((meat, index) => (
+      <FormControlLabel
           key={meat.id}
+          label={`${meat.name} (${meat.examples})`}
           control={
             <Checkbox
               icon={<CheckBoxOutlineBlankIcon fontSize="large" />}
               checkedIcon={<CheckBoxIcon fontSize="large" />}
-              checked={this.state[meat.name]}
+              checked={this.props.foodChecks[meat.name]}
               value={meat.name}
-              onChange={this.handleChange}
+              onChange={(e) => this.props.handleCheckboxClick(e)}
             />
           }
-          label={`${meat.name} (${meat.examples})`}
-        />
-
-    ))
-
-    return checkboxComponents
+      />)
+    )
   }
 
-  handleNextButtonClick = () => {
-    this.props.goToNextQuestion();
+  // this.handleChange
 
-    let chosenFoodNames = [];
-    for (const key in this.state) {
-      if (this.state[key]) {
-        chosenFoodNames.push(key)
-      }
-    }
-    this.props.updateWineScores(chosenFoodNames);
-  }
+  // handleNextButtonClick = () => {
+  //   this.props.goToNextQuestion();
+    //
+    // let chosenFoodNames = [];
+    // for (const key in this.state) {
+    //   if (this.state[key]) {
+    //     chosenFoodNames.push(key)
+    //   }
+    // }
+    // this.props.updateWineScores(chosenFoodNames);
+  // }
 
   render() {
     return (
@@ -77,14 +60,14 @@ class Question2 extends Component {
         <Button
           variant="contained"
           color="secondary"
-          onClick={this.props.goToPreviousQuestion}>
+          onClick={this.props.goBackToFirstQuestion}>
             Back
         </Button>
 
         <Button
           variant="contained"
           color="secondary"
-          onClick={this.handleNextButtonClick}>
+          onClick={this.props.goToNextQuestion}>
             Next
         </Button>
 

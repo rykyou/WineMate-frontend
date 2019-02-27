@@ -14,51 +14,36 @@ const styles = {
 };
 
 class Question5 extends Component {
-  state = {
-    "Soft Cheese & Cream": false,
-    "Pungent Cheese": false,
-    "Hard Cheese": false,
-  }
-
-  handleChange = (event) => {
-    this.setState({ [event.target.value]: event.target.checked });
-  };
-
   dairyCheckboxes = () => {
     const dairyArr = this.props.allFood.filter(food => food.category === "Dairy")
-
-    let checkboxComponents = dairyArr.map((dairy, index) => (
-
-        <FormControlLabel
+    return dairyArr.map((dairy, index) => (
+      <FormControlLabel
           key={dairy.id}
+          label={`${dairy.name} (${dairy.examples})`}
           control={
             <Checkbox
               icon={<CheckBoxOutlineBlankIcon fontSize="large" />}
               checkedIcon={<CheckBoxIcon fontSize="large" />}
-              checked={this.state[dairy.name]}
+              checked={this.props.foodChecks[dairy.name]}
               value={dairy.name}
-              onChange={this.handleChange}
+              onChange={(e) => this.props.handleCheckboxClick(e)}
             />
           }
-          label={`${dairy.name} (${dairy.examples})`}
-        />
-
-    ))
-
-    return checkboxComponents
+      />)
+    )
   }
 
-  handleNextButtonClick = () => {
-    this.props.goToNextQuestion();
-
-    let chosenFoodNames = [];
-    for (const key in this.state) {
-      if (this.state[key]) {
-        chosenFoodNames.push(key)
-      }
-    }
-    this.props.updateWineScores(chosenFoodNames);
-  }
+  // handleNextButtonClick = () => {
+  //   this.props.goToNextQuestion();
+  //
+  //   let chosenFoodNames = [];
+  //   for (const key in this.state) {
+  //     if (this.state[key]) {
+  //       chosenFoodNames.push(key)
+  //     }
+  //   }
+  //   this.props.updateWineScores(chosenFoodNames);
+  // }
 
   render() {
     return (
@@ -79,7 +64,7 @@ class Question5 extends Component {
         <Button
           variant="contained"
           color="secondary"
-          onClick={this.handleNextButtonClick}>
+          onClick={this.props.goToNextQuestion}>
             Next
         </Button>
 
