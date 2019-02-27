@@ -3,13 +3,13 @@ import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import {AppBar, Button, IconButton, Menu, MenuItem, Toolbar} from '@material-ui/core';
-
+import Typography from '@material-ui/core/Typography';
 import MenuIcon from '@material-ui/icons/Menu';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 // import Switch from '@material-ui/core/Switch';
 // import FormControlLabel from '@material-ui/core/FormControlLabel';
 // import FormGroup from '@material-ui/core/FormGroup';
-
+import mainLogo from '../images/twitter_header_photo_1.png';
 
 const styles = {
   root: {
@@ -22,6 +22,7 @@ const styles = {
     marginLeft: -12,
     marginRight: 20,
   },
+
 };
 
 class MenuAppBar extends React.Component {
@@ -49,13 +50,16 @@ class MenuAppBar extends React.Component {
 
     return (
       <div className={classes.root}>
-
         <AppBar position="static">
           <Toolbar>
-            <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
-              <MenuIcon />
-            </IconButton>
-            <Button className={classes.button} color="inherit" component={Link} to="/">Wine+Food</Button>
+              <Link to='/'>
+                <img
+                  className={classes.headerImage}
+                  src={mainLogo}
+                  alt=""
+                  height="70"
+                />
+              </Link>
             <div color="inherit" className={classes.grow}>
             </div>
             {auth && (
@@ -99,6 +103,12 @@ MenuAppBar.propTypes = {
 };
 
 export default withStyles(styles)(MenuAppBar);
+
+// <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
+//   <MenuIcon />
+// </IconButton>
+
+
 
 // <FormGroup>
 //   <FormControlLabel

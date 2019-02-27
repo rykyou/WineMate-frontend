@@ -19,7 +19,7 @@ const styles = {
     card: {
       width: "500px",
       height: "200px",
-      marginLeft: "1400px",
+      marginLeft: "1300px",
       paddingTop: "150px"
     },
     button: {
