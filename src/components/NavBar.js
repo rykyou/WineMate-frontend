@@ -54,7 +54,6 @@ class MenuAppBar extends React.Component {
           <Toolbar>
               <Link to='/'>
                 <img
-                  className={classes.headerImage}
                   src={mainLogo}
                   alt=""
                   height="70"

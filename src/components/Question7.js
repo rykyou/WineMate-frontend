@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
-import '../index.css';
 
 
 const styles = {
@@ -20,14 +19,16 @@ class Question7 extends Component {
     const prepArr = this.props.allFood.filter(food => food.category === "Preparation")
 
     let prepButtons = prepArr.map((prep, index) => (
-      <Button
-        key={prep.id}
-        variant="contained"
-        color="secondary"
-        className="button-margin"
-        onClick={() => this.handlePrepButtonClick(prep.name)}>
-          {prep.name}
-      </Button>
+      <div>
+        <Button
+          key={prep.id}
+          variant="contained"
+          color="secondary"
+          className="button-margin"
+          onClick={() => this.handlePrepButtonClick(prep.name)}>
+            {prep.name}
+        </Button>
+      </div>
     ))
 
     return prepButtons
