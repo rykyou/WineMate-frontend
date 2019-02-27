@@ -74,14 +74,14 @@ class Question6 extends Component {
 
         <Button
           variant="contained"
-          color="primary"
+          color="secondary"
           onClick={this.props.goToPreviousQuestion}>
             Back
         </Button>
 
         <Button
           variant="contained"
-          color="primary"
+          color="secondary"
           onClick={this.handleNextButtonClick}>
             Next
         </Button>

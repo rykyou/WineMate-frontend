@@ -54,7 +54,16 @@ class QuestionContainer extends Component {
 
   goBackToFirstQuestion = () => {
     this.setState({
-      questionNum: 1
+      questionNum: 1,
+      boldRedScore: 0,
+      mediumRedScore: 0,
+      lightRedScore: 0,
+      roseScore: 0,
+      richWhiteScore: 0,
+      lightWhiteScore: 0,
+      sparklingScore: 0,
+      sweetWhiteScore: 0,
+      dessertScore: 0
     })
   }
 
@@ -193,6 +202,7 @@ class QuestionContainer extends Component {
         return <ResultsPage
           allWineStyles={this.props.allWineStyles}
           finalScoresArray={this.finalScoresArray}
+          goBackToFirstQuestion={this.goBackToFirstQuestion}
           />
       default:
     }

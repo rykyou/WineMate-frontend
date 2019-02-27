@@ -1,15 +1,15 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import {AppBar, Button, IconButton, Menu, MenuItem, Toolbar} from '@material-ui/core';
-import Typography from '@material-ui/core/Typography';
-import MenuIcon from '@material-ui/icons/Menu';
+import {AppBar, IconButton, Menu, MenuItem, Toolbar} from '@material-ui/core';
+// import Typography from '@material-ui/core/Typography';
+// import MenuIcon from '@material-ui/icons/Menu';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 // import Switch from '@material-ui/core/Switch';
 // import FormControlLabel from '@material-ui/core/FormControlLabel';
 // import FormGroup from '@material-ui/core/FormGroup';
-import mainLogo from '../images/twitter_header_photo_1.png';
+import mainLogo from '../images/logo.png';
 
 const styles = {
   root: {

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import Button from '@material-ui/core/Button';
 // import * as pictures from '../images'
 
 class ResultsPage extends Component {
@@ -29,6 +29,13 @@ class ResultsPage extends Component {
         <img src={require(`../images/${wineStyle.slug}.png`)} alt={wineStyle.name}/>
         <h3>{wineStyle.description}</h3>
         <h3>Try it with: {wineStyle.cuisine_title}</h3>
+        <Button
+          variant="contained"
+          color="secondary"
+          onClick={this.props.goBackToFirstQuestion}
+        >
+            Find New Pairing!
+        </Button>
       </div>
     )
   }

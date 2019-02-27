@@ -3,10 +3,12 @@ import { Link } from 'react-router-dom';
 // import Banner from '../components/Banner';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
+// import Card from '@material-ui/core/Card';
 import WineStylesList from './WineStylesList';
 import Button from '@material-ui/core/Button';
 import BackgroundImage from '../images/background.jpg';
+// import logo from '../images/logo_transparent.png';
+// import Typography from '@material-ui/core/Typography';
 
 const styles = {
     paperContainer: {
@@ -23,10 +25,17 @@ const styles = {
       paddingTop: "150px"
     },
     button: {
-      marginLeft: "160px",
+      width: "250px",
+      height: "150px",
+      marginLeft: "1350px",
     },
     empty: {
-      height: "400px"
+      height: "500px"
+    },
+    headerImage: {
+      width: "auto",
+      height: "700px",
+      marginLeft: "1300px",
     }
 };
 
@@ -39,11 +48,11 @@ class HomePage extends Component {
         <div className={classes.paperContainer}>
           <div className={classes.empty}>
           </div>
-          <Card className={classes.card}>
+
             <Button className={classes.button} variant="contained" color="secondary" component={Link} to="/questionnaire">
               Find Your Pairing!
             </Button>
-          </Card>
+
         </div>
         <WineStylesList allWineStyles={this.props.allWineStyles}/>
       </div>
