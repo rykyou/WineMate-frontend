@@ -36,8 +36,7 @@ class Question7 extends Component {
   render() {
     return (
       <div>
-        <h1>Question7</h1>
-        <h3>How will this be prepared?</h3>
+        <h1>How will this be prepared?</h1>
 
         {this.prepButtons()}
 

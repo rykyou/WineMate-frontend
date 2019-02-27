@@ -30,21 +30,16 @@ const styles = theme => ({
   },
 });
 
-function WineCard(props) {
+function WineStyleCard(props) {
   const { classes } = props;
 
   return (
     <Grid component={Link} to={`/winestyles/${props.wineStyle.slug}`} item xs>
       <Paper className={classes.paper}>
-        <img src={imageURL(props.wineStyle.short_name)} alt={props.wineStyle.name}/>
+        <img src={require(`../images/${props.wineStyle.slug}.png`)} alt={props.wineStyle.name}/>
       </Paper>
     </Grid>
   );
 }
 
-function imageURL(wineName) {
-    let formattedName = wineName.toLowerCase().split(" ").join('-')
-    return require(`../images/${formattedName}.png`)
-}
-
-export default withStyles(styles)(WineCard);
+export default withStyles(styles)(WineStyleCard);

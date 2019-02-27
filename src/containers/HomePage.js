@@ -45,7 +45,6 @@ class HomePage extends Component {
             </Button>
           </Card>
         </div>
-
         <WineStylesList allWineStyles={this.props.allWineStyles}/>
       </div>
     )

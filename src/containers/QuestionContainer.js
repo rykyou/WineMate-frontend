@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import Grid from '@material-ui/core/Grid';
 import Question1 from '../components/Question1';
 import Question2 from '../components/Question2';
 import Question3 from '../components/Question3';
@@ -200,9 +200,16 @@ class QuestionContainer extends Component {
 
   render() {
     return (
-      <div>
-        {this.questionComponentToRender()}
-      </div>
+      <Grid>
+        <Grid container
+          spacing={0}
+          alignItems="center"
+          justify="center"
+          style={{ minHeight: '70vh' }}
+        >
+          {this.questionComponentToRender()}
+        </Grid>
+      </Grid>
     );
   }
 }

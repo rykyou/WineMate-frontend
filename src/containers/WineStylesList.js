@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
-import WineCard from '../components/WineCard';
+import WineStyleCard from '../components/WineStyleCard';
 
 const styles = theme => ({
   root: {
@@ -20,7 +20,10 @@ function WineStylesList(props) {
   return (
     <div className={classes.root}>
       <Grid container spacing={24}>
-        {props.allWineStyles.map(wineStyle => <WineCard key={wineStyle.id} wineStyle={wineStyle}/>)}
+        {props.allWineStyles ?
+          props.allWineStyles.map(wineStyle => <WineStyleCard key={wineStyle.id} wineStyle={wineStyle}/>)
+        :
+        null}
       </Grid>
     </div>
   );

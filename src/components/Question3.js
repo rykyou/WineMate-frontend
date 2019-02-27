@@ -67,8 +67,7 @@ class Question3 extends Component {
   render() {
     return (
       <div>
-        <h1>Question3</h1>
-        <h3>Vegetables:</h3>
+        <h1>Vegetables:</h1>
 
         <FormGroup>
           {this.vegetableCheckboxes()}

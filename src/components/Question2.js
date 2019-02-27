@@ -67,8 +67,7 @@ class Question2 extends Component {
   render() {
     return (
       <div>
-        <h1>Question2</h1>
-        <h3>Does it include meat?</h3>
+        <h1>Does it include meat?</h1>
         <h3>Choose as many protein options as needed...</h3>
 
         <FormGroup>
