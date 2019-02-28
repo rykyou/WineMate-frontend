@@ -52,6 +52,11 @@ class QuestionContainer extends Component {
       "Herbs": false,
       "Baking Spices": false,
       "Exotic & Aromatic Spices": false,
+      "Grilled or Barbecued": false,
+      "Sautéed or Fried": false,
+      "Smoked": false,
+      "Roasted": false,
+      "Poached or Steamed": false,
       "Fruit & Berries": false,
       "Vanilla & Caramel": false,
       "Chocolate & Coffee": false
@@ -82,6 +87,15 @@ class QuestionContainer extends Component {
     });
   };
 
+  handlePrepButtonClick = (prepName) => {
+    this.setState({
+      foodChecks: {
+        ...this.state.foodChecks,
+        [prepName]: true
+      }
+    })
+  }
+
   goToNextQuestion = () => {
     this.setState({
       questionNum: this.state.questionNum + 1
@@ -98,7 +112,17 @@ class QuestionContainer extends Component {
     let resetfoodChecks = {};
     for (const key in this.state.foodChecks) { resetfoodChecks[key] = false }
     this.setState({
+      ...this.state,
       questionNum: 1,
+      boldRedScore: 0,
+      mediumRedScore: 0,
+      lightRedScore: 0,
+      roseScore: 0,
+      richWhiteScore: 0,
+      lightWhiteScore: 0,
+      sparklingScore: 0,
+      sweetWhiteScore: 0,
+      dessertScore: 0,
       foodChecks: resetfoodChecks
     })
   }
@@ -110,17 +134,32 @@ class QuestionContainer extends Component {
   }
 
   goToResultsPage = () => {
+    this.compileWineScores()
     this.setState({
       questionNum: 9
     })
   }
 
-  updateWineScores = (chosenFoodArr) => {
-    let foodArr = [];
-    chosenFoodArr.forEach(foodName => {
-      foodArr.push(this.state.allFood.find(food => food.name === foodName))
-    })
+  // chosenFoods = ["Poultry"]
+  chosenFoodNames = () => {
+    let foodNames = [];
+    for (const key in this.state.foodChecks) {
+      if (this.state.foodChecks[key]) {
+        foodNames.push(key)
+      }
+    }
+    return foodNames
+  }
 
+  chosenFoodObjects = () => {
+    let chosenFoodObjects = [];
+    this.chosenFoodNames().forEach(foodName => {
+      chosenFoodObjects.push(this.state.allFood.find(food => food.name === foodName))
+    })
+    return chosenFoodObjects
+  }
+
+  compileWineScores = () => {
     let updatedBoldRedScore = this.state.boldRedScore
     let updatedMediumRedScore = this.state.mediumRedScore
     let updatedLightRedScore = this.state.lightRedScore
@@ -131,7 +170,7 @@ class QuestionContainer extends Component {
     let updatedSweetWhiteScore = this.state.sweetWhiteScore
     let updatedDessertScore = this.state.dessertScore
 
-    foodArr.forEach(food => {
+    this.chosenFoodObjects().forEach(food => {
       updatedBoldRedScore += food.matches[0].match_score
       updatedMediumRedScore += food.matches[1].match_score
       updatedLightRedScore += food.matches[2].match_score
@@ -193,7 +232,6 @@ class QuestionContainer extends Component {
           handleCheckboxClick={this.handleCheckboxClick}
           goBackToFirstQuestion={this.goBackToFirstQuestion}
           goToNextQuestion={this.goToNextQuestion}
-          updateWineScores={this.updateWineScores}
           />
       case 3:
         return <Question3
@@ -202,7 +240,6 @@ class QuestionContainer extends Component {
           handleCheckboxClick={this.handleCheckboxClick}
           goToPreviousQuestion={this.goToPreviousQuestion}
           goToNextQuestion={this.goToNextQuestion}
-          updateWineScores={this.updateWineScores}
           />
       case 4:
         return <Question4
@@ -211,7 +248,6 @@ class QuestionContainer extends Component {
           handleCheckboxClick={this.handleCheckboxClick}
           goToPreviousQuestion={this.goToPreviousQuestion}
           goToNextQuestion={this.goToNextQuestion}
-          updateWineScores={this.updateWineScores}
           />
       case 5:
         return <Question5
@@ -220,7 +256,6 @@ class QuestionContainer extends Component {
           handleCheckboxClick={this.handleCheckboxClick}
           goToPreviousQuestion={this.goToPreviousQuestion}
           goToNextQuestion={this.goToNextQuestion}
-          updateWineScores={this.updateWineScores}
           />
       case 6:
         return <Question6
@@ -229,13 +264,12 @@ class QuestionContainer extends Component {
           handleCheckboxClick={this.handleCheckboxClick}
           goToPreviousQuestion={this.goToPreviousQuestion}
           goToNextQuestion={this.goToNextQuestion}
-          updateWineScores={this.updateWineScores}
           />
       case 7:
         return <Question7
           allFood={this.state.allFood}
+          handlePrepButtonClick={this.handlePrepButtonClick}
           goToResultsPage={this.goToResultsPage}
-          updateWineScores={this.updateWineScores}
           />
       case 8:
         return <Question8
@@ -244,7 +278,6 @@ class QuestionContainer extends Component {
           handleCheckboxClick={this.handleCheckboxClick}
           goBackToFirstQuestion={this.goBackToFirstQuestion}
           goToResultsPage={this.goToResultsPage}
-          updateWineScores={this.updateWineScores}
           />
       case 9:
         return <ResultsPage

@@ -33,18 +33,6 @@ class Question4 extends Component {
     )
   }
 
-  // handleNextButtonClick = () => {
-  //   this.props.goToNextQuestion();
-  //
-  //   let chosenFoodNames = [];
-  //   for (const key in this.state) {
-  //     if (this.state[key]) {
-  //       chosenFoodNames.push(key)
-  //     }
-  //   }
-  //   this.props.updateWineScores(chosenFoodNames);
-  // }
-
   render() {
     return (
       <div>

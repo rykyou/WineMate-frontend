@@ -9,22 +9,20 @@ const styles = {
 };
 
 class Question7 extends Component {
+
   prepButtons = () => {
     const prepArr = this.props.allFood.filter(food => food.category === "Preparation")
-    let prepButtons = prepArr.map((prep, index) => (
-      <div>
+
+    return prepArr.map((prep, index) => (
         <Button
           key={prep.id}
           variant="contained"
           color="secondary"
           className="button-margin"
-          onClick={() => this.handlePrepButtonClick(prep.name)}>
+          onClick={() => this.props.handlePrepButtonClick(prep.name)}>
             {prep.name}
         </Button>
-      </div>
     ))
-
-    return prepButtons
   }
 
   render() {
@@ -33,6 +31,13 @@ class Question7 extends Component {
         <h1>How will this be prepared?</h1>
 
         {this.prepButtons()}
+
+        <Button
+          variant="contained"
+          color="secondary"
+          onClick={this.props.goToResultsPage}>
+            Find My Pairing!
+        </Button>
 
       </div>
     )
@@ -44,3 +49,12 @@ Question7.propTypes = {
 };
 
 export default withStyles(styles)(Question7);
+// export default Question7;
+
+
+        // <Button
+        //   variant="contained"
+        //   color="primary"
+        //   onClick={this.props.goToPreviousQuestion}>
+        //     Back
+        // </Button>

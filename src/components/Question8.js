@@ -32,18 +32,18 @@ class Question8 extends Component {
       />)
     )
   }
-
-  handleNextButtonClick = () => {
-    this.props.goToResultsPage();
-
-    let chosenFoodNames = [];
-    for (const key in this.state) {
-      if (this.state[key]) {
-        chosenFoodNames.push(key)
-      }
-    }
-    this.props.updateWineScores(chosenFoodNames);
-  }
+  // 
+  // handleNextButtonClick = () => {
+  //   this.props.goToResultsPage();
+  //
+  //   let chosenFoodNames = [];
+  //   for (const key in this.state) {
+  //     if (this.state[key]) {
+  //       chosenFoodNames.push(key)
+  //     }
+  //   }
+  //   this.props.updateWineScores();
+  // }
 
   render() {
     return (
