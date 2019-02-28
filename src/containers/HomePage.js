@@ -14,7 +14,6 @@ import MuiDialogActions from '@material-ui/core/DialogActions';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import Typography from '@material-ui/core/Typography';
-
 import poster from '../images/wine-folly-poster.png';
 // import Typography from '@material-ui/core/Typography';
 
@@ -124,7 +123,7 @@ class HomePage extends Component {
             How the Food and Wine Pairing Works...
           </DialogTitle>
           <DialogContent>
-            <img src={poster} height="800"/>
+            <img src={poster} alt="dialog" height="800"/>
             <Typography gutterBottom>
               Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac
               facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum

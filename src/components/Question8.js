@@ -32,18 +32,6 @@ class Question8 extends Component {
       />)
     )
   }
-  // 
-  // handleNextButtonClick = () => {
-  //   this.props.goToResultsPage();
-  //
-  //   let chosenFoodNames = [];
-  //   for (const key in this.state) {
-  //     if (this.state[key]) {
-  //       chosenFoodNames.push(key)
-  //     }
-  //   }
-  //   this.props.updateWineScores();
-  // }
 
   render() {
     return (
@@ -64,7 +52,7 @@ class Question8 extends Component {
         <Button
           variant="contained"
           color="secondary"
-          onClick={this.handleNextButtonClick}>
+          onClick={this.props.goToResultsPage}>
             Find My Pairing!
         </Button>
 
@@ -79,4 +67,3 @@ Question8.propTypes = {
 };
 
 export default withStyles(styles)(Question8);
-// export default Question8;
