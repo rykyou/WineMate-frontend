@@ -87,10 +87,17 @@ class QuestionContainer extends Component {
     });
   };
 
-  handlePrepButtonClick = (prepName) => {
+  handlePrepChange = (prepName) => {
+    let foodChecksCopy = {...this.state.foodChecks}
+    foodChecksCopy["Grilled or Barbecued"] = false
+    foodChecksCopy["Sautéed or Fried"] = false
+    foodChecksCopy["Smoked"] = false
+    foodChecksCopy["Roasted"] = false
+    foodChecksCopy["Poached or Steamed"] = false
+
     this.setState({
       foodChecks: {
-        ...this.state.foodChecks,
+        ...foodChecksCopy,
         [prepName]: true
       }
     })
@@ -109,8 +116,8 @@ class QuestionContainer extends Component {
   }
 
   goBackToFirstQuestion = () => {
-    let resetfoodChecks = {};
-    for (const key in this.state.foodChecks) { resetfoodChecks[key] = false }
+    let resetFoodChecks = {};
+    for (const key in this.state.foodChecks) { resetFoodChecks[key] = false }
     this.setState({
       ...this.state,
       questionNum: 1,
@@ -123,7 +130,7 @@ class QuestionContainer extends Component {
       sparklingScore: 0,
       sweetWhiteScore: 0,
       dessertScore: 0,
-      foodChecks: resetfoodChecks
+      foodChecks: resetFoodChecks
     })
   }
 
@@ -268,7 +275,7 @@ class QuestionContainer extends Component {
       case 7:
         return <Question7
           allFood={this.state.allFood}
-          handlePrepButtonClick={this.handlePrepButtonClick}
+          handlePrepChange={this.handlePrepChange}
           goToResultsPage={this.goToResultsPage}
           />
       case 8:
