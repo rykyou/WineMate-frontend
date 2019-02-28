@@ -14,53 +14,23 @@ const styles = {
 };
 
 class Question6 extends Component {
-  state = {
-    "Black Pepper": false,
-    "Red Pepper": false,
-    "Hot & Spicy": false,
-    "Herbs": false,
-    "Baking Spices": false,
-    "Exotic & Aromatic Spices": false,
-  }
-
-  handleChange = (event) => {
-    this.setState({ [event.target.value]: event.target.checked });
-  };
-
   herbsCheckboxes = () => {
     const herbsArr = this.props.allFood.filter(food => food.category === "Herb & Spice")
-
-    let checkboxComponents = herbsArr.map((herb, index) => (
-
-        <FormControlLabel
+    return herbsArr.map((herb, index) => (
+      <FormControlLabel
           key={herb.id}
+          label={(herb.examples) ? `${herb.name} (${herb.examples})` : `${herb.name}`}
           control={
             <Checkbox
               icon={<CheckBoxOutlineBlankIcon fontSize="large" />}
               checkedIcon={<CheckBoxIcon fontSize="large" />}
-              checked={this.state[herb.name]}
+              checked={this.props.foodChecks[herb.name]}
               value={herb.name}
-              onChange={this.handleChange}
+              onChange={(e) => this.props.handleCheckboxClick(e)}
             />
           }
-          label={(herb.examples) ? `${herb.name} (${herb.examples})` : `${herb.name}`}
-        />
-
-    ))
-
-    return checkboxComponents
-  }
-
-  handleNextButtonClick = () => {
-    this.props.goToNextQuestion();
-
-    let chosenFoodNames = [];
-    for (const key in this.state) {
-      if (this.state[key]) {
-        chosenFoodNames.push(key)
-      }
-    }
-    this.props.updateWineScores(chosenFoodNames);
+      />)
+    )
   }
 
   render() {
@@ -82,7 +52,7 @@ class Question6 extends Component {
         <Button
           variant="contained"
           color="secondary"
-          onClick={this.handleNextButtonClick}>
+          onClick={this.props.goToNextQuestion}>
             Next
         </Button>
 

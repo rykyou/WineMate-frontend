@@ -14,50 +14,23 @@ const styles = {
 };
 
 class Question8 extends Component {
-  state = {
-    "Fruit & Berries": false,
-    "Vanilla & Caramel": false,
-    "Chocolate & Coffee": false
-  }
-
-  handleChange = (event) => {
-    this.setState({ [event.target.value]: event.target.checked });
-  };
-
   dessertCheckboxes = () => {
     const dessertArr = this.props.allFood.filter(food => food.category === "Sweet")
-
-    let checkboxComponents = dessertArr.map((dessert, index) => (
-
-        <FormControlLabel
+    return dessertArr.map((dessert, index) => (
+      <FormControlLabel
           key={dessert.id}
+          label={(dessert.examples) ? `${dessert.name} (${dessert.examples})` : `${dessert.name}`}
           control={
             <Checkbox
               icon={<CheckBoxOutlineBlankIcon fontSize="large" />}
               checkedIcon={<CheckBoxIcon fontSize="large" />}
-              checked={this.state[dessert.name]}
+              checked={this.props.foodChecks[dessert.name]}
               value={dessert.name}
-              onChange={this.handleChange}
+              onChange={(e) => this.props.handleCheckboxClick(e)}
             />
           }
-          label={(dessert.examples) ? `${dessert.name} (${dessert.examples})` : `${dessert.name}`}
-        />
-
-    ))
-
-    return checkboxComponents
-  }
-
-  handleNextButtonClick = () => {
-    this.props.goToResultsPage();
-
-    let chosenFoodNames = [];
-    for (const key in this.state) {
-      if (this.state[key]) {
-        chosenFoodNames.push(key)
-      }
-    }
-    this.props.updateWineScores(chosenFoodNames);
+      />)
+    )
   }
 
   render() {
@@ -79,7 +52,7 @@ class Question8 extends Component {
         <Button
           variant="contained"
           color="secondary"
-          onClick={this.handleNextButtonClick}>
+          onClick={this.props.goToResultsPage}>
             Find My Pairing!
         </Button>
 
@@ -94,4 +67,3 @@ Question8.propTypes = {
 };
 
 export default withStyles(styles)(Question8);
-// export default Question8;
