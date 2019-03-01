@@ -4,6 +4,7 @@ import { Route } from 'react-router-dom';
 import '../App.css';
 
 import NavBar from '../components/NavBar';
+import InfographicDialog from '../components/InfographicDialog';
 import HomePage from './HomePage';
 import QuestionContainer from './QuestionContainer';
 import WineShowPage from './WineShowPage';
@@ -12,7 +13,8 @@ import WineShowPage from './WineShowPage';
 
 class App extends Component {
   state = {
-    allWineStyles: []
+    allWineStyles: [],
+    openDialog: false
   }
 
   componentDidMount() {
@@ -29,10 +31,21 @@ class App extends Component {
     })
   }
 
+  handleClickDialog = () => {
+    this.setState({ openDialog: !this.state.openDialog });
+  };
+
   render() {
     return (
       <div>
-        <NavBar />
+        <NavBar handleClickDialog={this.handleClickDialog}/>
+        {this.state.openDialog ?
+          <InfographicDialog
+            openState={this.state.openDialog}
+            handleClickDialog={this.handleClickDialog}
+          />
+          :
+        null}
 
         <Route exact path="/" render={() => {
           return (<HomePage
