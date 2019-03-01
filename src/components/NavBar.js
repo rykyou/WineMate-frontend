@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import {AppBar, IconButton, Menu, MenuItem, Toolbar} from '@material-ui/core';
-// import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
 // import MenuIcon from '@material-ui/icons/Menu';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 // import Switch from '@material-ui/core/Switch';
@@ -61,6 +62,9 @@ class MenuAppBar extends React.Component {
               </Link>
             <div color="inherit" className={classes.grow}>
             </div>
+            <Button color="secondary" onClick={this.props.handleClickDialog}>
+              How it works
+            </Button>
             {auth && (
               <div>
                 <IconButton
