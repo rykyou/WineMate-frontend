@@ -39,13 +39,11 @@ class App extends Component {
     return (
       <div>
         <NavBar handleClickDialog={this.handleClickDialog}/>
-        {this.state.openDialog ?
-          <InfographicDialog
-            openState={this.state.openDialog}
-            handleClickDialog={this.handleClickDialog}
-          />
-          :
-        null}
+
+        <InfographicDialog
+          openState={this.state.openDialog}
+          handleClickDialog={this.handleClickDialog}
+        />
 
         <Route exact path="/" render={() => {
           return (<HomePage

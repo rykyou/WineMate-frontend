@@ -28,23 +28,11 @@ function Transition(props) {
 }
 
 class InfographicDialog extends React.Component {
-  // state = {
-  //   open: false,
-  // };
-
-  // handleClickOpen = () => {
-  //   this.setState({ open: true });
-  // };
-  //
-  // handleClose = () => {
-  //   this.setState({ open: false });
-  // };
 
   render() {
     const { classes } = this.props;
     return (
       <div>
-
         <Dialog
           fullScreen
           open={this.props.openState}
@@ -57,22 +45,13 @@ class InfographicDialog extends React.Component {
                 <CloseIcon />
               </IconButton>
               <Typography variant="h6" color="inherit" className={classes.flex}>
-
               </Typography>
               <Button color="inherit" onClick={this.props.handleClickDialog}>
                 Got it!
               </Button>
             </Toolbar>
           </AppBar>
-          <List>
-            <ListItem button>
-              <ListItemText primary="Phone ringtone" secondary="Titania" />
-            </ListItem>
-            <Divider />
-            <ListItem button>
-              <ListItemText primary="Default notification ringtone" secondary="Tethys" />
-            </ListItem>
-          </List>
+          
         </Dialog>
       </div>
     );
