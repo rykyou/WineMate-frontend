@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
+// import { withRouter } from 'react-router';
 
 import '../App.css';
 
@@ -14,7 +15,7 @@ import WineShowPage from './WineShowPage';
 class App extends Component {
   state = {
     allWineStyles: [],
-    openDialog: false
+    openDialogState: false
   }
 
   componentDidMount() {
@@ -32,7 +33,7 @@ class App extends Component {
   }
 
   handleClickDialog = () => {
-    this.setState({ openDialog: !this.state.openDialog });
+    this.setState({ openDialogState: !this.state.openDialogState });
   };
 
   render() {
@@ -41,13 +42,14 @@ class App extends Component {
         <NavBar handleClickDialog={this.handleClickDialog}/>
 
         <InfographicDialog
-          openState={this.state.openDialog}
+          openDialogState={this.state.openDialogState}
           handleClickDialog={this.handleClickDialog}
         />
 
         <Route exact path="/" render={() => {
           return (<HomePage
             allWineStyles={this.state.allWineStyles}
+            handleClickDialog={this.handleClickDialog}
           />)}}
         />
 

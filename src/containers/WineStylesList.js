@@ -19,6 +19,7 @@ function WineStylesList(props) {
   const { classes } = props;
   return (
     <div className={classes.root}>
+      {props.allWineStyles ? <h2>Explore by Wine Style!</h2> : null}
       <Grid container spacing={24}>
         {props.allWineStyles ?
           props.allWineStyles.map(wineStyle => <WineStyleCard key={wineStyle.id} wineStyle={wineStyle}/>)

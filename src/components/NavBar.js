@@ -2,11 +2,12 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import {AppBar, IconButton, Menu, MenuItem, Toolbar} from '@material-ui/core';
+import {AppBar, Toolbar} from '@material-ui/core';
+// IconButton, Menu, MenuItem,
 import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
+// import Typography from '@material-ui/core/Typography';
 // import MenuIcon from '@material-ui/icons/Menu';
-import AccountCircle from '@material-ui/icons/AccountCircle';
+// import AccountCircle from '@material-ui/icons/AccountCircle';
 // import Switch from '@material-ui/core/Switch';
 // import FormControlLabel from '@material-ui/core/FormControlLabel';
 // import FormGroup from '@material-ui/core/FormGroup';
@@ -32,6 +33,7 @@ class MenuAppBar extends React.Component {
     anchorEl: null,
   };
 
+
   handleChange = event => {
     this.setState({ auth: event.target.checked });
   };
@@ -46,8 +48,8 @@ class MenuAppBar extends React.Component {
 
   render() {
     const { classes } = this.props;
-    const { auth, anchorEl } = this.state;
-    const open = Boolean(anchorEl);
+    // const { auth, anchorEl } = this.state;
+    // const open = Boolean(anchorEl);
 
     return (
       <div className={classes.root}>
@@ -65,35 +67,7 @@ class MenuAppBar extends React.Component {
             <Button color="secondary" onClick={this.props.handleClickDialog}>
               How it works
             </Button>
-            {auth && (
-              <div>
-                <IconButton
-                  aria-owns={open ? 'menu-appbar' : undefined}
-                  aria-haspopup="true"
-                  onClick={this.handleMenu}
-                  color="inherit"
-                >
-                  <AccountCircle />
-                </IconButton>
-                <Menu
-                  id="menu-appbar"
-                  anchorEl={anchorEl}
-                  anchorOrigin={{
-                    vertical: 'top',
-                    horizontal: 'right',
-                  }}
-                  transformOrigin={{
-                    vertical: 'top',
-                    horizontal: 'right',
-                  }}
-                  open={open}
-                  onClose={this.handleClose}
-                >
-                  <MenuItem onClick={this.handleClose}>Profile</MenuItem>
-                  <MenuItem onClick={this.handleClose}>My account</MenuItem>
-                </Menu>
-              </div>
-            )}
+
           </Toolbar>
         </AppBar>
       </div>
@@ -121,3 +95,33 @@ export default withStyles(styles)(MenuAppBar);
 //     label={auth ? 'Logout' : 'Login'}
 //   />
 // </FormGroup>
+
+// {auth && (
+//   <div>
+//     <IconButton
+//       aria-owns={open ? 'menu-appbar' : undefined}
+//       aria-haspopup="true"
+//       onClick={this.handleMenu}
+//       color="inherit"
+//     >
+//       <AccountCircle />
+//     </IconButton>
+//     <Menu
+//       id="menu-appbar"
+//       anchorEl={anchorEl}
+//       anchorOrigin={{
+//         vertical: 'top',
+//         horizontal: 'right',
+//       }}
+//       transformOrigin={{
+//         vertical: 'top',
+//         horizontal: 'right',
+//       }}
+//       open={open}
+//       onClose={this.handleClose}
+//     >
+//       <MenuItem onClick={this.handleClose}>Profile</MenuItem>
+//       <MenuItem onClick={this.handleClose}>My account</MenuItem>
+//     </Menu>
+//   </div>
+// )}
