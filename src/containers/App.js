@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
-// import { withRouter } from 'react-router';
-
-import '../App.css';
 
 import NavBar from '../components/NavBar';
 import InfographicDialog from '../components/InfographicDialog';

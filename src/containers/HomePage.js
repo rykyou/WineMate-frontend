@@ -6,6 +6,8 @@ import WineStylesList from './WineStylesList';
 import Button from '@material-ui/core/Button';
 import BackgroundImage from '../images/background.jpg';
 // import Typography from '@material-ui/core/Typography';
+import Slider from 'react-animated-slider';
+import 'react-animated-slider/build/horizontal.css';
 
 const styles = {
     paperContainer: {
@@ -33,6 +35,21 @@ class HomePage extends Component {
     const { classes } = this.props;
     return (
       <div>
+
+        <Slider autoplay={3000}>
+        	{content.map((item, index) => (
+        		<div
+        			key={index}
+        			style={{ background: `url('${item.image}') no-repeat center center` }}
+        		>
+        			<div className="center">
+        				<h1>{item.title}</h1>
+        				<p>{item.description}</p>
+        				<button>{item.button}</button>
+        			</div>
+        		</div>
+        	))}
+        </Slider>
         <div className={classes.paperContainer}>
           <div className={classes.empty}>
           </div>
