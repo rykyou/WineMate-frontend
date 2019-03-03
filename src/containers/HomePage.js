@@ -9,12 +9,12 @@ import AnimatedSlider from '../components/AnimatedSlider';
 // import Typography from '@material-ui/core/Typography';
 
 const styles = {
-    paperContainer: {
-        background: `url(${BackgroundImage}) center center fixed`,
-        backgroundSize: 'cover',
-        width: "100%",
-        height: "900px",
-    },
+    // paperContainer: {
+    //     background: `url(${BackgroundImage}) center center fixed`,
+    //     backgroundSize: 'cover',
+    //     width: "100%",
+    //     height: "900px",
+    // },
     button: {
       width: "250px",
       height: "150px",
@@ -34,24 +34,10 @@ class HomePage extends Component {
     const { classes } = this.props;
     return (
       <div>
-        <AnimatedSlider />
-        <div className={classes.paperContainer}>
-          <div className={classes.empty}>
-          </div>
-
-          <Button className={classes.button} variant="contained" color="secondary" component={Link} to="/questionnaire">
-            Find Your Pairing!
-          </Button>
-
-          <div className={classes.smallEmpty}></div>
-
-          <Button className={classes.button} variant="contained" color="secondary" onClick={this.props.handleClickDialog}>
-            HOW THE PAIRING WORKS
-          </Button>
-        </div>
-
+        <AnimatedSlider
+          handleClickDialog={this.props.handleClickDialog}
+        />
         <WineStylesList allWineStyles={this.props.allWineStyles}/>
-
       </div>
     )
   }

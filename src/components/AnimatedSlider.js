@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { render } from 'react-dom';
 import Slider from 'react-animated-slider';
 import 'react-animated-slider/build/horizontal.css';
@@ -7,39 +8,45 @@ import '../slider-animations.css';
 import '../slider-styles.css';
 
 import BackgroundImage1 from '../images/background1.jpg';
-import BackgroundImage2 from '../images/background2.jpg';
+import BackgroundImage2 from '../images/background5.jpg';
 import BackgroundImage3 from '../images/background3.jpg';
 
 class AnimatedSlider extends Component {
   content = [
   	{
-  		title: 'Vulputate Mollis Ultricies Fermentum Parturient',
-  		description:
-  		'Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Cras justo odio, dapibus ac facilisis.',
-  		button: 'Read More',
+  		title: 'Find the Perfect Wine Style Match',
+  		description: "Don't know where to start with the wine selection? Let us know what's on the menu and we'll help you find the perfect wine style.",
+  		button: 'Find Your Pairing',
   		image: BackgroundImage1,
-  		user: 'Luan Gjokaj',
-  		userProfile: 'https://i.imgur.com/JSW6mEk.png'
+      handleButtonClick: "Go to Quiz"
   	},
   	{
-  		title: 'Tortor Dapibus Commodo Aenean Quam',
+  		title: 'Food & Wine Pairing Science',
   		description:
-  		'Nullam id dolor id nibh ultricies vehicula ut id elit. Cras mattis consectetur purus sit amet fermentum. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Donec sed odio dui.',
+  		"Our quiz is based on Wine Folly's Food & Wine Pairing Method. Click to discover the theory of food and wine pairing and how we are able to suggest the best wine style match based on the flavor profile of your meal.",
   		button: 'Discover',
-  		image: BackgroundImage2,
-  		user: 'Erich Behrens',
-  		userProfile: 'https://i.imgur.com/0Clfnu7.png'
+  		image: BackgroundImage3,
+      handleButtonClick: "Open InfographicDialog"
   	},
   	{
-  		title: 'Phasellus volutpat metus',
+  		title: 'The 9 Primary Styles of Wine',
   		description:
-  		'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Duis mollis, est non commodo luctus, nisi erat porttitor ligula.',
-  		button: 'Buy now',
-  		image: BackgroundImage3,
-  		user: 'Bruno Vizovskyy',
-  		userProfile: 'https://i.imgur.com/4KeKvtH.png'
+  		"With over 1,300 types of wine in the world, it can be daunting task to find the perfect wine. That's why we've simplified it with 9 broader styles. Become a wine connisseur in no time.",
+  		button: 'Explore',
+  		image: BackgroundImage2,
+      handleButtonClick: "Go to WineStyles"
   	}
   ];
+
+  buttonToRender = (item) => {
+    if (item.handleButtonClick === "Go to Quiz") {
+      return (<Link to="/questionnaire"><button>{item.button}</button></Link>)
+    } else if (item.handleButtonClick === "Open InfographicDialog") {
+      return <button onClick={this.props.handleClickDialog}>{item.button}</button>
+    } else if (item.handleButtonClick === "Go to WineStyles") {
+      return <Link to="/winestyles/bold-red"><button>{item.button}</button></Link>
+    }
+  }
 
   render() {
     return (
@@ -54,7 +61,7 @@ class AnimatedSlider extends Component {
     					<div className="inner">
     						<h1>{item.title}</h1>
     						<p>{item.description}</p>
-    						<button>{item.button}</button>
+                {this.buttonToRender(item)}
     					</div>
     				</div>
     			))}

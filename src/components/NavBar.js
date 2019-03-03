@@ -5,7 +5,7 @@ import { withStyles } from '@material-ui/core/styles';
 import {AppBar, Toolbar} from '@material-ui/core';
 // IconButton, Menu, MenuItem,
 import Button from '@material-ui/core/Button';
-// import Typography from '@material-ui/core/Typography';
+import Typography from '@material-ui/core/Typography';
 // import MenuIcon from '@material-ui/icons/Menu';
 // import AccountCircle from '@material-ui/icons/AccountCircle';
 // import Switch from '@material-ui/core/Switch';
@@ -16,14 +16,19 @@ import mainLogo from '../images/logo.png';
 const styles = {
   root: {
     flexGrow: 1,
+    position: "absolute",
+    zIndex: 1000
   },
-  grow: {
-    flexGrow: 1,
+  flex: {
+    flex: 1,
   },
   menuButton: {
     marginLeft: -12,
     marginRight: 20,
   },
+  text: {
+    color: "#ffffff"
+  }
 
 };
 
@@ -53,18 +58,19 @@ class MenuAppBar extends React.Component {
 
     return (
       <div className={classes.root}>
-        <AppBar position="static">
+        <AppBar position="static" style={{ background: 'transparent', boxShadow: 'none'}}>
           <Toolbar>
-              <Link to='/'>
-                <img
-                  src={mainLogo}
-                  alt=""
-                  height="70"
-                />
-              </Link>
-            <div color="inherit" className={classes.grow}>
-            </div>
-            <Button color="secondary" onClick={this.props.handleClickDialog}>
+            <Link to='/'>
+              <img
+                src={mainLogo}
+                alt=""
+                height="70"
+              />
+            </Link>
+            {}
+            <Typography variant="h6" className={classes.flex}>
+            </Typography>
+            <Button className={classes.text} onClick={this.props.handleClickDialog}>
               How it works
             </Button>
 
