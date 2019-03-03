@@ -11,7 +11,7 @@ import Typography from '@material-ui/core/Typography';
 // import Switch from '@material-ui/core/Switch';
 // import FormControlLabel from '@material-ui/core/FormControlLabel';
 // import FormGroup from '@material-ui/core/FormGroup';
-import mainLogo from '../images/logo.png';
+import mainLogo from '../images/winemate-logo.png';
 
 const styles = {
   root: {

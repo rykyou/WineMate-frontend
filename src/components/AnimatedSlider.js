@@ -8,7 +8,7 @@ import '../slider-animations.css';
 import '../slider-styles.css';
 
 import BackgroundImage1 from '../images/background1.jpg';
-import BackgroundImage2 from '../images/background5.jpg';
+import BackgroundImage2 from '../images/background2.jpg';
 import BackgroundImage3 from '../images/background3.jpg';
 
 class AnimatedSlider extends Component {
@@ -25,7 +25,7 @@ class AnimatedSlider extends Component {
   		description:
   		"Our quiz is based on Wine Folly's Food & Wine Pairing Method. Click to discover the theory of food and wine pairing and how we are able to suggest the best wine style match based on the flavor profile of your meal.",
   		button: 'Discover',
-  		image: BackgroundImage3,
+  		image: BackgroundImage2,
       handleButtonClick: "Open InfographicDialog"
   	},
   	{
@@ -33,7 +33,7 @@ class AnimatedSlider extends Component {
   		description:
   		"With over 1,300 types of wine in the world, it can be daunting task to find the perfect wine. That's why we've simplified it with 9 broader styles. Become a wine connisseur in no time.",
   		button: 'Explore',
-  		image: BackgroundImage2,
+  		image: BackgroundImage3,
       handleButtonClick: "Go to WineStyles"
   	}
   ];
