@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import WineGridList from './WineGridList';
+import WineStylesNavigation from './WineStylesNavigation';
 
 class WineShowPage extends Component {
   render() {
@@ -7,6 +8,11 @@ class WineShowPage extends Component {
       <div>
         {this.props.chosenWineStyleObj ?
           <div>
+            <WineStylesNavigation
+              allWineStyles={this.props.allWineStyles}
+              handleSelectWineStyle={this.props.handleSelectWineStyle}
+              selectedWineStyle={this.props.selectedWineStyle}
+            />
             <WineGridList chosenWineStyle={this.props.chosenWineStyleObj}/>
             <h1>{this.props.chosenWineStyleObj.name}</h1>
             <img

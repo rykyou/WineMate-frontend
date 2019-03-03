@@ -5,15 +5,10 @@ import { withStyles } from '@material-ui/core/styles';
 import WineStylesList from './WineStylesList';
 import Button from '@material-ui/core/Button';
 import AnimatedSlider from '../components/AnimatedSlider';
+import WineStylesNavigation from './WineStylesNavigation';
 // import Typography from '@material-ui/core/Typography';
 
 const styles = {
-    // paperContainer: {
-    //     background: `url(${BackgroundImage}) center center fixed`,
-    //     backgroundSize: 'cover',
-    //     width: "100%",
-    //     height: "900px",
-    // },
     button: {
       width: "250px",
       height: "150px",
@@ -35,8 +30,14 @@ class HomePage extends Component {
       <div>
         <AnimatedSlider
           handleClickDialog={this.props.handleClickDialog}
+          wineStyleToGoTo={this.props.wineStyleToGoTo}
         />
-        <WineStylesList allWineStyles={this.props.allWineStyles}/>
+        <h2>Explore by Wine Style!</h2>
+        <WineStylesNavigation
+          allWineStyles={this.props.allWineStyles}
+          handleSelectWineStyle={this.props.handleSelectWineStyle}
+          selectedWineStyle={this.props.selectedWineStyle}
+        />
       </div>
     )
   }

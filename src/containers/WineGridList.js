@@ -33,7 +33,7 @@ function WineGridList(props) {
   const { classes } = props;
   return (
     <div className={classes.root}>
-      <GridList className={classes.gridList} cols={3} cellHeight={400} spacing={10}>
+      <GridList className={classes.gridList} cols={3.5} cellHeight={400} spacing={10}>
         {props.chosenWineStyle.wines.map(tile => (
           <GridListTile key={tile.img}>
             <img src={tile.img} alt={tile.name} />

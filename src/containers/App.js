@@ -12,7 +12,8 @@ import WineShowPage from './WineShowPage';
 class App extends Component {
   state = {
     allWineStyles: [],
-    openDialogState: false
+    openDialogState: false,
+    selectedWineStyle: 'bold-red'
   }
 
   componentDidMount() {
@@ -33,6 +34,10 @@ class App extends Component {
     this.setState({ openDialogState: !this.state.openDialogState });
   };
 
+  handleSelectWineStyle = (wineStyleSlug) => {
+    this.setState({ selectedWineStyle: wineStyleSlug })
+  }
+
   render() {
     return (
       <div>
@@ -46,6 +51,8 @@ class App extends Component {
           return (<HomePage
             allWineStyles={this.state.allWineStyles}
             handleClickDialog={this.handleClickDialog}
+            handleSelectWineStyle={this.handleSelectWineStyle}
+            wineStyleToGoTo={this.state.selectedWineStyle}
           />)}}
         />
 
@@ -59,7 +66,10 @@ class App extends Component {
           let wineStyleSlugInUrl = props.match.params.slug
           let chosenWineStyleObj = this.state.allWineStyles.find(winestyleObj => winestyleObj.slug === wineStyleSlugInUrl )
           return (<WineShowPage
+            allWineStyles={this.state.allWineStyles}
             chosenWineStyleObj={chosenWineStyleObj}
+            handleSelectWineStyle={this.handleSelectWineStyle}
+            selectedWineStyle={this.state.selectedWineStyle}
           />)}}
         />
 

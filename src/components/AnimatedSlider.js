@@ -44,7 +44,7 @@ class AnimatedSlider extends Component {
     } else if (item.handleButtonClick === "Open InfographicDialog") {
       return <button onClick={this.props.handleClickDialog}>{item.button}</button>
     } else if (item.handleButtonClick === "Go to WineStyles") {
-      return <Link to="/winestyles/bold-red"><button>{item.button}</button></Link>
+      return <Link to={`/winestyles/${this.props.wineStyleToGoTo}`}><button>{item.button}</button></Link>
     }
   }
 
