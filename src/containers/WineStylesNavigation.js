@@ -37,6 +37,7 @@ class WineStylesNavigation extends React.Component {
       <BottomNavigation value={value} onChange={this.handleChange} className={classes.root}>
         {allWineStyles ?
           allWineStyles.map(wineStyle => <BottomNavigationAction
+            key={wineStyle.id}
             component={Link}
             to={`/winestyles/${wineStyle.slug}`}
             label={<FavoriteIcon />}

@@ -18,7 +18,8 @@ const theme = createMuiTheme({
       light: '#dab9cb',
       main: '#a8899a',
       dark: '#795c6c',
-      contrastText: '#000'
+      contrastText: '#000',
+      mainGradient: "linear-gradient(180deg, #a8899a 10%, #fff 60%)",
     }
   },
   typography: {

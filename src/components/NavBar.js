@@ -57,8 +57,8 @@ class MenuAppBar extends React.Component {
     // const open = Boolean(anchorEl);
 
     return (
-      <div className={classes.root}>
-        <AppBar position="static" style={{ background: 'transparent', boxShadow: 'none'}}>
+
+        <AppBar className={classes.root} position="static" style={{ background: 'transparent', boxShadow: 'none'}}>
           <Toolbar>
             <Link to='/'>
               <img
@@ -76,7 +76,7 @@ class MenuAppBar extends React.Component {
 
           </Toolbar>
         </AppBar>
-      </div>
+
     );
   }
 }

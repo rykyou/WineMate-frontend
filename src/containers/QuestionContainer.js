@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Question1 from '../components/Question1';
 import Question2 from '../components/Question2';
@@ -11,6 +13,12 @@ import Question7 from '../components/Question7';
 import Question8 from '../components/Question8';
 import ResultsPage from './ResultsPage';
 
+
+const styles = theme => ({
+  mainContainer: {
+    background: theme.palette.secondary.mainGradient,
+  },
+});
 
 class QuestionContainer extends Component {
   state = {
@@ -299,7 +307,7 @@ class QuestionContainer extends Component {
 
   render() {
     return (
-      <Grid>
+      <Grid className={this.props.classes.mainContainer}>
         <Grid container
           spacing={0}
           alignItems="center"
@@ -313,4 +321,9 @@ class QuestionContainer extends Component {
   }
 }
 
-export default QuestionContainer;
+QuestionContainer.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
+
+export default withStyles(styles)(QuestionContainer);
+// export default QuestionContainer;
