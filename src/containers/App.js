@@ -36,8 +36,6 @@ class App extends Component {
   render() {
     return (
       <div>
-        <NavBar handleClickDialog={this.handleClickDialog}/>
-
         <InfographicDialog
           openDialogState={this.state.openDialogState}
           handleClickDialog={this.handleClickDialog}
