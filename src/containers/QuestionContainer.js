@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { Route } from 'react-router-dom';
+// import { Route } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
+import Paper from '@material-ui/core/Paper';
 import NavBar from '../components/NavBar';
 import Question1 from '../components/Question1';
 import Question2 from '../components/Question2';
@@ -18,6 +19,13 @@ import ResultsPage from './ResultsPage';
 const styles = theme => ({
   root: {
     flexGrow: 1,
+    margin: '10vh'
+  },
+  paper: {
+    padding: theme.spacing.unit * 2,
+    textAlign: 'center',
+    color: theme.palette.text.secondary,
+    minHeight: '70vh'
   },
 });
 
@@ -308,17 +316,24 @@ class QuestionContainer extends Component {
   }
 
   render() {
+    const { classes } = this.props;
+
     return (
       <div>
         <NavBar handleClickDialog={this.props.handleClickDialog}/>
-        <Grid className={this.props.classes.root}>
+        <Grid className={classes.root}>
           <Grid container
-            spacing={0}
+            spacing={24}
             alignItems="center"
             justify="center"
             style={{ minHeight: '70vh' }}
           >
-            {this.questionComponentToRender()}
+          <Grid item xs={5} >
+            <Paper className={classes.paper}>Menu board</Paper>
+          </Grid>
+          <Grid item xs={7}>
+            <Paper className={classes.paper}>{this.questionComponentToRender()}</Paper>
+          </Grid>
           </Grid>
         </Grid>
       </div>
@@ -331,4 +346,3 @@ QuestionContainer.propTypes = {
 };
 
 export default withStyles(styles)(QuestionContainer);
-// export default QuestionContainer;

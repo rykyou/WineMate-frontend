@@ -53,7 +53,6 @@ class App extends Component {
             handleClickDialog={this.handleClickDialog}
             handleSelectWineStyle={this.handleSelectWineStyle}
             wineStyleToGoTo={this.state.selectedWineStyle}
-            handleClickDialog={this.handleClickDialog}
           />)}}
         />
 

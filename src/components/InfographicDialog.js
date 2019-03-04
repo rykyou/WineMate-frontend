@@ -5,7 +5,7 @@ import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
+// import DialogContentText from '@material-ui/core/DialogContentText';
 // import ListItemText from '@material-ui/core/ListItemText';
 // import ListItem from '@material-ui/core/ListItem';
 // import List from '@material-ui/core/List';

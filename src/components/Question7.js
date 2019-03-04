@@ -8,6 +8,7 @@ import OutlinedInput from '@material-ui/core/OutlinedInput';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
+import Grid from '@material-ui/core/Grid';
 
 const styles = theme => ({
   root: {
@@ -15,9 +16,15 @@ const styles = theme => ({
     flexWrap: 'wrap',
   },
   formControl: {
-    margin: theme.spacing.unit,
-    minWidth: 1000,
+    margin: '10%',
+    width: '90%',
   },
+  formTop: {
+    height: '10vh'
+  },
+  formMiddle: {
+    height: '45vh',
+  }
 });
 
 class Question7 extends Component {
@@ -46,50 +53,53 @@ class Question7 extends Component {
     const { classes } = this.props;
     return (
       <div>
-        <h1>How will this be prepared?</h1>
-
-        <form className={classes.root} autoComplete="off">
-          <FormControl variant="outlined" className={classes.formControl}>
-            <InputLabel
-              ref={ref => {
-                this.InputLabelRef = ref;
-              }}
-              htmlFor="outlined-prep-simple"
-            >
-              Prep Method
-            </InputLabel>
-            <Select
-              value={this.state.prepMethod}
-              onChange={this.handleChange}
-              input={
-                <OutlinedInput
-                  labelWidth={this.state.labelWidth}
-                  name="prepMethod"
-                  id="outlined-prep-simple"
-                />
-              }
-            >
-              <MenuItem value="">
-                <em>None</em>
-              </MenuItem>
-              {this.prepMenuItems()}
-            </Select>
-          </FormControl>
-        </form>
-
-        <Button
-          variant="contained"
-          color="secondary"
-          onClick={this.props.goToPreviousQuestion}>
-            Back
-        </Button>
-        <Button
-          variant="contained"
-          color="secondary"
-          onClick={this.props.goToResultsPage}>
-            Find My Pairing!
-        </Button>
-
+        <Grid className={classes.formTop}>
+          <h1>How will this be prepared?</h1>
+        </Grid>
+        <Grid className={classes.formMiddle}>
+          <form className={classes.root} autoComplete="off">
+            <FormControl variant="outlined" className={classes.formControl}>
+              <InputLabel
+                ref={ref => {
+                  this.InputLabelRef = ref;
+                }}
+                htmlFor="outlined-prep-simple"
+              >
+                Prep Method
+              </InputLabel>
+              <Select
+                value={this.state.prepMethod}
+                onChange={this.handleChange}
+                input={
+                  <OutlinedInput
+                    labelWidth={this.state.labelWidth}
+                    name="prepMethod"
+                    id="outlined-prep-simple"
+                  />
+                }
+              >
+                <MenuItem value="">
+                  <em>None</em>
+                </MenuItem>
+                {this.prepMenuItems()}
+              </Select>
+            </FormControl>
+          </form>
+        </Grid>
+        <Grid container justify="space-between">
+          <Button
+            variant="contained"
+            color="secondary"
+            onClick={this.props.goToPreviousQuestion}>
+              Back
+          </Button>
+          <Button
+            variant="contained"
+            color="secondary"
+            onClick={this.props.goToResultsPage}>
+              Find My Pairing!
+          </Button>
+        </Grid>
       </div>
     )
   }
