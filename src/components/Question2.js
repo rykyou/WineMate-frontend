@@ -7,10 +7,20 @@ import Checkbox from '@material-ui/core/Checkbox';
 import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
 import CheckBoxIcon from '@material-ui/icons/CheckBox';
 import Button from '@material-ui/core/Button';
+import Grid from '@material-ui/core/Grid';
 
 
 const styles = {
-  checked: {},
+  root: {
+    flexGrow: 1,
+  },
+  formTop: {
+    height: '10vh'
+  },
+  formMiddle: {
+    height: '45vh',
+    marginLeft: '5vh'
+  }
 };
 
 class Question2 extends Component {
@@ -34,29 +44,32 @@ class Question2 extends Component {
   }
 
   render() {
+    const { classes } = this.props;
     return (
-      <div>
-        <h1>Does it include meat?</h1>
-        <h3>Choose as many protein options as needed...</h3>
-
-        <FormGroup>
-          {this.meatCheckboxes()}
-        </FormGroup>
-
-        <Button
-          variant="contained"
-          color="secondary"
-          onClick={this.props.goBackToFirstQuestion}>
-            Back
-        </Button>
-
-        <Button
-          variant="contained"
-          color="secondary"
-          onClick={this.props.goToNextQuestion}>
-            Next
-        </Button>
-
+      <div className={classes.root}>
+        <Grid className={classes.formTop}>
+          <h1>Does it include meat?</h1>
+          <h3>Choose as many protein options as needed...</h3>
+        </Grid>
+        <Grid className={classes.formMiddle}>
+          <FormGroup>
+            {this.meatCheckboxes()}
+          </FormGroup>
+        </Grid>
+        <Grid container justify="space-between">
+          <Button
+            variant="contained"
+            color="secondary"
+            onClick={this.props.goBackToFirstQuestion}>
+              Back
+          </Button>
+          <Button
+            variant="contained"
+            color="secondary"
+            onClick={this.props.goToNextQuestion}>
+              Next
+          </Button>
+        </Grid>
       </div>
     )
   }

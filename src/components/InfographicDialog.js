@@ -3,16 +3,21 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
-import ListItemText from '@material-ui/core/ListItemText';
-import ListItem from '@material-ui/core/ListItem';
-import List from '@material-ui/core/List';
-import Divider from '@material-ui/core/Divider';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import DialogContent from '@material-ui/core/DialogContent';
+// import DialogContentText from '@material-ui/core/DialogContentText';
+// import ListItemText from '@material-ui/core/ListItemText';
+// import ListItem from '@material-ui/core/ListItem';
+// import List from '@material-ui/core/List';
+// import Divider from '@material-ui/core/Divider';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import CloseIcon from '@material-ui/icons/Close';
 import Slide from '@material-ui/core/Slide';
+import infographicImage from '../images/wine-folly-infographic.png';
+import LargerInfographicDialog from './LargerInfographicDialog';
 
 const styles = {
   appBar: {
@@ -28,52 +33,66 @@ function Transition(props) {
 }
 
 class InfographicDialog extends React.Component {
-  // state = {
-  //   open: false,
-  // };
+  state = {
+    openLargerImage: false,
+  };
 
-  // handleClickOpen = () => {
-  //   this.setState({ open: true });
-  // };
-  //
-  // handleClose = () => {
-  //   this.setState({ open: false });
-  // };
+  handleCloseLargerImage = () => {
+    this.setState({ openLargerImage: false });
+  };
+
+  handleShowLargerImage = () => {
+    this.setState({ openLargerImage: true });
+  }
 
   render() {
     const { classes } = this.props;
     return (
       <div>
-
         <Dialog
           fullScreen
-          open={this.props.openState}
+          open={this.props.openDialogState}
           onClose={this.props.handleClickDialog}
           TransitionComponent={Transition}
         >
           <AppBar className={classes.appBar}>
             <Toolbar>
-              <IconButton color="inherit" onClick={this.props.handleClickDialog} aria-label="Close">
+              <IconButton
+                color="inherit"
+                onClick={this.props.handleClickDialog}
+                aria-label="Close"
+              >
                 <CloseIcon />
               </IconButton>
               <Typography variant="h6" color="inherit" className={classes.flex}>
-
               </Typography>
               <Button color="inherit" onClick={this.props.handleClickDialog}>
                 Got it!
               </Button>
             </Toolbar>
           </AppBar>
-          <List>
-            <ListItem button>
-              <ListItemText primary="Phone ringtone" secondary="Titania" />
-            </ListItem>
-            <Divider />
-            <ListItem button>
-              <ListItemText primary="Default notification ringtone" secondary="Tethys" />
-            </ListItem>
-          </List>
+          <DialogTitle id="customized-dialog-title" onClose={this.handleClickDialog}>
+            How the Food and Wine Pairing Works...
+          </DialogTitle>
+          <DialogContent>
+            <img
+              src={infographicImage}
+              alt="dialog"
+              height="800"
+              onClick={this.handleShowLargerImage}
+            />
+            <Typography gutterBottom>
+              Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel
+              scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus
+              auctor fringilla.
+            </Typography>
+          </DialogContent>
         </Dialog>
+
+        <LargerInfographicDialog
+          openLargerImage={this.state.openLargerImage}
+          handleCloseLargerImage={this.handleCloseLargerImage}
+        />
       </div>
     );
   }

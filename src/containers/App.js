@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 
-import '../App.css';
-
-import NavBar from '../components/NavBar';
 import InfographicDialog from '../components/InfographicDialog';
 import HomePage from './HomePage';
 import QuestionContainer from './QuestionContainer';
@@ -14,7 +11,8 @@ import WineShowPage from './WineShowPage';
 class App extends Component {
   state = {
     allWineStyles: [],
-    openDialog: false
+    openDialogState: false,
+    selectedWineStyle: 'bold-red'
   }
 
   componentDidMount() {
@@ -32,30 +30,36 @@ class App extends Component {
   }
 
   handleClickDialog = () => {
-    this.setState({ openDialog: !this.state.openDialog });
+    this.setState({ openDialogState: !this.state.openDialogState });
   };
+
+  handleSelectWineStyle = (wineStyleSlug) => {
+    this.setState({ selectedWineStyle: wineStyleSlug })
+  }
+
+  // <NavBar handleClickDialog={this.handleClickDialog}/>
 
   render() {
     return (
       <div>
-        <NavBar handleClickDialog={this.handleClickDialog}/>
-        {this.state.openDialog ?
-          <InfographicDialog
-            openState={this.state.openDialog}
-            handleClickDialog={this.handleClickDialog}
-          />
-          :
-        null}
+        <InfographicDialog
+          openDialogState={this.state.openDialogState}
+          handleClickDialog={this.handleClickDialog}
+        />
 
         <Route exact path="/" render={() => {
           return (<HomePage
             allWineStyles={this.state.allWineStyles}
+            handleClickDialog={this.handleClickDialog}
+            handleSelectWineStyle={this.handleSelectWineStyle}
+            wineStyleToGoTo={this.state.selectedWineStyle}
           />)}}
         />
 
         <Route exact path="/questionnaire" render={() => {
           return (<QuestionContainer
             allWineStyles={this.state.allWineStyles}
+            handleClickDialog={this.handleClickDialog}
           />)}}
         />
 
@@ -63,7 +67,11 @@ class App extends Component {
           let wineStyleSlugInUrl = props.match.params.slug
           let chosenWineStyleObj = this.state.allWineStyles.find(winestyleObj => winestyleObj.slug === wineStyleSlugInUrl )
           return (<WineShowPage
+            allWineStyles={this.state.allWineStyles}
             chosenWineStyleObj={chosenWineStyleObj}
+            handleClickDialog={this.handleClickDialog}
+            handleSelectWineStyle={this.handleSelectWineStyle}
+            selectedWineStyle={wineStyleSlugInUrl}
           />)}}
         />
 
