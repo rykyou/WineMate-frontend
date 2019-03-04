@@ -14,6 +14,9 @@ const styles = theme => ({
     justifyContent: 'space-around',
     overflow: 'hidden',
     backgroundColor: theme.palette.background.paper,
+    margin: '20px',
+    paddingLeft: '50px',
+    paddingRight: '50px',
   },
   gridList: {
     flexWrap: 'nowrap',
@@ -33,7 +36,7 @@ function WineGridList(props) {
   const { classes } = props;
   return (
     <div className={classes.root}>
-      <GridList className={classes.gridList} cols={3.5} cellHeight={400} spacing={10}>
+      <GridList className={classes.gridList} cols={3.5} cellHeight={360} spacing={10}>
         {props.chosenWineStyle.wines.map(tile => (
           <GridListTile key={tile.img}>
             <img src={tile.img} alt={tile.name} />
