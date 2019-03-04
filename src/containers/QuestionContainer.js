@@ -16,8 +16,8 @@ import ResultsPage from './ResultsPage';
 
 
 const styles = theme => ({
-  mainContainer: {
-    
+  root: {
+    flexGrow: 1,
   },
 });
 
@@ -286,6 +286,7 @@ class QuestionContainer extends Component {
         return <Question7
           allFood={this.state.allFood}
           handlePrepChange={this.handlePrepChange}
+          goToPreviousQuestion={this.goToPreviousQuestion}
           goToResultsPage={this.goToResultsPage}
           />
       case 8:
@@ -310,7 +311,7 @@ class QuestionContainer extends Component {
     return (
       <div>
         <NavBar handleClickDialog={this.props.handleClickDialog}/>
-        <Grid className={this.props.classes.mainContainer}>
+        <Grid className={this.props.classes.root}>
           <Grid container
             spacing={0}
             alignItems="center"

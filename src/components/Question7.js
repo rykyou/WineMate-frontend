@@ -80,6 +80,12 @@ class Question7 extends Component {
         <Button
           variant="contained"
           color="secondary"
+          onClick={this.props.goToPreviousQuestion}>
+            Back
+        </Button>
+        <Button
+          variant="contained"
+          color="secondary"
           onClick={this.props.goToResultsPage}>
             Find My Pairing!
         </Button>
