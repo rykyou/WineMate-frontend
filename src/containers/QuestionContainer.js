@@ -168,6 +168,12 @@ class QuestionContainer extends Component {
     })
   }
 
+  handleMenuItemClick = (num) => {
+    this.setState({
+      questionNum: num
+    })
+  }
+
   // chosenFoods = ["Poultry"]
   chosenFoodNames = () => {
     let foodNames = [];
@@ -246,15 +252,6 @@ class QuestionContainer extends Component {
     return finalScoresArr
   }
 
-  selectedFoodsForMenuBoard = () => {
-    let selectedFoods = []
-    Object.keys(this.state.foodChecks).forEach(key => {
-      if (this.state.foodChecks[key]) {
-        selectedFoods.push(key)
-      };
-    });
-    return selectedFoods;
-  }
 
   questionComponentToRender() {
     switch(this.state.questionNum) {
@@ -341,7 +338,10 @@ class QuestionContainer extends Component {
             style={{ minHeight: '70vh' }}
           >
           <Grid item xs={5} >
-            <MenuBoard selectedFoodsForMenuBoard={this.selectedFoodsForMenuBoard}/>
+            <MenuBoard
+              chosenFoodObjects={this.chosenFoodObjects}
+              handleMenuItemClick={this.handleMenuItemClick}
+            />
           </Grid>
           <Grid item xs={7}>
             <Paper className={classes.paper}>{this.questionComponentToRender()}</Paper>

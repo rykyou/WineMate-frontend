@@ -13,10 +13,10 @@ const styles = theme => ({
     ...theme.mixins.gutters(),
     paddingTop: theme.spacing.unit * 2,
     paddingBottom: theme.spacing.unit * 2,
-    minHeight: "250px"
+    minHeight: "20vh"
   },
   paperContainer: {
-    margin: '40px'
+    margin: '2vh'
   }
 });
 
@@ -27,7 +27,7 @@ class WineShowPage extends Component {
     return (
       <div>
         <NavBar
-          chosenWineStyleObj={this.props.chosenWineStyleObj} 
+          chosenWineStyleObj={this.props.chosenWineStyleObj}
           handleClickDialog={this.props.handleClickDialog}
         />
         {this.props.chosenWineStyleObj ?
@@ -69,7 +69,6 @@ class WineShowPage extends Component {
                   </Paper>
                 </Grid>
               </Grid>
-
             </Grid>
           </Grid>
         :
@@ -84,5 +83,3 @@ WineShowPage.propTypes = {
 };
 
 export default withStyles(styles)(WineShowPage);
-
-// export default WineShowPage;
