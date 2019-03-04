@@ -16,6 +16,8 @@ import mainLogo from '../images/winemate-logo.png';
 const styles = {
   root: {
     flexGrow: 1,
+    position: "absolute",
+    zIndex: 1000
   },
   flex: {
     flex: 1,
@@ -30,7 +32,7 @@ const styles = {
 
 };
 
-class MenuAppBar extends React.Component {
+class HomeNavBar extends React.Component {
   state = {
     auth: true,
     anchorEl: null,
@@ -55,7 +57,7 @@ class MenuAppBar extends React.Component {
     // const open = Boolean(anchorEl);
 
     return (
-      <AppBar className={classes.root} position="static">
+      <AppBar className={classes.root} position="static" style={{ background: 'transparent', boxShadow: 'none'}}>
         <Toolbar>
           <Link to='/'>
             <img
@@ -77,53 +79,8 @@ class MenuAppBar extends React.Component {
   }
 }
 
-MenuAppBar.propTypes = {
+HomeNavBar.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(MenuAppBar);
-
-// <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
-//   <MenuIcon />
-// </IconButton>
-
-
-
-// <FormGroup>
-//   <FormControlLabel
-//     control={
-//       <Switch checked={auth} onChange={this.handleChange} aria-label="LoginSwitch" />
-//     }
-//     label={auth ? 'Logout' : 'Login'}
-//   />
-// </FormGroup>
-
-// {auth && (
-//   <div>
-//     <IconButton
-//       aria-owns={open ? 'menu-appbar' : undefined}
-//       aria-haspopup="true"
-//       onClick={this.handleMenu}
-//       color="inherit"
-//     >
-//       <AccountCircle />
-//     </IconButton>
-//     <Menu
-//       id="menu-appbar"
-//       anchorEl={anchorEl}
-//       anchorOrigin={{
-//         vertical: 'top',
-//         horizontal: 'right',
-//       }}
-//       transformOrigin={{
-//         vertical: 'top',
-//         horizontal: 'right',
-//       }}
-//       open={open}
-//       onClose={this.handleClose}
-//     >
-//       <MenuItem onClick={this.handleClose}>Profile</MenuItem>
-//       <MenuItem onClick={this.handleClose}>My account</MenuItem>
-//     </Menu>
-//   </div>
-// )}
+export default withStyles(styles)(HomeNavBar);

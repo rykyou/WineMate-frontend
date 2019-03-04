@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 
-import NavBar from '../components/NavBar';
 import InfographicDialog from '../components/InfographicDialog';
 import HomePage from './HomePage';
 import QuestionContainer from './QuestionContainer';
@@ -38,10 +37,11 @@ class App extends Component {
     this.setState({ selectedWineStyle: wineStyleSlug })
   }
 
+  // <NavBar handleClickDialog={this.handleClickDialog}/>
+
   render() {
     return (
       <div>
-        <NavBar handleClickDialog={this.handleClickDialog}/>
         <InfographicDialog
           openDialogState={this.state.openDialogState}
           handleClickDialog={this.handleClickDialog}
@@ -53,12 +53,14 @@ class App extends Component {
             handleClickDialog={this.handleClickDialog}
             handleSelectWineStyle={this.handleSelectWineStyle}
             wineStyleToGoTo={this.state.selectedWineStyle}
+            handleClickDialog={this.handleClickDialog}
           />)}}
         />
 
         <Route exact path="/questionnaire" render={() => {
           return (<QuestionContainer
             allWineStyles={this.state.allWineStyles}
+            handleClickDialog={this.handleClickDialog}
           />)}}
         />
 
@@ -68,6 +70,7 @@ class App extends Component {
           return (<WineShowPage
             allWineStyles={this.state.allWineStyles}
             chosenWineStyleObj={chosenWineStyleObj}
+            handleClickDialog={this.handleClickDialog}
             handleSelectWineStyle={this.handleSelectWineStyle}
             selectedWineStyle={this.state.selectedWineStyle}
           />)}}

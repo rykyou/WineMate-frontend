@@ -10,7 +10,7 @@ class Question1 extends Component {
         <h1>What are you eating today?</h1>
         <Button
           variant="contained"
-          color="primary"
+          color="secondary"
           className="button-margin"
           onClick={this.props.skipToDessertQuestion}>
             Something Sweet <br/>
@@ -19,7 +19,7 @@ class Question1 extends Component {
         <div className="divider"/>
         <Button
           variant="contained"
-          color="primary"
+          color="secondary"
           className="button-margin"
           onClick={this.props.goToNextQuestion}>
             Something Savory

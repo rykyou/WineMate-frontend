@@ -3,6 +3,7 @@ import { Route } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
+import NavBar from '../components/NavBar';
 import Question1 from '../components/Question1';
 import Question2 from '../components/Question2';
 import Question3 from '../components/Question3';
@@ -16,7 +17,7 @@ import ResultsPage from './ResultsPage';
 
 const styles = theme => ({
   mainContainer: {
-    background: theme.palette.secondary.mainGradient,
+    
   },
 });
 
@@ -307,16 +308,19 @@ class QuestionContainer extends Component {
 
   render() {
     return (
-      <Grid className={this.props.classes.mainContainer}>
-        <Grid container
-          spacing={0}
-          alignItems="center"
-          justify="center"
-          style={{ minHeight: '70vh' }}
-        >
-          {this.questionComponentToRender()}
+      <div>
+        <NavBar handleClickDialog={this.props.handleClickDialog}/>
+        <Grid className={this.props.classes.mainContainer}>
+          <Grid container
+            spacing={0}
+            alignItems="center"
+            justify="center"
+            style={{ minHeight: '70vh' }}
+          >
+            {this.questionComponentToRender()}
+          </Grid>
         </Grid>
-      </Grid>
+      </div>
     );
   }
 }

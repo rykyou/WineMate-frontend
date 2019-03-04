@@ -6,6 +6,7 @@ import WineStylesList from './WineStylesList';
 import Button from '@material-ui/core/Button';
 import AnimatedSlider from '../components/AnimatedSlider';
 import WineStylesNavigation from './WineStylesNavigation';
+import HomeNavBar from '../components/HomeNavBar';
 // import Typography from '@material-ui/core/Typography';
 
 const styles = {
@@ -28,6 +29,7 @@ class HomePage extends Component {
     const { classes } = this.props;
     return (
       <div>
+        <HomeNavBar handleClickDialog={this.props.handleClickDialog}/>
         <AnimatedSlider
           handleClickDialog={this.props.handleClickDialog}
           wineStyleToGoTo={this.props.wineStyleToGoTo}
