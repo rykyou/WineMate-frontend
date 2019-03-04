@@ -2,12 +2,10 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import WineStylesList from './WineStylesList';
 import Button from '@material-ui/core/Button';
 import AnimatedSlider from '../components/AnimatedSlider';
 import WineStylesNavigation from './WineStylesNavigation';
 import HomeNavBar from '../components/HomeNavBar';
-// import Typography from '@material-ui/core/Typography';
 
 const styles = {
     button: {

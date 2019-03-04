@@ -64,9 +64,11 @@ class MenuAppBar extends React.Component {
               height="70"
             />
           </Link>
-          {}
           <Typography variant="h6" className={classes.flex}>
           </Typography>
+          <Button className={classes.text} component={Link} to="/questionnaire">
+            Find New Pairing
+          </Button>
           <Button className={classes.text} onClick={this.props.handleClickDialog}>
             How it works
           </Button>

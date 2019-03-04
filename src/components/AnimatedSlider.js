@@ -15,7 +15,7 @@ class AnimatedSlider extends Component {
   content = [
   	{
   		title: 'Find the Perfect Wine Style Match',
-  		description: "Don't know where to start with the wine selection? Let us know what's on the menu and we'll help you find the perfect wine style.",
+  		description: "Don't know where to start with the wine selection? Let us know what's on the menu, and we'll help you find the perfect wine style.",
   		button: 'Find Your Pairing',
   		image: BackgroundImage1,
       handleButtonClick: "Go to Quiz"

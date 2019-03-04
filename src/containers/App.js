@@ -72,7 +72,7 @@ class App extends Component {
             chosenWineStyleObj={chosenWineStyleObj}
             handleClickDialog={this.handleClickDialog}
             handleSelectWineStyle={this.handleSelectWineStyle}
-            selectedWineStyle={this.state.selectedWineStyle}
+            selectedWineStyle={wineStyleSlugInUrl}
           />)}}
         />
 
