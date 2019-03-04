@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-// import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-// import Button from '@material-ui/core/Button';
 import AnimatedSlider from '../components/AnimatedSlider';
 import WineStylesNavigation from './WineStylesNavigation';
 import HomeNavBar from '../components/HomeNavBar';
@@ -48,14 +46,3 @@ HomePage.propTypes = {
 };
 
 export default withStyles(styles)(HomePage);
-
-
-// html {
-//   /* background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('/work.jpeg') no-repeat center center fixed;  */
-//   -webkit-background-size: cover;
-//   -moz-background-size: cover;
-//   -o-background-size: cover;
-//   background-size: cover;
-//   height: 100%;
-//   background: lightgrey;
-// }

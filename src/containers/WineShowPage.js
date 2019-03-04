@@ -26,7 +26,10 @@ class WineShowPage extends Component {
     const { classes } = this.props;
     return (
       <div>
-        <NavBar handleClickDialog={this.props.handleClickDialog}/>
+        <NavBar
+          chosenWineStyleObj={this.props.chosenWineStyleObj} 
+          handleClickDialog={this.props.handleClickDialog}
+        />
         {this.props.chosenWineStyleObj ?
           <Grid>
             <Grid container

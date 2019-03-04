@@ -5,6 +5,7 @@ import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import NavBar from '../components/NavBar';
+import MenuBoard from './MenuBoard';
 import Question1 from '../components/Question1';
 import Question2 from '../components/Question2';
 import Question3 from '../components/Question3';
@@ -103,6 +104,8 @@ class QuestionContainer extends Component {
         [event.target.value]: event.target.checked
       }
     });
+
+    // const checkedFood = event.target.value
   };
 
   handlePrepChange = (prepName) => {
@@ -243,6 +246,16 @@ class QuestionContainer extends Component {
     return finalScoresArr
   }
 
+  selectedFoodsForMenuBoard = () => {
+    let selectedFoods = []
+    Object.keys(this.state.foodChecks).forEach(key => {
+      if (this.state.foodChecks[key]) {
+        selectedFoods.push(key)
+      };
+    });
+    return selectedFoods;
+  }
+
   questionComponentToRender() {
     switch(this.state.questionNum) {
       case 1:
@@ -317,7 +330,6 @@ class QuestionContainer extends Component {
 
   render() {
     const { classes } = this.props;
-
     return (
       <div>
         <NavBar handleClickDialog={this.props.handleClickDialog}/>
@@ -329,7 +341,7 @@ class QuestionContainer extends Component {
             style={{ minHeight: '70vh' }}
           >
           <Grid item xs={5} >
-            <Paper className={classes.paper}>Menu board</Paper>
+            <MenuBoard selectedFoodsForMenuBoard={this.selectedFoodsForMenuBoard}/>
           </Grid>
           <Grid item xs={7}>
             <Paper className={classes.paper}>{this.questionComponentToRender()}</Paper>
