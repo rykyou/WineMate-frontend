@@ -1,22 +1,76 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
+import Grid from '@material-ui/core/Grid';
+import NavBar from '../components/NavBar';
 import WineGridList from './WineGridList';
+import WineStylesNavigation from './WineStylesNavigation';
+import Paper from '@material-ui/core/Paper';
+import Typography from '@material-ui/core/Typography';
+
+const styles = theme => ({
+  root: {
+    ...theme.mixins.gutters(),
+    paddingTop: theme.spacing.unit * 2,
+    paddingBottom: theme.spacing.unit * 2,
+    minHeight: "20vh"
+  },
+  paperContainer: {
+    margin: '2vh'
+  }
+});
+
 
 class WineShowPage extends Component {
   render() {
+    const { classes } = this.props;
     return (
       <div>
+        <NavBar
+          chosenWineStyleObj={this.props.chosenWineStyleObj}
+          handleClickDialog={this.props.handleClickDialog}
+        />
         {this.props.chosenWineStyleObj ?
-          <div>
-            <WineGridList chosenWineStyle={this.props.chosenWineStyleObj}/>
-            <h1>{this.props.chosenWineStyleObj.name}</h1>
-            <img
-              src={require(`../images/${this.props.chosenWineStyleObj.slug}.png`)}
-              alt={this.props.chosenWineStyleObj.name}
-            />
-            <h2>{this.props.chosenWineStyleObj.description}</h2>
-            <h2>Try this wine style with: {this.props.chosenWineStyleObj.cuisine_title}</h2>
-            <h4>{this.props.chosenWineStyleObj.cuisine_description}</h4>
-          </div>
+          <Grid>
+            <Grid container
+              spacing={0}
+              alignItems="center"
+              justify="center"
+              style={{ minHeight: '70vh' }}
+            >
+              <Grid container>
+                <WineStylesNavigation
+                  allWineStyles={this.props.allWineStyles}
+                  handleSelectWineStyle={this.props.handleSelectWineStyle}
+                  selectedWineStyle={this.props.selectedWineStyle}
+                />
+              </Grid>
+
+              <h1>{this.props.chosenWineStyleObj.name}</h1>
+
+              <WineGridList chosenWineStyle={this.props.chosenWineStyleObj}/>
+
+              <Grid className={classes.paperContainer} container spacing={24}>
+                <Grid item xs={6}>
+                  <Paper className={classes.root} elevation={1}>
+                    <Typography variant="h5" component="h3">
+                      {this.props.chosenWineStyleObj.description}
+                    </Typography>
+                  </Paper>
+                </Grid>
+                <Grid item xs={6}>
+                  <Paper className={classes.root} elevation={1}>
+                    <Typography variant="h5" component="h3">
+                      Pair this wine style with: {this.props.chosenWineStyleObj.cuisine_title}
+                    </Typography>
+                    <Typography variant="h6" component="h3">
+                      {this.props.chosenWineStyleObj.cuisine_description}
+                    </Typography>
+                  </Paper>
+                </Grid>
+              </Grid>
+            </Grid>
+          </Grid>
         :
         null}
       </div>
@@ -24,4 +78,8 @@ class WineShowPage extends Component {
   }
 }
 
-export default WineShowPage;
+WineShowPage.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
+
+export default withStyles(styles)(WineShowPage);

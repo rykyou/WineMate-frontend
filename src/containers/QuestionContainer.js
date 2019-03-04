@@ -1,5 +1,11 @@
 import React, { Component } from 'react';
+// import { Route } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
+import Paper from '@material-ui/core/Paper';
+import NavBar from '../components/NavBar';
+import MenuBoard from './MenuBoard';
 import Question1 from '../components/Question1';
 import Question2 from '../components/Question2';
 import Question3 from '../components/Question3';
@@ -10,6 +16,19 @@ import Question7 from '../components/Question7';
 import Question8 from '../components/Question8';
 import ResultsPage from './ResultsPage';
 
+
+const styles = theme => ({
+  root: {
+    flexGrow: 1,
+    margin: '10vh'
+  },
+  paper: {
+    padding: theme.spacing.unit * 2,
+    textAlign: 'center',
+    color: theme.palette.text.secondary,
+    minHeight: '70vh'
+  },
+});
 
 class QuestionContainer extends Component {
   state = {
@@ -85,6 +104,8 @@ class QuestionContainer extends Component {
         [event.target.value]: event.target.checked
       }
     });
+
+    // const checkedFood = event.target.value
   };
 
   handlePrepChange = (prepName) => {
@@ -144,6 +165,12 @@ class QuestionContainer extends Component {
     this.compileWineScores()
     this.setState({
       questionNum: 9
+    })
+  }
+
+  handleMenuItemClick = (num) => {
+    this.setState({
+      questionNum: num
     })
   }
 
@@ -225,6 +252,7 @@ class QuestionContainer extends Component {
     return finalScoresArr
   }
 
+
   questionComponentToRender() {
     switch(this.state.questionNum) {
       case 1:
@@ -276,6 +304,7 @@ class QuestionContainer extends Component {
         return <Question7
           allFood={this.state.allFood}
           handlePrepChange={this.handlePrepChange}
+          goToPreviousQuestion={this.goToPreviousQuestion}
           goToResultsPage={this.goToResultsPage}
           />
       case 8:
@@ -297,19 +326,35 @@ class QuestionContainer extends Component {
   }
 
   render() {
+    const { classes } = this.props;
     return (
-      <Grid>
-        <Grid container
-          spacing={0}
-          alignItems="center"
-          justify="center"
-          style={{ minHeight: '70vh' }}
-        >
-          {this.questionComponentToRender()}
+      <div>
+        <NavBar handleClickDialog={this.props.handleClickDialog}/>
+        <Grid className={classes.root}>
+          <Grid container
+            spacing={24}
+            alignItems="center"
+            justify="center"
+            style={{ minHeight: '70vh' }}
+          >
+          <Grid item xs={5} >
+            <MenuBoard
+              chosenFoodObjects={this.chosenFoodObjects}
+              handleMenuItemClick={this.handleMenuItemClick}
+            />
+          </Grid>
+          <Grid item xs={7}>
+            <Paper className={classes.paper}>{this.questionComponentToRender()}</Paper>
+          </Grid>
+          </Grid>
         </Grid>
-      </Grid>
+      </div>
     );
   }
 }
 
-export default QuestionContainer;
+QuestionContainer.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
+
+export default withStyles(styles)(QuestionContainer);

@@ -7,10 +7,18 @@ import Checkbox from '@material-ui/core/Checkbox';
 import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
 import CheckBoxIcon from '@material-ui/icons/CheckBox';
 import Button from '@material-ui/core/Button';
+import Grid from '@material-ui/core/Grid';
 
 
 const styles = {
-  checked: {},
+  formTop: {
+    height: '10vh'
+  },
+  formMiddle: {
+    height: '40vh',
+    marginLeft: '5vh',
+    paddingTop: '5vh'
+  }
 };
 
 class Question8 extends Component {
@@ -34,28 +42,31 @@ class Question8 extends Component {
   }
 
   render() {
+    const { classes } = this.props;
     return (
       <div>
-        <h1>What kind of dessert are you having?</h1>
-
-        <FormGroup>
-          {this.dessertCheckboxes()}
-        </FormGroup>
-
-        <Button
-          variant="contained"
-          color="secondary"
-          onClick={this.props.goBackToFirstQuestion}>
-            Back
-        </Button>
-
-        <Button
-          variant="contained"
-          color="secondary"
-          onClick={this.props.goToResultsPage}>
-            Find My Pairing!
-        </Button>
-
+        <Grid className={classes.formTop}>
+          <h1>What kind of dessert are you having?</h1>
+        </Grid>
+        <Grid className={classes.formMiddle}>
+          <FormGroup>
+            {this.dessertCheckboxes()}
+          </FormGroup>
+        </Grid>
+        <Grid container justify="space-between">
+          <Button
+            variant="contained"
+            color="secondary"
+            onClick={this.props.goBackToFirstQuestion}>
+              Back
+          </Button>
+          <Button
+            variant="contained"
+            color="secondary"
+            onClick={this.props.goToResultsPage}>
+              Find My Pairing!
+          </Button>
+        </Grid>
       </div>
     )
   }
