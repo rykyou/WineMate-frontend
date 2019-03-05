@@ -14,7 +14,7 @@ import Question5 from '../components/Question5';
 import Question6 from '../components/Question6';
 import Question7 from '../components/Question7';
 import Question8 from '../components/Question8';
-import ResultsPage from './ResultsPage';
+import ResultsPage from '../components/ResultsPage';
 
 
 const styles = theme => ({
