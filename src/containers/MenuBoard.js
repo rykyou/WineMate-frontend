@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
+import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 
 const styles = theme => ({
@@ -23,50 +24,64 @@ const styles = theme => ({
 class MenuBoard extends Component {
   chosenMeat = () => {
     let meatObjects = this.props.chosenFoodObjects().filter(food => food.category === "Meat")
-    return meatObjects.map(food =>
-      <h3 onClick={() => this.props.handleMenuItemClick(2)} key={food.id}>{food.name}</h3>
+    return meatObjects.map(meat =>
+      <div key={meat.id}>
+        <Button onClick={() => this.props.handleMenuItemClick(2)} key={meat.id}>{meat.name}</Button>
+      </div>
     )
   }
 
   chosenSweet = () => {
     const sweetObjects = this.props.chosenFoodObjects().filter(food => food.category === "Sweet")
     return sweetObjects.map(sweet =>
-      <h3 onClick={() => this.props.handleMenuItemClick(8)} key={sweet.id}>{sweet.name}</h3>
+      <div key={sweet.id}>
+        <Button onClick={() => this.props.handleMenuItemClick(8)} key={sweet.id}>{sweet.name}</Button>
+      </div>
     )
   }
 
   chosenVeggie = () => {
     const veggieObjects = this.props.chosenFoodObjects().filter(food => food.category === "Vegetable")
     return veggieObjects.map(veggie =>
-      <h3 onClick={() => this.props.handleMenuItemClick(3)} key={veggie.id}>{veggie.name}</h3>
+      <div key={veggie.id}>
+        <Button onClick={() => this.props.handleMenuItemClick(3)} key={veggie.id}>{veggie.name}</Button>
+      </div>
     )
   }
 
   chosenStarch = () => {
     const starchObjects = this.props.chosenFoodObjects().filter(food => food.category === "Starch")
     return starchObjects.map(starch =>
-      <h3 onClick={() => this.props.handleMenuItemClick(4)} key={starch.id}>{starch.name}</h3>
+      <div key={starch.id}>
+        <Button onClick={() => this.props.handleMenuItemClick(4)} key={starch.id}>{starch.name}</Button>
+      </div>
     )
   }
 
   chosenDairy = () => {
     const dairyObjects = this.props.chosenFoodObjects().filter(food => food.category === "Dairy")
     return dairyObjects.map(dairy =>
-      <h3 onClick={() => this.props.handleMenuItemClick(5)} key={dairy.id}>{dairy.name}</h3>
+      <div key={dairy.id}>
+        <Button onClick={() => this.props.handleMenuItemClick(5)} key={dairy.id}>{dairy.name}</Button>
+      </div>
     )
   }
 
   chosenHerb = () => {
     const herbObjects = this.props.chosenFoodObjects().filter(food => food.category === "Herb & Spice")
     return herbObjects.map(herb =>
-      <h3 onClick={() => this.props.handleMenuItemClick(6)} key={herb.id}>{herb.name}</h3>
+      <div key={herb.id}>
+        <Button onClick={() => this.props.handleMenuItemClick(6)} key={herb.id}>{herb.name}</Button>
+      </div>
     )
   }
 
   chosenPrep = () => {
     const prepObjects = this.props.chosenFoodObjects().filter(food => food.category === "Preparation")
     return prepObjects.map(prep =>
-      <h3 onClick={() => this.props.handleMenuItemClick(7)} key={prep.id}>{prep.name}</h3>
+      <div key={prep.id}>
+        <Button onClick={() => this.props.handleMenuItemClick(7)} key={prep.id}>{prep.name}</Button>
+      </div>
     )
   }
 

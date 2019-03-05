@@ -78,9 +78,6 @@ class Question7 extends Component {
                   />
                 }
               >
-                <MenuItem value="">
-                  <em>None</em>
-                </MenuItem>
                 {this.prepMenuItems()}
               </Select>
             </FormControl>

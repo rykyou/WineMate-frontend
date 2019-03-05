@@ -83,7 +83,7 @@ class ResultsPage extends Component {
                   component={Link}
                   to={`/winestyles/${wineStyle.slug}`}
                   variant="contained"
-                  color={classes.newPairingButton}
+                  className={classes.newPairingButton}
                   >
                   Click for more details
                   </Button>
