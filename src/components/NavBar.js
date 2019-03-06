@@ -3,15 +3,15 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import {AppBar, Toolbar} from '@material-ui/core';
-// IconButton, Menu, MenuItem,
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import mainLogo from '../images/winemate-logo.png';
+// IconButton, Menu, MenuItem,
 // import MenuIcon from '@material-ui/icons/Menu';
 // import AccountCircle from '@material-ui/icons/AccountCircle';
 // import Switch from '@material-ui/core/Switch';
 // import FormControlLabel from '@material-ui/core/FormControlLabel';
 // import FormGroup from '@material-ui/core/FormGroup';
-import mainLogo from '../images/winemate-logo.png';
 
 const styles = {
   root: {
@@ -70,11 +70,11 @@ class MenuAppBar extends React.Component {
             <Button className={classes.text} component={Link} to="/questionnaire">
               Find New Pairing
             </Button>
-          : null}
-          <Button className={classes.text} onClick={this.props.handleClickDialog}>
-            How it works
-          </Button>
-
+          :
+            <Button className={classes.text} onClick={this.props.handleClickDialog}>
+              How it works
+            </Button>
+          }
         </Toolbar>
       </AppBar>
     );

@@ -28,6 +28,9 @@ const styles = theme => ({
   },
   newPairingButton: {
     color: theme.palette.secondary.light,
+  },
+  wineImage: {
+    maxHeight: "20vh"
   }
 });
 
@@ -76,7 +79,11 @@ class ResultsPage extends Component {
             <Grid className={classes.formMiddle}>
               <Grid container spacing={24}>
                 <Grid item xs={4}>
-                  <img src={require(`../images/${wineStyle.slug}.png`)} alt={wineStyle.name}/>
+                  <img
+                    src={require(`../images/${wineStyle.slug}.png`)}
+                    alt={wineStyle.name}
+                    className={classes.wineImage}
+                  />
                 </Grid>
                 <Grid item xs={8}>
                   <Button

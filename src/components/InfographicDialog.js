@@ -5,11 +5,6 @@ import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import DialogContent from '@material-ui/core/DialogContent';
-// import DialogContentText from '@material-ui/core/DialogContentText';
-// import ListItemText from '@material-ui/core/ListItemText';
-// import ListItem from '@material-ui/core/ListItem';
-// import List from '@material-ui/core/List';
-// import Divider from '@material-ui/core/Divider';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
@@ -18,6 +13,8 @@ import CloseIcon from '@material-ui/icons/Close';
 import Slide from '@material-ui/core/Slide';
 import infographicImage from '../images/wine-folly-infographic.png';
 import LargerInfographicDialog from './LargerInfographicDialog';
+import Grid from '@material-ui/core/Grid';
+// import Paper from '@material-ui/core/Paper';
 
 const styles = {
   appBar: {
@@ -26,6 +23,9 @@ const styles = {
   flex: {
     flex: 1,
   },
+  dialogContent: {
+    marginTop: '3vh'
+  }
 };
 
 function Transition(props) {
@@ -57,35 +57,42 @@ class InfographicDialog extends React.Component {
         >
           <AppBar className={classes.appBar}>
             <Toolbar>
+              <Typography variant="h6" color="inherit" className={classes.flex}>
+                 How the Food and Wine Pairing Works...
+              </Typography>
               <IconButton
                 color="inherit"
                 onClick={this.props.handleClickDialog}
                 aria-label="Close"
-              >
+                >
                 <CloseIcon />
               </IconButton>
-              <Typography variant="h6" color="inherit" className={classes.flex}>
-              </Typography>
-              <Button color="inherit" onClick={this.props.handleClickDialog}>
-                Got it!
-              </Button>
             </Toolbar>
           </AppBar>
-          <DialogTitle id="customized-dialog-title" onClose={this.handleClickDialog}>
-            How the Food and Wine Pairing Works...
-          </DialogTitle>
-          <DialogContent>
-            <img
-              src={infographicImage}
-              alt="dialog"
-              height="800"
-              onClick={this.handleShowLargerImage}
-            />
-            <Typography gutterBottom>
-              Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel
-              scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus
-              auctor fringilla.
-            </Typography>
+          <DialogContent className={classes.dialogContent}>
+            <Grid container
+              spacing={0}
+              alignItems="center"
+              justify="center"
+              style={{ minHeight: '70vh' }}
+            >
+              <Grid item xs={5} >
+                <Button onClick={this.handleShowLargerImage}>
+                  <img
+                    src={infographicImage}
+                    alt="dialog"
+                    height="860"
+                  />
+              </Button>
+              </Grid>
+              <Grid item xs={7}>
+                <Typography gutterBottom>
+                  Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel
+                  scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus
+                  auctor fringilla.
+                </Typography>
+              </Grid>
+            </Grid>
           </DialogContent>
         </Dialog>
 

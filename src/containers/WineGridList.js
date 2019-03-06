@@ -56,7 +56,7 @@ class WineGridList extends Component {
                     <FavoriteBorderIcon className={classes.title} />
                   </IconButton>
                 }
-                />
+              />
             </GridListTile>
           ))}
         </GridList>
