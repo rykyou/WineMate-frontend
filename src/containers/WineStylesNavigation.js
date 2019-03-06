@@ -14,6 +14,9 @@ const styles = {
     flexGrow: 1,
     minHeight: "240px"
   },
+  wineImage: {
+    maxHeight: "25vh"
+  }
 };
 
 class WineStylesNavigation extends React.Component {
@@ -42,7 +45,11 @@ class WineStylesNavigation extends React.Component {
             to={`/winestyles/${wineStyle.slug}`}
             label={<FavoriteIcon />}
             value={wineStyle.slug}
-            icon={<img src={require(`../images/${wineStyle.slug}.png`)} alt={wineStyle.slug} />}
+            icon={<img
+              src={require(`../images/${wineStyle.slug}.png`)}
+              alt={wineStyle.slug}
+              className={classes.wineImage}
+            />}
           />)
         :
         null}

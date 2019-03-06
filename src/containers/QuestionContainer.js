@@ -14,7 +14,7 @@ import Question5 from '../components/Question5';
 import Question6 from '../components/Question6';
 import Question7 from '../components/Question7';
 import Question8 from '../components/Question8';
-import ResultsPage from './ResultsPage';
+import ResultsPage from '../components/ResultsPage';
 
 
 const styles = theme => ({
@@ -337,15 +337,15 @@ class QuestionContainer extends Component {
             justify="center"
             style={{ minHeight: '70vh' }}
           >
-          <Grid item xs={5} >
-            <MenuBoard
-              chosenFoodObjects={this.chosenFoodObjects}
-              handleMenuItemClick={this.handleMenuItemClick}
-            />
-          </Grid>
-          <Grid item xs={7}>
-            <Paper className={classes.paper}>{this.questionComponentToRender()}</Paper>
-          </Grid>
+            <Grid item xs={5} >
+              <MenuBoard
+                chosenFoodObjects={this.chosenFoodObjects}
+                handleMenuItemClick={this.handleMenuItemClick}
+              />
+            </Grid>
+            <Grid item xs={7}>
+              <Paper className={classes.paper}>{this.questionComponentToRender()}</Paper>
+            </Grid>
           </Grid>
         </Grid>
       </div>

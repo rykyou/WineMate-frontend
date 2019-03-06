@@ -17,6 +17,9 @@ const styles = theme => ({
   },
   paperContainer: {
     margin: '2vh'
+  },
+  navigation: {
+    marginTop: '3vh'
   }
 });
 
@@ -31,14 +34,14 @@ class WineShowPage extends Component {
           handleClickDialog={this.props.handleClickDialog}
         />
         {this.props.chosenWineStyleObj ?
-          <Grid>
+          <Grid className={classes.paperContainer}>
             <Grid container
               spacing={0}
               alignItems="center"
               justify="center"
               style={{ minHeight: '70vh' }}
             >
-              <Grid container>
+              <Grid container className={classes.navigation}>
                 <WineStylesNavigation
                   allWineStyles={this.props.allWineStyles}
                   handleSelectWineStyle={this.props.handleSelectWineStyle}

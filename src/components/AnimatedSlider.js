@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 import Slider from 'react-animated-slider';
 import 'react-animated-slider/build/horizontal.css';
 import 'normalize.css/normalize.css';
-import '../slider-animations.css';
-import '../slider-styles.css';
+// import '../slider-animations.css';
+// import '../slider-styles.css';
 
 import BackgroundImage1 from '../images/background1.jpg';
 import BackgroundImage2 from '../images/background2.jpg';
@@ -50,7 +50,7 @@ class AnimatedSlider extends Component {
   render() {
     return (
     	<div>
-    		<Slider autoplay={2000} infinite={true} className="slider-wrapper">
+    		<Slider autoplay={4000} infinite={true} className="slider-wrapper">
     			{this.content.map((item, index) => (
     				<div
     					key={index}
