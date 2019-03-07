@@ -87,15 +87,15 @@ class ResultsPage extends Component {
                   />
                 </Grid>
                 <Grid item xs={8}>
-                  <Button
-                  component={Link}
-                  to={`/winestyles/${wineStyle.slug}`}
-                  variant="contained"
-                  className={classes.newPairingButton}
-                  >
-                  Click for more details
-                  </Button>
                   <h3>{wineStyle.description}</h3>
+                    <Button
+                    component={Link}
+                    to={`/winestyles/${wineStyle.slug}`}
+                    variant="contained"
+                    className={classes.newPairingButton}
+                    >
+                    Click for more details
+                    </Button>
                 </Grid>
               </Grid>
             </Grid>

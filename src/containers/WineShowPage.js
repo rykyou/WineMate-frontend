@@ -22,7 +22,8 @@ const styles = theme => ({
     marginTop: '3vh'
   },
   text: {
-    textAlign: 'center'
+    textAlign: 'center',
+    margin: '5vh'
   }
 });
 
@@ -59,18 +60,18 @@ class WineShowPage extends Component {
               <Grid className={classes.paperContainer} container spacing={24}>
                 <Grid item xs={6}>
                   <Paper className={classes.root} elevation={1}>
-                    <Typography className={classes.text} variant="h5" component="h3">
+                    <Typography className={classes.text} variant="h5" component="h5">
                       {this.props.chosenWineStyleObj.description}
                     </Typography>
                   </Paper>
                 </Grid>
                 <Grid item xs={6}>
                   <Paper className={classes.root} elevation={1}>
-                    <Typography className={classes.text} variant="h5" component="h3">
+                    <Typography className={classes.text} variant="h5" component="h5">
                       Pair this wine style with: {this.props.chosenWineStyleObj.cuisine_title}
                     </Typography>
-                    <Typography className={classes.text} variant="h6" component="h3">
-                      {this.props.chosenWineStyleObj.cuisine_description}
+                    <Typography className={classes.text} variant="h5" component="h5">
+                      Like... {this.props.chosenWineStyleObj.cuisine_description}
                     </Typography>
                   </Paper>
                 </Grid>
