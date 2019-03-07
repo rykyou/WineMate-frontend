@@ -27,7 +27,7 @@ const styles = theme => ({
     paddingTop: '5vh'
   },
   newPairingButton: {
-    color: theme.palette.secondary.light,
+    color: theme.palette.secondary.dark,
   },
   wineImage: {
     marginTop: '5vh',
@@ -87,7 +87,7 @@ class ResultsPage extends Component {
                   />
                 </Grid>
                 <Grid item xs={8}>
-                  <h3>{wineStyle.description}</h3>
+                  <h3>{wineStyle.short_description}</h3>
                     <Button
                     component={Link}
                     to={`/winestyles/${wineStyle.slug}`}

@@ -24,6 +24,14 @@ const styles = theme => ({
   text: {
     textAlign: 'center',
     margin: '5vh'
+  },
+  rightBottomPaper: {
+    marginTop: '2vh',
+    minHeight: "20vh",
+    // paddingTop: '1vh',
+  },
+  martiniIcon: {
+    maxWidth: '5vh',
   }
 });
 
@@ -68,10 +76,29 @@ class WineShowPage extends Component {
                 <Grid item xs={6}>
                   <Paper className={classes.root} elevation={1}>
                     <Typography className={classes.text} variant="h5" component="h5">
-                      Pair this wine style with: {this.props.chosenWineStyleObj.cuisine_title}
+                      <img src={require(`../images/star-icon.png`)}
+                        alt='star glass'
+                        className={classes.martiniIcon}
+                      />
+                      Food Pairing Affinities
                     </Typography>
-                    <Typography className={classes.text} variant="h5" component="h5">
+                    <Typography className={classes.text} variant="h6" component="h6">
+                      {this.props.chosenWineStyleObj.cuisine_title}
+                    </Typography>
+                    <Typography className={classes.text} variant="h6" component="h6">
                       Like... {this.props.chosenWineStyleObj.cuisine_description}
+                    </Typography>
+                  </Paper>
+                  <Paper className={classes.rightBottomPaper} elevation={1}>
+                    <Typography className={classes.text} variant="h5" component="h5">
+                      <img src={require(`../images/martini-icon.png`)}
+                        alt='martini glass'
+                        className={classes.martiniIcon}
+                      />
+                      Serving Temperature
+                    </Typography>
+                    <Typography className={classes.text} variant="h6" component="h6">
+                      {this.props.chosenWineStyleObj.serving_temp}
                     </Typography>
                   </Paper>
                 </Grid>
