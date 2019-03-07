@@ -21,9 +21,28 @@ const styles = {
 };
 
 class Question6 extends Component {
-  herbsCheckboxes = () => {
+  firstHerbsCheckboxes = () => {
     const herbsArr = this.props.allFood.filter(food => food.category === "Herb & Spice")
-    return herbsArr.map((herb, index) => (
+    return herbsArr.slice(0, 6).map((herb, index) => (
+      <FormControlLabel
+          key={herb.id}
+          label={(herb.examples) ? `${herb.name} (${herb.examples})` : `${herb.name}`}
+          control={
+            <Checkbox
+              icon={<CheckBoxOutlineBlankIcon fontSize="large" />}
+              checkedIcon={<CheckBoxIcon fontSize="large" />}
+              checked={this.props.foodChecks[herb.name]}
+              value={herb.name}
+              onChange={(e) => this.props.handleCheckboxClick(e)}
+            />
+          }
+      />)
+    )
+  }
+
+  secondHerbsCheckboxes = () => {
+    const herbsArr = this.props.allFood.filter(food => food.category === "Herb & Spice")
+    return herbsArr.slice(6, 12).map((herb, index) => (
       <FormControlLabel
           key={herb.id}
           label={(herb.examples) ? `${herb.name} (${herb.examples})` : `${herb.name}`}
@@ -47,10 +66,17 @@ class Question6 extends Component {
         <Grid className={classes.formTop}>
           <h1>Herb & Spice:</h1>
         </Grid>
-        <Grid className={classes.formMiddle}>
-          <FormGroup>
-            {this.herbsCheckboxes()}
-          </FormGroup>
+        <Grid container spacing={0} className={classes.formMiddle}>
+          <Grid item xs={6}>
+            <FormGroup>
+              {this.firstHerbsCheckboxes()}
+            </FormGroup>
+          </Grid>
+          <Grid item xs={6}>
+            <FormGroup>
+              {this.secondHerbsCheckboxes()}
+            </FormGroup>
+          </Grid>
         </Grid>
         <Grid container justify="space-between">
           <Button

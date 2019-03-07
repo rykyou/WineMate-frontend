@@ -21,12 +21,31 @@ const styles = {
 };
 
 class Question3 extends Component {
-  vegetableCheckboxes = () => {
+  firstVegetableCheckboxes = () => {
     const veggieArr = this.props.allFood.filter(food => food.category === "Vegetable")
-    return veggieArr.map((veggie, index) => (
+    return veggieArr.slice(0, 6).map((veggie, index) => (
       <FormControlLabel
           key={veggie.id}
-          label={`${veggie.name} (${veggie.examples})`}
+          label={(veggie.examples) ? `${veggie.name} (${veggie.examples})` : `${veggie.name}`}
+          control={
+            <Checkbox
+              icon={<CheckBoxOutlineBlankIcon fontSize="large" />}
+              checkedIcon={<CheckBoxIcon fontSize="large" />}
+              checked={this.props.foodChecks[veggie.name]}
+              value={veggie.name}
+              onChange={(e) => this.props.handleCheckboxClick(e)}
+            />
+          }
+      />)
+    )
+  }
+
+  secondVegetableCheckboxes = () => {
+    const veggieArr = this.props.allFood.filter(food => food.category === "Vegetable")
+    return veggieArr.slice(6, 11).map((veggie, index) => (
+      <FormControlLabel
+          key={veggie.id}
+          label={(veggie.examples) ? `${veggie.name} (${veggie.examples})` : `${veggie.name}`}
           control={
             <Checkbox
               icon={<CheckBoxOutlineBlankIcon fontSize="large" />}
@@ -47,10 +66,17 @@ class Question3 extends Component {
         <Grid className={classes.formTop}>
           <h1>Vegetables:</h1>
         </Grid>
-        <Grid className={classes.formMiddle}>
-          <FormGroup>
-            {this.vegetableCheckboxes()}
-          </FormGroup>
+        <Grid container spacing={0} className={classes.formMiddle}>
+          <Grid item xs={6}>
+            <FormGroup>
+              {this.firstVegetableCheckboxes()}
+            </FormGroup>
+          </Grid>
+          <Grid item xs={6}>
+            <FormGroup>
+              {this.secondVegetableCheckboxes()}
+            </FormGroup>
+          </Grid>
         </Grid>
         <Grid container justify="space-between">
           <Button

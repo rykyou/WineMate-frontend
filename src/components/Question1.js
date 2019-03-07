@@ -18,7 +18,7 @@ const styles = theme => ({
     height: '10vh'
   },
   formMiddle: {
-    height: '30vh',
+    height: '25vh',
     marginTop: '5vh'
   }
 });

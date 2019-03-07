@@ -4,20 +4,31 @@ import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
+import menuboard from '../images/menuboard.png';
 
 const styles = theme => ({
   paper: {
     padding: theme.spacing.unit * 2,
-    textAlign: 'center',
     color: theme.palette.text.secondary,
-    minHeight: '70vh'
+    minHeight: '80vh',
+    maxHeight: '70vh',
+    backgroundImage: 'url(' + menuboard + ')',
+    backgroundSize: 'contain',
+    height: '100%',
+    backgroundRepeat: 'no-repeat no-repeat',
+    backgroundPosition: '100%'
+  },
+  center: {
+    marginLeft: '12vh',
+    marginTop: '6vh',
+    textAlign: 'center'
   },
   menuTop: {
-    height: '10vh'
+    marginBottom: '3vh',
   },
   innerMenu: {
-    minHeight: '20vh'
-  }
+    minHeight: '15vh'
+  },
 });
 
 
@@ -89,32 +100,34 @@ class MenuBoard extends Component {
   render() {
     const { classes } = this.props;
     return (
-      <Paper className={classes.paper}>
-        <Grid className={classes.formTop}>
-          <h1>Menu Board</h1>
-        </Grid>
-        <Grid container spacing={24}>
-          <Grid className={classes.innerMenu} item xs={6}>
-            {this.chosenMeat()}
-            {this.chosenSweet()}
+      <div className={classes.paper}>
+        <div className={classes.center}>
+          <Grid className={classes.menuTop}>
+            <h1>Menu Board</h1>
           </Grid>
-          <Grid className={classes.innerMenu} item xs={6}>
-            {this.chosenVeggie()}
+          <Grid container spacing={24}>
+            <Grid className={classes.innerMenu} item xs={6}>
+              {this.chosenMeat()}
+              {this.chosenSweet()}
+            </Grid>
+            <Grid className={classes.innerMenu} item xs={6}>
+              {this.chosenVeggie()}
+            </Grid>
+            <Grid className={classes.innerMenu} item xs={6}>
+              {this.chosenStarch()}
+            </Grid>
+            <Grid className={classes.innerMenu} item xs={6}>
+              {this.chosenDairy()}
+            </Grid>
+            <Grid className={classes.innerMenu} item xs={6}>
+              {this.chosenHerb()}
+            </Grid>
+            <Grid className={classes.innerMenu} item xs={6}>
+              {this.chosenPrep()}
+            </Grid>
           </Grid>
-          <Grid className={classes.innerMenu} item xs={6}>
-            {this.chosenStarch()}
-          </Grid>
-          <Grid className={classes.innerMenu} item xs={6}>
-            {this.chosenDairy()}
-          </Grid>
-          <Grid className={classes.innerMenu} item xs={6}>
-            {this.chosenHerb()}
-          </Grid>
-          <Grid className={classes.innerMenu} item xs={6}>
-            {this.chosenPrep()}
-          </Grid>
-        </Grid>
-      </Paper>
+        </div>
+      </div>
     )
   }
 }

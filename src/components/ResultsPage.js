@@ -30,7 +30,8 @@ const styles = theme => ({
     color: theme.palette.secondary.light,
   },
   wineImage: {
-    maxHeight: "20vh"
+    marginTop: '5vh',
+    height: "25vh"
   }
 });
 
@@ -95,7 +96,6 @@ class ResultsPage extends Component {
                   Click for more details
                   </Button>
                   <h3>{wineStyle.description}</h3>
-                  <h3>Try it with: {wineStyle.cuisine_title}</h3>
                 </Grid>
               </Grid>
             </Grid>

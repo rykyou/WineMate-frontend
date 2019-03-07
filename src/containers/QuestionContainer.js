@@ -15,19 +15,25 @@ import Question6 from '../components/Question6';
 import Question7 from '../components/Question7';
 import Question8 from '../components/Question8';
 import ResultsPage from '../components/ResultsPage';
+import background from '../images/question-background2.jpg';
 
 
 const styles = theme => ({
   root: {
     flexGrow: 1,
-    margin: '10vh'
+    margin: '5vh'
   },
   paper: {
-    padding: theme.spacing.unit * 2,
+    padding: '5vh',
     textAlign: 'center',
     color: theme.palette.text.secondary,
     minHeight: '70vh'
   },
+  backgroundImage: {
+    backgroundImage: 'url(' + background + ')',
+    backgroundSize: 'cover',
+    height: '100%'
+  }
 });
 
 class QuestionContainer extends Component {
@@ -51,34 +57,51 @@ class QuestionContainer extends Component {
       "Mollusk": false,
       "Fish": false,
       "Lobster & Shellfish": false,
-      "Alliums": false,
-      "Green Vegetables": false,
-      "Root Vegetables & Squash": false,
-      "Nightshades": false,
-      "Funghi": false,
-      "Nuts & Seeds": false,
+      "Kale": false,
+      "Lettuce": false,
+      "Carrots": false,
+      "Squash or Pumpkin": false,
+      "Tomato": false,
+      "Bell Pepper": false,
+      "Mushroom": false,
+      "Onion": false,
+      "Garlic": false,
       "Beans & Peas": false,
-      "White Starches": false,
-      "Whole Wheat Grains": false,
-      "Sweet Starchy Vegetables": false,
+      "Nuts & Seeds": false,
+      "Pasta": false,
+      "Bread": false,
+      "Tortillas": false,
+      "White Rice": false,
+      "Brown Rice": false,
+      "Quinoa": false,
+      "Sweet Potato": false,
       "Potato": false,
       "Soft Cheese & Cream": false,
       "Pungent Cheese": false,
       "Hard Cheese": false,
       "Black Pepper": false,
       "Red Pepper": false,
-      "Hot & Spicy": false,
-      "Herbs": false,
-      "Baking Spices": false,
-      "Exotic & Aromatic Spices": false,
+      "Hot Sauce": false,
+      "Sichuan": false,
+      "Thyme": false,
+      "Oregano": false,
+      "Basil": false,
+      "Cinnamon": false,
+      "Turmeric": false,
+      "Ginger": false,
+      "Anise": false,
+      "Saffron": false,
       "Grilled or Barbecued": false,
       "Sautéed or Fried": false,
       "Smoked": false,
       "Roasted": false,
       "Poached or Steamed": false,
       "Fruit & Berries": false,
-      "Vanilla & Caramel": false,
-      "Chocolate & Coffee": false
+      "Crème Brûlée": false,
+      "Ice Cream": false,
+      "Caramel": false,
+      "Chocolate": false,
+      "Coffee": false
     }
   }
 
@@ -328,7 +351,7 @@ class QuestionContainer extends Component {
   render() {
     const { classes } = this.props;
     return (
-      <div>
+      <div className={classes.backgroundImage}>
         <NavBar handleClickDialog={this.props.handleClickDialog}/>
         <Grid className={classes.root}>
           <Grid container
@@ -337,7 +360,7 @@ class QuestionContainer extends Component {
             justify="center"
             style={{ minHeight: '70vh' }}
           >
-            <Grid item xs={5} >
+            <Grid item xs={5}>
               <MenuBoard
                 chosenFoodObjects={this.chosenFoodObjects}
                 handleMenuItemClick={this.handleMenuItemClick}

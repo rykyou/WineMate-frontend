@@ -38,24 +38,21 @@ class WineGridList extends Component {
   }
 
   render() {
+
     const { classes } = this.props;
     return (
       <div className={classes.root}>
         <GridList className={classes.gridList} cols={3.5} cellHeight={360} spacing={10}>
           {this.props.chosenWineStyle.wines.map(tile => (
             <GridListTile key={tile.img}>
-              <img src={tile.img} alt={tile.name} />
+              <img src={tile.img} alt={tile.name} key={tile.id}/>
               <GridListTileBar
                 title={tile.name}
                 classes={{
                   root: classes.titleBar,
                   title: classes.title,
                 }}
-                actionIcon={
-                  <IconButton onClick={() => console.log('clicked')}>
-                    <FavoriteBorderIcon className={classes.title} />
-                  </IconButton>
-                }
+                key={tile.id}
               />
             </GridListTile>
           ))}
@@ -70,3 +67,9 @@ WineGridList.propTypes = {
 };
 
 export default withStyles(styles)(WineGridList);
+
+// actionIcon={
+//   <IconButton onClick={() => console.log('clicked')}>
+//     <FavoriteBorderIcon className={classes.title} />
+//   </IconButton>
+// }
