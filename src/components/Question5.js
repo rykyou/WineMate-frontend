@@ -15,11 +15,11 @@ const styles = theme => ({
     height: '10vh'
   },
   formMiddle: {
-    height: '45vh',
+    height: '40vh',
     marginLeft: '5vh'
   },
   button: {
-    margin: theme.spacing.unit,
+    margin: '2vh',
     minHeight: '8vh',
     minWidth: '12vh'
   },

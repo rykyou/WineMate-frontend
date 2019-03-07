@@ -88,7 +88,7 @@ class ResultsPage extends Component {
                     className={classes.wineImage}
                   />
                 </Grid>
-                <Grid item xs={8}>
+                <Grid item xs={7}>
                   <h3>{wineStyle.short_description}</h3>
                     <Button
                     component={Link}

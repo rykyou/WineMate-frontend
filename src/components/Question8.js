@@ -20,7 +20,7 @@ const styles = theme => ({
     paddingTop: '5vh'
   },
   button: {
-    margin: theme.spacing.unit,
+    margin: '2vh',
     minHeight: '10vh',
     minWidth: '15vh'
   },
