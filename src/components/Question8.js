@@ -10,7 +10,7 @@ import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 
 
-const styles = {
+const styles = theme => ({
   formTop: {
     height: '10vh'
   },
@@ -18,8 +18,13 @@ const styles = {
     height: '40vh',
     marginLeft: '5vh',
     paddingTop: '5vh'
-  }
-};
+  },
+  button: {
+    margin: theme.spacing.unit,
+    minHeight: '10vh',
+    minWidth: '15vh'
+  },
+});
 
 class Question8 extends Component {
   firstDessertCheckboxes = () => {
@@ -83,12 +88,14 @@ class Question8 extends Component {
           <Button
             variant="contained"
             color="secondary"
+            className={classes.button}
             onClick={this.props.goBackToFirstQuestion}>
               Back
           </Button>
           <Button
             variant="contained"
             color="secondary"
+            className={classes.button}
             onClick={this.props.goToResultsPage}>
               Find My Pairing!
           </Button>

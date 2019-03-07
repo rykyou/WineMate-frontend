@@ -23,11 +23,11 @@ const styles = theme => ({
   },
   text: {
     textAlign: 'center',
-    margin: '5vh'
+    margin: '3vh'
   },
   rightBottomPaper: {
     marginTop: '2vh',
-    minHeight: "20vh",
+    minHeight: "15vh",
     // paddingTop: '1vh',
   },
   martiniIcon: {

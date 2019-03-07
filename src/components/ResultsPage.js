@@ -19,11 +19,11 @@ const styles = theme => ({
     marginTop: '25vh',
   },
   formTop: {
-    height: '10vh'
+    height: '5vh'
   },
   formMiddle: {
     height: '40vh',
-    marginLeft: '5vh',
+    marginLeft: '3vh',
     paddingTop: '5vh'
   },
   newPairingButton: {
@@ -75,6 +75,8 @@ class ResultsPage extends Component {
           <div>
             <Grid className={classes.formTop}>
               <h2>Here's your perfect wine style match based on your menu...</h2>
+            </Grid>
+            <Grid className={classes.formTop}>
               <h1>{wineStyle.name}</h1>
             </Grid>
             <Grid className={classes.formMiddle}>

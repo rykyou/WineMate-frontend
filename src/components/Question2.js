@@ -10,7 +10,7 @@ import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 
 
-const styles = {
+const styles = theme => ({
   root: {
     flexGrow: 1,
   },
@@ -20,8 +20,13 @@ const styles = {
   formMiddle: {
     height: '45vh',
     marginLeft: '5vh'
-  }
-};
+  },
+  button: {
+    margin: theme.spacing.unit,
+    minHeight: '8vh',
+    minWidth: '12vh'
+  },
+});
 
 class Question2 extends Component {
   meatCheckboxes = () => {
@@ -60,12 +65,14 @@ class Question2 extends Component {
           <Button
             variant="contained"
             color="secondary"
+            className={classes.button}
             onClick={this.props.goBackToFirstQuestion}>
               Back
           </Button>
           <Button
             variant="contained"
             color="secondary"
+            className={classes.button}
             onClick={this.props.goToNextQuestion}>
               Next
           </Button>

@@ -24,7 +24,12 @@ const styles = theme => ({
   },
   formMiddle: {
     height: '45vh',
-  }
+  },
+  button: {
+    margin: theme.spacing.unit,
+    minHeight: '8vh',
+    minWidth: '12vh'
+  },
 });
 
 class Question7 extends Component {
@@ -87,12 +92,14 @@ class Question7 extends Component {
           <Button
             variant="contained"
             color="secondary"
+            className={classes.button}
             onClick={this.props.goToPreviousQuestion}>
               Back
           </Button>
           <Button
             variant="contained"
             color="secondary"
+            className={classes.button}
             onClick={this.props.goToResultsPage}>
               Find My Pairing!
           </Button>
