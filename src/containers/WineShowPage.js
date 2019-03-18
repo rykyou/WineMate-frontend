@@ -128,6 +128,7 @@ class WineShowPage extends Component {
         <WineDialog
           wineDialogOpen={this.state.wineDialogOpen}
           handleWineDialogClose={this.handleWineDialogClose}
+          chosenWineStyleObj={this.chosenWineStyleObj}
         />
       </div>
     )

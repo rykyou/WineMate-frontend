@@ -25,20 +25,16 @@ class WineDialog extends React.Component {
           aria-describedby="alert-dialog-slide-description"
         >
           <DialogTitle id="alert-dialog-slide-title">
-            {"Use Google's location service?"}
+            {"Wine Detail"}
           </DialogTitle>
           <DialogContent>
             <DialogContentText id="alert-dialog-slide-description">
-              Let Google help apps determine location. This means sending anonymous location data to
-              Google, even when no apps are running.
+              {this.props.chosenWineStyleObj}
             </DialogContentText>
           </DialogContent>
           <DialogActions>
             <Button onClick={this.props.handleWineDialogClose} color="primary">
-              Disagree
-            </Button>
-            <Button onClick={this.props.handleWineDialogClose} color="primary">
-              Agree
+              X
             </Button>
           </DialogActions>
         </Dialog>
