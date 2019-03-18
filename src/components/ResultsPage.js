@@ -19,18 +19,19 @@ const styles = theme => ({
     marginTop: '25vh',
   },
   formTop: {
-    height: '10vh'
+    height: '5vh'
   },
   formMiddle: {
     height: '40vh',
-    marginLeft: '5vh',
+    marginLeft: '3vh',
     paddingTop: '5vh'
   },
   newPairingButton: {
-    color: theme.palette.secondary.light,
+    color: theme.palette.secondary.dark,
   },
   wineImage: {
-    maxHeight: "20vh"
+    marginTop: '5vh',
+    height: "25vh"
   }
 });
 
@@ -74,6 +75,8 @@ class ResultsPage extends Component {
           <div>
             <Grid className={classes.formTop}>
               <h2>Here's your perfect wine style match based on your menu...</h2>
+            </Grid>
+            <Grid className={classes.formTop}>
               <h1>{wineStyle.name}</h1>
             </Grid>
             <Grid className={classes.formMiddle}>
@@ -85,17 +88,16 @@ class ResultsPage extends Component {
                     className={classes.wineImage}
                   />
                 </Grid>
-                <Grid item xs={8}>
-                  <Button
-                  component={Link}
-                  to={`/winestyles/${wineStyle.slug}`}
-                  variant="contained"
-                  className={classes.newPairingButton}
-                  >
-                  Click for more details
-                  </Button>
-                  <h3>{wineStyle.description}</h3>
-                  <h3>Try it with: {wineStyle.cuisine_title}</h3>
+                <Grid item xs={7}>
+                  <h3>{wineStyle.short_description}</h3>
+                    <Button
+                    component={Link}
+                    to={`/winestyles/${wineStyle.slug}`}
+                    variant="contained"
+                    className={classes.newPairingButton}
+                    >
+                    Click for more details
+                    </Button>
                 </Grid>
               </Grid>
             </Grid>

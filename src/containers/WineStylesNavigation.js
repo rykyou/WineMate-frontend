@@ -12,7 +12,7 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 const styles = {
   root: {
     flexGrow: 1,
-    minHeight: "240px"
+    minHeight: "30vh"
   },
   wineImage: {
     maxHeight: "25vh"

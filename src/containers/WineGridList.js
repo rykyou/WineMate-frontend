@@ -4,9 +4,9 @@ import { withStyles } from '@material-ui/core/styles';
 import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
 import GridListTileBar from '@material-ui/core/GridListTileBar';
-import IconButton from '@material-ui/core/IconButton';
+// import IconButton from '@material-ui/core/IconButton';
 // import StarBorderIcon from '@material-ui/icons/StarBorder';
-import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
+// import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 
 const styles = theme => ({
   root: {
@@ -33,9 +33,9 @@ const styles = theme => ({
 });
 
 class WineGridList extends Component {
-  state = {
-    liked: false
-  }
+  // state = {
+  //   liked: false
+  // }
 
   render() {
     const { classes } = this.props;
@@ -43,19 +43,15 @@ class WineGridList extends Component {
       <div className={classes.root}>
         <GridList className={classes.gridList} cols={3.5} cellHeight={360} spacing={10}>
           {this.props.chosenWineStyle.wines.map(tile => (
-            <GridListTile key={tile.img}>
-              <img src={tile.img} alt={tile.name} />
+            <GridListTile key={tile.img} onClick={this.props.handleWineDialogOpen}>
+              <img src={tile.img} alt={tile.name} key={tile.id}/>
               <GridListTileBar
                 title={tile.name}
                 classes={{
                   root: classes.titleBar,
                   title: classes.title,
                 }}
-                actionIcon={
-                  <IconButton onClick={() => console.log('clicked')}>
-                    <FavoriteBorderIcon className={classes.title} />
-                  </IconButton>
-                }
+                key={tile.id}
               />
             </GridListTile>
           ))}
@@ -70,3 +66,9 @@ WineGridList.propTypes = {
 };
 
 export default withStyles(styles)(WineGridList);
+
+// actionIcon={
+//   <IconButton onClick={() => console.log('clicked')}>
+//     <FavoriteBorderIcon className={classes.title} />
+//   </IconButton>
+// }

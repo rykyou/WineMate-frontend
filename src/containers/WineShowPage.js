@@ -4,6 +4,7 @@ import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import NavBar from '../components/NavBar';
 import WineGridList from './WineGridList';
+import WineDialog from './WineDialog';
 import WineStylesNavigation from './WineStylesNavigation';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
@@ -20,11 +21,36 @@ const styles = theme => ({
   },
   navigation: {
     marginTop: '3vh'
-  }
+  },
+  text: {
+    textAlign: 'center',
+    margin: '3vh'
+  },
+  rightBottomPaper: {
+    marginTop: '2vh',
+    minHeight: "15vh",
+    // paddingTop: '1vh',
+  },
+  martiniIcon: {
+    maxWidth: '5vh',
+  },
+
 });
 
 
 class WineShowPage extends Component {
+  state = {
+    wineDialogOpen: false,
+  };
+
+  handleWineDialogOpen = () => {
+    this.setState({ wineDialogOpen: true });
+  };
+
+  handleWineDialogClose = () => {
+    this.setState({ wineDialogOpen: false });
+  };
+
   render() {
     const { classes } = this.props;
     return (
@@ -51,23 +77,46 @@ class WineShowPage extends Component {
 
               <h1>{this.props.chosenWineStyleObj.name}</h1>
 
-              <WineGridList chosenWineStyle={this.props.chosenWineStyleObj}/>
+              <WineGridList
+                chosenWineStyle={this.props.chosenWineStyleObj}
+                handleWineDialogOpen={this.handleWineDialogOpen}
+                handleWineDialogClose={this.handleWineDialogClose}
+              />
 
               <Grid className={classes.paperContainer} container spacing={24}>
                 <Grid item xs={6}>
                   <Paper className={classes.root} elevation={1}>
-                    <Typography variant="h5" component="h3">
+                    <Typography className={classes.text} variant="h5" component="h5">
                       {this.props.chosenWineStyleObj.description}
                     </Typography>
                   </Paper>
                 </Grid>
                 <Grid item xs={6}>
                   <Paper className={classes.root} elevation={1}>
-                    <Typography variant="h5" component="h3">
-                      Pair this wine style with: {this.props.chosenWineStyleObj.cuisine_title}
+                    <Typography className={classes.text} variant="h5" component="h5">
+                      <img src={require(`../images/star-icon.png`)}
+                        alt='star glass'
+                        className={classes.martiniIcon}
+                      />
+                      Food Pairing Affinities
                     </Typography>
-                    <Typography variant="h6" component="h3">
-                      {this.props.chosenWineStyleObj.cuisine_description}
+                    <Typography className={classes.text} variant="h6" component="h6">
+                      {this.props.chosenWineStyleObj.cuisine_title}
+                    </Typography>
+                    <Typography className={classes.text} variant="h6" component="h6">
+                      Like... {this.props.chosenWineStyleObj.cuisine_description}
+                    </Typography>
+                  </Paper>
+                  <Paper className={classes.rightBottomPaper} elevation={1}>
+                    <Typography className={classes.text} variant="h5" component="h5">
+                      <img src={require(`../images/martini-icon.png`)}
+                        alt='martini glass'
+                        className={classes.martiniIcon}
+                      />
+                      Serving Temperature
+                    </Typography>
+                    <Typography className={classes.text} variant="h6" component="h6">
+                      {this.props.chosenWineStyleObj.serving_temp}
                     </Typography>
                   </Paper>
                 </Grid>
@@ -76,6 +125,11 @@ class WineShowPage extends Component {
           </Grid>
         :
         null}
+        <WineDialog
+          wineDialogOpen={this.state.wineDialogOpen}
+          handleWineDialogClose={this.handleWineDialogClose}
+          chosenWineStyleObj={this.chosenWineStyleObj}
+        />
       </div>
     )
   }

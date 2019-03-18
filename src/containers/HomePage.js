@@ -5,7 +5,7 @@ import AnimatedSlider from '../components/AnimatedSlider';
 import WineStylesNavigation from './WineStylesNavigation';
 import HomeNavBar from '../components/HomeNavBar';
 
-const styles = {
+const styles = theme => ({
     button: {
       width: "250px",
       height: "150px",
@@ -17,11 +17,17 @@ const styles = {
     smallEmpty: {
       height: "100px"
     },
-};
+    text: {
+      color: theme.palette.secondary.main,
+      textAlign: 'center',
+      textSize: '20vh'
+    }
+});
 
 
 class HomePage extends Component {
   render() {
+    const { classes } = this.props;
     return (
       <div>
         <HomeNavBar handleClickDialog={this.props.handleClickDialog}/>
@@ -29,7 +35,7 @@ class HomePage extends Component {
           handleClickDialog={this.props.handleClickDialog}
           wineStyleToGoTo={this.props.wineStyleToGoTo}
         />
-        <h2>Explore by Wine Style!</h2>
+      <h1 className={classes.text}>Explore by Wine Style</h1>
         <WineStylesNavigation
           allWineStyles={this.props.allWineStyles}
           handleSelectWineStyle={this.props.handleSelectWineStyle}
