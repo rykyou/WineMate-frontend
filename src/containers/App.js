@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
-
 import InfographicDialog from '../components/InfographicDialog';
 import HomePage from './HomePage';
 import QuestionContainer from './QuestionContainer';
 import WineShowPage from './WineShowPage';
-
-
 
 class App extends Component {
   state = {
@@ -36,8 +33,6 @@ class App extends Component {
   handleSelectWineStyle = (wineStyleSlug) => {
     this.setState({ selectedWineStyle: wineStyleSlug })
   }
-
-  // <NavBar handleClickDialog={this.handleClickDialog}/>
 
   render() {
     return (

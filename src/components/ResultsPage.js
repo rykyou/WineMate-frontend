@@ -1,13 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
-import CircularProgress from '@material-ui/core/CircularProgress';
-import Fade from '@material-ui/core/Fade';
-import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
-import Grid from '@material-ui/core/Grid';
-
+import { Button, CircularProgress, Fade, Grid, Typography, withStyles } from '@material-ui/core';
 
 const styles = theme => ({
   root: {
@@ -37,7 +31,6 @@ const styles = theme => ({
 
 class ResultsPage extends Component {
   state = {
-    // loading: false,
     query: 'progress',
   };
 
@@ -130,4 +123,3 @@ ResultsPage.propTypes = {
 };
 
 export default withStyles(styles)(ResultsPage);
-// export default ResultsPage;

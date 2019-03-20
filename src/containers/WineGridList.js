@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
-import GridList from '@material-ui/core/GridList';
-import GridListTile from '@material-ui/core/GridListTile';
-import GridListTileBar from '@material-ui/core/GridListTileBar';
+import { GridList, GridListTile, GridListTileBar, withStyles } from '@material-ui/core';
 // import IconButton from '@material-ui/core/IconButton';
 // import StarBorderIcon from '@material-ui/icons/StarBorder';
 // import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
@@ -33,10 +30,6 @@ const styles = theme => ({
 });
 
 class WineGridList extends Component {
-  // state = {
-  //   liked: false
-  // }
-
   render() {
     const { classes } = this.props;
     return (

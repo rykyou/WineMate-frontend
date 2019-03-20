@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
-// import { Route } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
-import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
+import { Grid, Paper, withStyles } from '@material-ui/core';
 import NavBar from '../components/NavBar';
 import MenuBoard from './MenuBoard';
 import Question1 from '../components/Question1';
@@ -16,7 +13,6 @@ import Question7 from '../components/Question7';
 import Question8 from '../components/Question8';
 import ResultsPage from '../components/ResultsPage';
 import background from '../images/question-background2.jpg';
-
 
 const styles = theme => ({
   root: {

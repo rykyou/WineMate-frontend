@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
-import Dialog from '@material-ui/core/Dialog';
-import DialogContent from '@material-ui/core/DialogContent';
+import {Dialog, DialogContent, withStyles} from '@material-ui/core';
 import infographicImage from '../images/wine-folly-infographic.png';
 
 const styles = {

@@ -1,14 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
-import FormGroup from '@material-ui/core/FormGroup';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
+import { Button, Checkbox, FormControlLabel, FormGroup, Grid, withStyles } from '@material-ui/core';
 import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
 import CheckBoxIcon from '@material-ui/icons/CheckBox';
-import Button from '@material-ui/core/Button';
-import Grid from '@material-ui/core/Grid';
-
 
 const styles = theme => ({
   formTop: {
@@ -109,4 +103,3 @@ Question6.propTypes = {
 };
 
 export default withStyles(styles)(Question6);
-// export default Question6;
