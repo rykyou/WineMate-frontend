@@ -5,7 +5,11 @@ import {AppBar, Button, Dialog, DialogContent, Grid, IconButton,
 import CloseIcon from '@material-ui/icons/Close';
 import infographicImage from '../images/wine-folly-infographic.png';
 import LargerInfographicDialog from './LargerInfographicDialog';
-import circle from '../images/circle-red.png';
+import redCircle from '../images/circle-red.png';
+import purpleCircle from '../images/circle-purple.png';
+import blueCircle from '../images/circle-blue.png';
+import greenCircle from '../images/circle-green.png';
+import yellowCircle from '../images/circle-yellow.png';
 
 const styles = theme => ({
   appBar: {
@@ -31,7 +35,6 @@ const styles = theme => ({
     marginBottom: '3vh'
   },
   circle: {
-    backgroundImage: 'url(' + circle + ')',
     backgroundSize: 'contain',
     height: '100%',
     backgroundRepeat: 'no-repeat',
@@ -99,37 +102,44 @@ class InfographicDialog extends React.Component {
                 <Typography variant="h4" className={classes.title}>
                   Simplifying the Science of Food and Wine Pairing
                 </Typography>
-                <div className={classes.circle}>
+                <div className={classes.circle} style={{backgroundImage: 'url(' + redCircle + ')'}}>
                   <Typography variant="body1" className={classes.textBottomMargin}>
                     Traditionally, there are two ways to understand wines: by variety (e.g. Sauvignon Blanc or Syrah) or by region (e.g. Barossa or Bordeaux).
                     However, with so many different angles to approach wine, how do you get started?
                     Fortunately, you can start classifying grape varieties by these 9 broader styles!
                   </Typography>
                 </div>
-                <Typography variant="body1" className={classes.textBottomMargin}>
-                  Borrowed from Wine Folly's easy-to-use pairing chart, our algorithm makes finding the perfect wine style easy. The perfect wine style match for your dinner (lunch or breakfast - shhh we'll keep it a secret) is only a quick survey away.
-                </Typography>
-                <Typography variant="h5" className={classes.subTitle}>
-                  Why do certain wines go with certain foods?
-                </Typography>
-                <Typography variant="body1" className={classes.textBottomMargin}>
-                  When you start analyzing the structure of wine, each type of wine features different characteristics such as acidity, tannin, alcohol level and sweetness. If you start thinking about wine traits as flavor ingredients, it becomes easier to pair them with a meal.
-                </Typography>
+                <div className={classes.circle} style={{backgroundImage: 'url(' + purpleCircle + ')'}}>
+                  <Typography variant="body1" className={classes.textBottomMargin}>
+                    Borrowed from Wine Folly's easy-to-use pairing chart, our algorithm makes finding the perfect wine style easy. The perfect wine style match for your dinner (lunch or breakfast - shhh we'll keep it a secret) is only a quick survey away.
+                  </Typography>
+                </div>
+                <div className={classes.circle} style={{backgroundImage: 'url(' + blueCircle + ')'}}>
+                  <Typography variant="h5" className={classes.subTitle}>
+                    Why do certain wines go with certain foods?
+                  </Typography>
+                  <Typography variant="body1" className={classes.textBottomMargin}>
+                    When you start analyzing the structure of wine, each type of wine features different characteristics such as acidity, tannin, alcohol level and sweetness. If you start thinking about wine traits as flavor ingredients, it becomes easier to pair them with a meal.
+                  </Typography>
+                </div>
                 <Typography variant="h5" className={classes.subTitle}>
                   How it works in action...
                 </Typography>
-                <Typography variant="body1" className={classes.textBottomMargin}>
-                  When it comes to food and wine pairing, most folks lean on the phrase “What grows together, goes together” as a starting point.
-                  For example, you could pair Italian Sangiovese with Italian pasta and make a decent pairing without trying.
-                </Typography>
-                <Typography variant="h5" className={classes.subTitle}>
-                  Example of how the pairing works
-                </Typography>
-                <Typography variant="body1" className={classes.textBottomMargin}>
-                  Let's take fish tacos as an example and break them down to their core ingredients. The fish turns out to be a pretty polarizing ingredient that doesn’t usually pair with red wines. Additionally, cilantro and lime will push this dish closer to a much more specific wine.
-
-                  If you follow the chart, you’ll see that a light-bodied white wine looks to be the best option for this dish. And, it is! Of the wines on the list shown, you’ll do great with a Vermentino, Albariño, or Pinot Grigio.
-                </Typography>
+                <div className={classes.circle} style={{backgroundImage: 'url(' + greenCircle + ')'}}>
+                  <Typography variant="body1" className={classes.textBottomMargin}>
+                    When it comes to food and wine pairing, most folks lean on the phrase “What grows together, goes together” as a starting point.
+                    For example, you could pair Italian Sangiovese with Italian pasta and make a decent pairing without trying.
+                  </Typography>
+                </div>
+                <div className={classes.circle} style={{backgroundImage: 'url(' + yellowCircle + ')'}}>
+                  <Typography variant="h5" className={classes.subTitle}>
+                    Example of how the pairing works
+                  </Typography>
+                  <Typography variant="body1" className={classes.textBottomMargin}>
+                    Let's take fish tacos as an example and break them down to their core ingredients. The fish turns out to be a pretty polarizing ingredient that doesn’t usually pair with red wines. Additionally, cilantro and lime will push this dish closer to a much more specific wine.
+                    If you follow the chart, you’ll see that a light-bodied white wine looks to be the best option for this dish. And, it is! Of the wines on the list shown, you’ll do great with a Vermentino, Albariño, or Pinot Grigio.
+                  </Typography>
+                </div>
               </Grid>
             </Grid>
           </DialogContent>
