@@ -38,7 +38,7 @@ const styles = theme => ({
   },
   circle: {
     backgroundSize: 'contain',
-    height: '15vh',
+    height: '10vh',
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'left'
   },
@@ -117,7 +117,7 @@ class InfographicDialog extends React.Component {
                     Our pairing quiz is based on Wine Folly’s Food & Wine Pairing Method. They have broken down the complicated science of food and wine pairing into an easy-to-use chart (illustrated on left). Each ingredient or preparation method has a specific “match score” - ranging from 0 to 2 - that is associated with each of the nine wine styles. The algorithm works in such a way that selecting a specific ingredient or prep method will add up the match scores for each wine style. The wine style with the highest compiled score is then returned at the end of the quiz.
                   </Typography>
                 </div>
-                <Typography variant="h5" className={classes.subTitle}>
+                <Typography variant="h5" className={classes.textBottomMargin}>
                 </Typography>
                 <div className={classes.circle} style={{backgroundImage: 'url(' + blueCircle + ')'}}>
                   <Typography variant="body1" className={classes.textBottomMargin}>
@@ -129,7 +129,7 @@ class InfographicDialog extends React.Component {
                 </Typography>
                 <div className={classes.circle} style={{backgroundImage: 'url(' + greenCircle + ')'}}>
                   <Typography variant="body1" className={classes.textBottomMargin}>
-                    Each type of wine is characterized by different levels of acidity, tannin, alcohol level, and sweetness. Likewise, each food ingredient holds different flavor profiles that may either compliment or clash components of a wine. For example, tannin - an astringent substance found in red wines - has a palate-cleansing effect. It counteracts oiliness and helps to pull out proteins produced by our saliva glands. This explains why red wine pairs nicely with fatty cuts of beef. Read more into the science of food and wine pairing <a href="https://winefolly.com/review/simple-food-and-wine-pairing/">here</a>.
+                    Each type of wine is characterized by different levels of acidity, tannin, alcohol level, and sweetness. Likewise, each food ingredient holds different flavor profiles that may either compliment or clash components of a wine. For example, tannin - an astringent substance found in red wines - has a palate-cleansing effect. It counteracts oiliness and helps to pull out proteins produced by our saliva glands. This explains why red wine pairs nicely with fatty cuts of beef. Read more into the science of food and wine pairing <a href="https://winefolly.com/review/simple-food-and-wine-pairing/" target="_blank">here</a>.
                   </Typography>
                 </div>
                 <Typography variant="h5" className={classes.subTitle}>

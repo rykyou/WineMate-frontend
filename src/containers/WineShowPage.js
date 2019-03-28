@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { Grid, Paper, Typography, withStyles } from '@material-ui/core';
 import NavBar from '../components/NavBar';
 import WineGridList from './WineGridList';
-import WineDialog from './WineDialog';
 import WineStylesNavigation from './WineStylesNavigation';
 
 const styles = theme => ({
@@ -36,18 +35,6 @@ const styles = theme => ({
 
 
 class WineShowPage extends Component {
-  state = {
-    wineDialogOpen: false,
-  };
-
-  handleWineDialogOpen = () => {
-    this.setState({ wineDialogOpen: true });
-  };
-
-  handleWineDialogClose = () => {
-    this.setState({ wineDialogOpen: false });
-  };
-
   render() {
     const { classes } = this.props;
     return (
@@ -122,11 +109,6 @@ class WineShowPage extends Component {
           </Grid>
         :
         null}
-        <WineDialog
-          wineDialogOpen={this.state.wineDialogOpen}
-          handleWineDialogClose={this.handleWineDialogClose}
-          chosenWineStyleObj={this.chosenWineStyleObj}
-        />
       </div>
     )
   }
