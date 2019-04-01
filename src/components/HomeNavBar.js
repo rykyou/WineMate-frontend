@@ -1,16 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
-import {AppBar, Toolbar} from '@material-ui/core';
-// IconButton, Menu, MenuItem,
-import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
-// import MenuIcon from '@material-ui/icons/Menu';
-// import AccountCircle from '@material-ui/icons/AccountCircle';
-// import Switch from '@material-ui/core/Switch';
-// import FormControlLabel from '@material-ui/core/FormControlLabel';
-// import FormGroup from '@material-ui/core/FormGroup';
+import {AppBar, Button, Toolbar, Typography, withStyles} from '@material-ui/core';
 import mainLogo from '../images/winemate-logo.png';
 
 const styles = {

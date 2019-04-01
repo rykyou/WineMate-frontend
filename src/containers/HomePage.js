@@ -35,7 +35,7 @@ class HomePage extends Component {
           handleClickDialog={this.props.handleClickDialog}
           wineStyleToGoTo={this.props.wineStyleToGoTo}
         />
-      <h1 className={classes.text}>Explore by Wine Style</h1>
+        <h1 className={classes.text}>Explore by Wine Style</h1>
         <WineStylesNavigation
           allWineStyles={this.props.allWineStyles}
           handleSelectWineStyle={this.props.handleSelectWineStyle}

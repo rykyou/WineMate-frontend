@@ -1,13 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
-import Grid from '@material-ui/core/Grid';
+import { Grid, Paper, Typography, withStyles } from '@material-ui/core';
 import NavBar from '../components/NavBar';
 import WineGridList from './WineGridList';
-import WineDialog from './WineDialog';
 import WineStylesNavigation from './WineStylesNavigation';
-import Paper from '@material-ui/core/Paper';
-import Typography from '@material-ui/core/Typography';
 
 const styles = theme => ({
   root: {
@@ -39,18 +35,6 @@ const styles = theme => ({
 
 
 class WineShowPage extends Component {
-  state = {
-    wineDialogOpen: false,
-  };
-
-  handleWineDialogOpen = () => {
-    this.setState({ wineDialogOpen: true });
-  };
-
-  handleWineDialogClose = () => {
-    this.setState({ wineDialogOpen: false });
-  };
-
   render() {
     const { classes } = this.props;
     return (
@@ -125,11 +109,6 @@ class WineShowPage extends Component {
           </Grid>
         :
         null}
-        <WineDialog
-          wineDialogOpen={this.state.wineDialogOpen}
-          handleWineDialogClose={this.handleWineDialogClose}
-          chosenWineStyleObj={this.chosenWineStyleObj}
-        />
       </div>
     )
   }
