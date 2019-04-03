@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Grid, Paper, Typography, withStyles } from '@material-ui/core';
 import NavBar from '../components/NavBar';
-import WineGridList from './WineGridList';
 import WineStylesNavigation from './WineStylesNavigation';
 
 const styles = theme => ({
@@ -60,12 +59,6 @@ class WineShowPage extends Component {
               </Grid>
 
               <h1>{this.props.chosenWineStyleObj.name}</h1>
-
-              <WineGridList
-                chosenWineStyle={this.props.chosenWineStyleObj}
-                handleWineDialogOpen={this.handleWineDialogOpen}
-                handleWineDialogClose={this.handleWineDialogClose}
-              />
 
               <Grid className={classes.paperContainer} container spacing={24}>
                 <Grid item xs={6}>
