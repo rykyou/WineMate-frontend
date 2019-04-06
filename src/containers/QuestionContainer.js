@@ -356,13 +356,13 @@ class QuestionContainer extends Component {
             justify="center"
             style={{ minHeight: '70vh' }}
           >
-            <Grid item xs={5}>
+            <Grid item sm={12} md={5}>
               <MenuBoard
                 chosenFoodObjects={this.chosenFoodObjects}
                 handleMenuItemClick={this.handleMenuItemClick}
               />
             </Grid>
-            <Grid item xs={7}>
+            <Grid item sm={12} md={7}>
               <Paper className={classes.paper}>{this.questionComponentToRender()}</Paper>
             </Grid>
           </Grid>
