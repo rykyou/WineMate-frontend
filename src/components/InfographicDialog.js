@@ -103,12 +103,10 @@ class InfographicDialog extends React.Component {
                 </Button>
               </Grid>
               <Grid item md={7}>
-                <Typography variant="h4" className={classes.title}>
+                <Typography variant="h4" className={classes.title}> 
                   Simplifying the Science of Food and Wine Pairing
                 </Typography>
-                <Typography variant="body1" className={classes.textBottomMargin}>
-                  The task to find the perfect wine and food pairing can take hours of research, especially for those just starting out on their wine exploration. WineMate aims to simplify this process. Simply go through the pairing quiz to let us know what’s on the menu, and we’ll match you up with the perfect wine style for your meal.
-                </Typography>
+                git remote set-url origin git@github.com:particle-iot/REPONAME.gitTypography>
                 <Typography variant="h5" className={classes.subTitle}>
                   How does it work?
                 </Typography>
