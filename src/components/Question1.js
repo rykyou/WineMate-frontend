@@ -8,8 +8,8 @@ const styles = theme => ({
   },
   button: {
     margin: theme.spacing.unit,
-    minHeight: '25vh',
-    minWidth: '25vh'
+    height: '25vh',
+    width: '25vh'
   },
   formTop: {
     height: '10vh'
@@ -28,8 +28,8 @@ class Question1 extends Component {
         <Grid className={classes.formTop}>
           <h1>What are you eating today?</h1>
         </Grid>
-        <Grid container className={classes.formMiddle}>
-          <Grid item xs={12} sm={6}>
+        <Grid container spacing={16} className={classes.formMiddle}>
+          <Grid item md={12} lg={6}>
             <Button
               variant="contained"
               color="secondary"
@@ -39,7 +39,7 @@ class Question1 extends Component {
                 (This will be a short one!)
             </Button>
           </Grid>
-          <Grid item xs={12} sm={6}>
+          <Grid item md={12} lg={6}>
             <Button
               variant="contained"
               color="secondary"
