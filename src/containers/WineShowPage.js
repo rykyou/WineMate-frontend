@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Grid, List, ListItem, ListItemText, Paper, Typography, withStyles } from '@material-ui/core';
+import { Grid, Paper, Typography, withStyles } from '@material-ui/core';
 import NavBar from '../components/NavBar';
 import WineStylesNavigation from './WineStylesNavigation';
 
@@ -100,17 +100,13 @@ class WineShowPage extends Component {
                     <Typography className={classes.text} variant="h5" component="h5">
                       Examples
                     </Typography>
-                    <List dense={false}>
-                      {this.props.chosenWineStyleObj.wines.map(wine => {
-                        return (<ListItem key={wine.name}>
-                          <ListItemText
-                            key={wine.name}
-                            primary={wine.name}
-                          />
-                      </ListItem>)
-                      })
-                      }
-                    </List>
+
+                    {this.props.chosenWineStyleObj.wines.map(wine => {return (
+                      <Typography className={classes.text} variant="body1" component="body1" key={wine.name}>
+                        {wine.name}
+                      </Typography>
+                    )})}
+
                   </Paper>
                 </Grid>
               </Grid>
