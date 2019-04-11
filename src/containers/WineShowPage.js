@@ -11,8 +11,14 @@ const styles = theme => ({
     paddingBottom: theme.spacing.unit * 2,
     minHeight: "20vh"
   },
+  wholePage: {
+    margin: '2%'
+  },
   paperContainer: {
     margin: '2vh'
+  },
+  descriptionContainer: {
+    margin: '2% 10%'
   },
   navigation: {
     marginTop: '3vh'
@@ -43,7 +49,7 @@ class WineShowPage extends Component {
           handleClickDialog={this.props.handleClickDialog}
         />
         {this.props.chosenWineStyleObj ?
-          <Grid className={classes.paperContainer}>
+          <Grid className={classes.wholePage}>
             <Grid container
               spacing={0}
               alignItems="center"
@@ -60,7 +66,7 @@ class WineShowPage extends Component {
 
               <h1>{this.props.chosenWineStyleObj.name}</h1>
 
-              <Grid className={classes.paperContainer} container spacing={24}>
+              <Grid className={classes.descriptionContainer} container spacing={24}>
                 <Grid item xs={6}>
                   <Paper className={classes.root} elevation={1}>
                     <Typography className={classes.text} variant="h5" component="h5">
@@ -102,7 +108,7 @@ class WineShowPage extends Component {
                     </Typography>
 
                     {this.props.chosenWineStyleObj.wines.map(wine => {return (
-                      <Typography className={classes.text} variant="body1" component="body1" key={wine.name}>
+                      <Typography className={classes.text} variant="body1" key={wine.name}>
                         {wine.name}
                       </Typography>
                     )})}
