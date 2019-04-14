@@ -5,11 +5,11 @@ import {AppBar, Button, Dialog, DialogContent, Grid, IconButton,
 import CloseIcon from '@material-ui/icons/Close';
 import infographicImage from '../images/wine-folly-infographic.png';
 import LargerInfographicDialog from './LargerInfographicDialog';
-import redCircle from '../images/circle-red.png';
-import purpleCircle from '../images/circle-purple.png';
-import blueCircle from '../images/circle-blue.png';
-import greenCircle from '../images/circle-green.png';
-import yellowCircle from '../images/circle-yellow.png';
+// import redCircle from '../images/circle-red.png';
+// import purpleCircle from '../images/circle-purple.png';
+// import blueCircle from '../images/circle-blue.png';
+// import greenCircle from '../images/circle-green.png';
+// import yellowCircle from '../images/circle-yellow.png';
 
 const styles = theme => ({
   appBar: {
@@ -36,12 +36,14 @@ const styles = theme => ({
     marginLeft: '3vh',
     marginBottom: '3vh'
   },
-  circle: {
-    backgroundSize: 'contain',
-    height: '10vh',
-    backgroundRepeat: 'no-repeat',
-    backgroundPosition: 'left'
-  },
+  // circle: {
+    // <div className={classes.circle} style={{backgroundImage: 'url(' + greenCircle + ')'}}>
+    // background: 'url(' + redCircle + ')',
+    // maxheight: '10vh',
+  //   backgroundSize: 'contain',
+  //   backgroundRepeat: 'no-repeat',
+  //   backgroundPosition: 'left'
+  // },
 });
 
 function Transition(props) {
@@ -104,45 +106,35 @@ class InfographicDialog extends React.Component {
                 <Typography variant="h4" className={classes.title}>
                   Simplifying the Science of Food and Wine Pairing
                 </Typography>
-                <div className={classes.circle} style={{backgroundImage: 'url(' + redCircle + ')'}}>
-                  <Typography variant="body1" className={classes.textBottomMargin}>
+                <Typography variant="body1" className={classes.textBottomMargin}>
                     The task to find the perfect wine and food pairing can take hours of research, especially for those just starting out on their wine exploration. WineMate aims to simplify this process. Simply go through the pairing quiz to let us know what’s on the menu, and we’ll match you up with the perfect wine style for your meal.
-                  </Typography>
-                </div>
+                </Typography>
                 <Typography variant="h5" className={classes.subTitle}>
                   How does it work?
                 </Typography>
-                <div className={classes.circle} style={{backgroundImage: 'url(' + purpleCircle + ')'}}>
-                  <Typography variant="body1" className={classes.textBottomMargin}>
-                    Our pairing quiz is based on Wine Folly’s Food & Wine Pairing Method. They have broken down the complicated science of food and wine pairing into an easy-to-use chart (illustrated on left). Each ingredient or preparation method has a specific “match score” - ranging from 0 to 2 - that is associated with each of the nine wine styles. The algorithm works in such a way that selecting a specific ingredient or prep method will add up the match scores for each wine style. The wine style with the highest compiled score is then returned at the end of the quiz.
-                  </Typography>
-                </div>
+                <Typography variant="body1" className={classes.textBottomMargin}>
+                  Our pairing quiz is based on Wine Folly’s Food & Wine Pairing Method. They have broken down the complicated science of food and wine pairing into an easy-to-use chart (illustrated on left). Each ingredient or preparation method has a specific “match score” - ranging from 0 to 2 - that is associated with each of the nine wine styles. The algorithm works in such a way that selecting a specific ingredient or prep method will add up the match scores for each wine style. The wine style with the highest compiled score is then returned at the end of the quiz.
+                </Typography>
                 <Typography variant="h5" className={classes.textBottomMargin}>
                 </Typography>
-                <div className={classes.circle} style={{backgroundImage: 'url(' + blueCircle + ')'}}>
-                  <Typography variant="body1" className={classes.textBottomMargin}>
-                    We’ve made minor changes to the selection of ingredients so that those who are not familiar with terms like “nightshades” or “alliums” can instead choose “tomatoes” or “onion”. Our goal was to create a food and wine matching experience that wasn’t exclusive to connoisseurs and epicures.
-                  </Typography>
-                </div>
+                <Typography variant="body1" className={classes.textBottomMargin}>
+                  We’ve made minor changes to the selection of ingredients so that those who are not familiar with terms like “nightshades” or “alliums” can instead choose “tomatoes” or “onion”. Our goal was to create a food and wine matching experience that wasn’t exclusive to connoisseurs and epicures.
+                </Typography>
                 <Typography variant="h5" className={classes.subTitle}>
                   Why do certain wines go with certain foods?
                 </Typography>
-                <div className={classes.circle} style={{backgroundImage: 'url(' + greenCircle + ')'}}>
-                  <Typography variant="body1" className={classes.textBottomMargin}>
-                    Each type of wine is characterized by different levels of acidity, tannin, alcohol level, and sweetness. Likewise, each food ingredient holds different flavor profiles that may either compliment or clash components of a wine. For example, tannin - an astringent substance found in red wines - has a palate-cleansing effect. It counteracts oiliness and helps to pull out proteins produced by our saliva glands. This explains why red wine pairs nicely with fatty cuts of beef. Read more into the science of food and wine pairing <a href="https://winefolly.com/review/simple-food-and-wine-pairing/" target="_blank">here</a>.
-                  </Typography>
-                </div>
+                <Typography variant="body1" className={classes.textBottomMargin}>
+                  Each type of wine is characterized by different levels of acidity, tannin, alcohol level, and sweetness. Likewise, each food ingredient holds different flavor profiles that may either compliment or clash components of a wine. For example, tannin - an astringent substance found in red wines - has a palate-cleansing effect. It counteracts oiliness and helps to pull out proteins produced by our saliva glands. This explains why red wine pairs nicely with fatty cuts of beef. Read more into the science of food and wine pairing <a href="https://winefolly.com/review/simple-food-and-wine-pairing/" target="_blank" rel="noopener noreferrer">here</a>.
+                </Typography>
                 <Typography variant="h5" className={classes.subTitle}>
                   The 9 primary styles of wine
                 </Typography>
-                <div className={classes.circle} style={{backgroundImage: 'url(' + yellowCircle + ')'}}>
-                  <Typography variant="body1" className={classes.textBottomMargin}>
-                    If you are just starting out your wine exploration, it’s important to keep the process simple and easy to understand. That’s why Wine Folly has categorized the wide variety of wines into 9 broad styles. Although there might be subtle differences within each wine style due to the vintage or region, tasting an example from each of the 9 styles will give you a good idea of the range of all the wines.
-                  </Typography>
-                  <Typography variant="body1" className={classes.textBottomMargin}>
-                    So what are you waiting for? The perfect wine style match for your dinner (lunch or breakfast - shhh we’ll keep it a secret) is only a quick survey away!
-                  </Typography>
-                </div>
+                <Typography variant="body1" className={classes.textBottomMargin}>
+                  If you are just starting out your wine exploration, it’s important to keep the process simple and easy to understand. That’s why Wine Folly has categorized the wide variety of wines into 9 broad styles. Although there might be subtle differences within each wine style due to the vintage or region, tasting an example from each of the 9 styles will give you a good idea of the range of all the wines.
+                </Typography>
+                <Typography variant="body1" className={classes.textBottomMargin}>
+                  So what are you waiting for? The perfect wine style match for your dinner (lunch or breakfast - shhh we’ll keep it a secret) is only a quick survey away!
+                </Typography>
               </Grid>
             </Grid>
           </DialogContent>

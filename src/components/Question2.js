@@ -17,8 +17,8 @@ const styles = theme => ({
   },
   button: {
     margin: '2vh',
-    minHeight: '8vh',
-    minWidth: '12vh'
+    height: '8vh',
+    width: '12vh'
   },
 });
 
