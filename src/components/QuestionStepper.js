@@ -5,7 +5,7 @@ import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
 import StepButton from '@material-ui/core/StepButton';
 // import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
+// import Typography from '@material-ui/core/Typography';
 
 const styles = theme => ({
   root: {
@@ -43,7 +43,7 @@ function getSteps() {
 //   }
 // }
 
-class HorizontalNonLinearAlternativeLabelStepper extends React.Component {
+class QuestionStepper extends React.Component {
   state = {
     activeStep: 0,
     completed: new Set(),
@@ -54,11 +54,11 @@ class HorizontalNonLinearAlternativeLabelStepper extends React.Component {
 
   handleSkip = () => {
     const { activeStep } = this.state;
-    if (!this.isStepOptional(activeStep)) {
-      // You probably want to guard against something like this
-      // it should never occur unless someone's actively trying to break something.
-      throw new Error("You can't skip a step that isn't optional.");
-    }
+    // if (!this.isStepOptional(activeStep)) {
+    //   // You probably want to guard against something like this
+    //   // it should never occur unless someone's actively trying to break something.
+    //   throw new Error("You can't skip a step that isn't optional.");
+    // }
 
     this.setState(state => {
       const skipped = new Set(state.skipped.values());
@@ -92,11 +92,18 @@ class HorizontalNonLinearAlternativeLabelStepper extends React.Component {
     }));
   };
 
-  handleStep = step => () => {
+  handleStepClick = step => () => {
+    this.props.handleMenuItemClick(step + 2)
     this.setState({
       activeStep: step,
     });
   };
+
+  handleStep = step => () => {
+    this.setState({
+      activeStep: step - 2,
+    });
+  }
 
   handleComplete = () => {
     // eslint-disable-next-line react/no-access-state-in-setstate
@@ -151,11 +158,11 @@ class HorizontalNonLinearAlternativeLabelStepper extends React.Component {
   render() {
     const { classes } = this.props;
     const steps = getSteps();
-    const { activeStep } = this.state;
+    // const { activeStep } = this.state;
 
     return (
       <div className={classes.root}>
-        <Stepper alternativeLabel nonLinear activeStep={activeStep}>
+        <Stepper alternativeLabel nonLinear activeStep={this.props.questionNum - 2}>
           {steps.map((label, index) => {
             const props = {};
             const buttonProps = {};
@@ -165,7 +172,7 @@ class HorizontalNonLinearAlternativeLabelStepper extends React.Component {
             return (
               <Step key={label} {...props}>
                 <StepButton
-                  onClick={this.handleStep(index)}
+                  onClick={this.handleStepClick(index)}
                   completed={this.isStepComplete(index)}
                   {...buttonProps}
                 >
@@ -180,8 +187,8 @@ class HorizontalNonLinearAlternativeLabelStepper extends React.Component {
   }
 }
 
-HorizontalNonLinearAlternativeLabelStepper.propTypes = {
+QuestionStepper.propTypes = {
   classes: PropTypes.object,
 };
 
-export default withStyles(styles)(HorizontalNonLinearAlternativeLabelStepper);
+export default withStyles(styles)(QuestionStepper);

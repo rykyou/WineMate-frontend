@@ -6,10 +6,10 @@ import CheckBoxIcon from '@material-ui/icons/CheckBox';
 
 const styles = theme => ({
   formTop: {
-    height: '10vh'
+    height: '5vh'
   },
   formMiddle: {
-    height: '40vh',
+    height: '45vh',
     marginLeft: '5vh'
   },
   button: {

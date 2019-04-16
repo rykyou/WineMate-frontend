@@ -12,6 +12,7 @@ import Question6 from '../components/Question6';
 import Question7 from '../components/Question7';
 import Question8 from '../components/Question8';
 import ResultsPage from '../components/ResultsPage';
+import QuestionStepper from '../components/QuestionStepper';
 import background from '../images/question-background2.jpg';
 
 const styles = theme => ({
@@ -23,7 +24,7 @@ const styles = theme => ({
     padding: '5vh',
     textAlign: 'center',
     color: theme.palette.text.secondary,
-    minHeight: '70vh'
+    minHeight: '75vh'
   },
   menuboard: {
     minHeight: '50vh'
@@ -363,14 +364,21 @@ class QuestionContainer extends Component {
           >
             <Grid item sm={12} md={5}>
               <Paper className={classes.menuboard}>
-                <MenuBoard
-                  chosenFoodObjects={this.chosenFoodObjects}
-                  handleMenuItemClick={this.handleMenuItemClick}
-                />
+                <MenuBoard chosenFoodObjects={this.chosenFoodObjects} />
               </Paper>
             </Grid>
             <Grid item sm={12} md={7}>
-              <Paper className={classes.paper}>{this.questionComponentToRender()}</Paper>
+              <Paper className={classes.paper}>
+                {this.state.questionNum > 1 && this.state.questionNum < 8 ?
+                  <QuestionStepper
+                    questionNum={this.state.questionNum}
+                    handleMenuItemClick={this.handleMenuItemClick}
+                  />
+                :
+                  null
+                }
+                {this.questionComponentToRender()}
+              </Paper>
             </Grid>
           </Grid>
         </Grid>

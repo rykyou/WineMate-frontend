@@ -14,10 +14,10 @@ const styles = theme => ({
     width: '90%',
   },
   formTop: {
-    height: '10vh'
+    height: '5vh'
   },
   formMiddle: {
-    height: '40vh',
+    height: '45vh',
   },
   button: {
     margin: '2vh',

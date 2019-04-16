@@ -10,7 +10,7 @@ const styles = theme => ({
     alignItems: 'center',
   },
   progress: {
-    marginTop: '25vh',
+    marginTop: '30vh',
   },
   formTop: {
     height: '5vh'

@@ -9,10 +9,10 @@ const styles = theme => ({
     flexGrow: 1,
   },
   formTop: {
-    height: '10vh'
+    height: '5vh'
   },
   formMiddle: {
-    height: '40vh',
+    height: '45vh',
     marginLeft: '5vh'
   },
   button: {
@@ -47,8 +47,7 @@ class Question2 extends Component {
     return (
       <div className={classes.root}>
         <Grid className={classes.formTop}>
-          <h1>Does it include meat?</h1>
-          <h3>Choose as many protein options as needed...</h3>
+          <h1>Protein:</h1>
         </Grid>
         <Grid className={classes.formMiddle}>
           <FormGroup>
