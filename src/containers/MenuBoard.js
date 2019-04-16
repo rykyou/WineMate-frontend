@@ -8,54 +8,61 @@ const styles = theme => ({
     padding: theme.spacing.unit * 2,
     color: theme.palette.text.secondary,
     minHeight: '80vh',
-    maxHeight: '70vh',
-    // backgroundImage: 'url(' + menuboard + ')',
-    // backgroundSize: 'contain',
+    maxHeight: '80vh',
     height: '100%',
-    // backgroundRepeat: 'no-repeat no-repeat',
-    backgroundPosition: '100%'
-  },
-  center: {
-    // marginLeft: '12vh',
-    // marginTop: '6vh',
+    backgroundPosition: '100%',
     textAlign: 'center'
   },
   menuTop: {
     marginBottom: '3vh',
   },
-  innerMenu: {
-    minHeight: '15vh'
+  container: {
+    overflow: 'auto',
+    display: 'flex',
+    flexDirection: 'column',
+    flexWrap: 'wrap',
+    maxHeight: '70vh',
+    margin: '5%'
   },
+  button: {
+    margin: '1vh',
+    minWidth: '25%',
+    minHeight: '5vh'
+  }
 });
 
 
 class MenuBoard extends Component {
   chosenFood = () => {
     return this.props.chosenFoodObjects().map(food =>
-      <div key={food.id}>
-        <Button
-          key={food.id}
-          onClick={(e) => this.props.handleRemoveFoodFromMenu(e.target.innerHTML)}>
-          {food.name}
-        </Button>
-      </div>
+      <Button
+        key={food.id}
+        variant="contained"
+        className={this.props.classes.button}
+        onClick={(e) => this.removeFoodFromMenu(e.target.innerHTML)}>
+        {food.name}
+      </Button>
     )
+  }
+
+  sanitizedFoodName = (textToChange) => {
+    return textToChange.split(' ').map(char => char === "&amp;" ? "&" : char).join(' ')
+  }
+
+  removeFoodFromMenu = (text) => {
+    this.props.handleRemoveFoodFromMenu(this.sanitizedFoodName(text))
   }
 
   render() {
     const { classes } = this.props;
     return (
       <div className={classes.paper}>
-        <div className={classes.center}>
-          <Grid className={classes.menuTop}>
-            <h1>Menu Board</h1>
-          </Grid>
-          <Grid container spacing={24}>
-            <Grid className={classes.innerMenu} item xs={6}>
-              {this.chosenFood()}
-            </Grid>
-          </Grid>
-        </div>
+        <Grid className={classes.menuTop}>
+          <h1>Menu Board</h1>
+        </Grid>
+        <Grid className={classes.container}>
+          {this.chosenFood()}
+        </Grid>
       </div>
     )
   }
