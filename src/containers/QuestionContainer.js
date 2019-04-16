@@ -25,6 +25,9 @@ const styles = theme => ({
     color: theme.palette.text.secondary,
     minHeight: '70vh'
   },
+  menuboard: {
+    minHeight: '50vh'
+  },
   backgroundImage: {
     backgroundImage: 'url(' + background + ')',
     backgroundSize: 'cover',
@@ -359,10 +362,12 @@ class QuestionContainer extends Component {
             style={{ minHeight: '70vh' }}
           >
             <Grid item sm={12} md={5}>
-              <MenuBoard
-                chosenFoodObjects={this.chosenFoodObjects}
-                handleMenuItemClick={this.handleMenuItemClick}
-              />
+              <Paper className={classes.menuboard}>
+                <MenuBoard
+                  chosenFoodObjects={this.chosenFoodObjects}
+                  handleMenuItemClick={this.handleMenuItemClick}
+                />
+              </Paper>
             </Grid>
             <Grid item sm={12} md={7}>
               <Paper className={classes.paper}>{this.questionComponentToRender()}</Paper>

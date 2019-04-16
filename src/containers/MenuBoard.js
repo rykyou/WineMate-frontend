@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Button, Grid, withStyles } from '@material-ui/core';
-import menuboard from '../images/menuboard.png';
+// import menuboard from '../images/menuboard.png';
+import QuestionStepper from '../components/QuestionStepper';
 
 const styles = theme => ({
   paper: {
@@ -9,15 +10,15 @@ const styles = theme => ({
     color: theme.palette.text.secondary,
     minHeight: '80vh',
     maxHeight: '70vh',
-    backgroundImage: 'url(' + menuboard + ')',
-    backgroundSize: 'contain',
+    // backgroundImage: 'url(' + menuboard + ')',
+    // backgroundSize: 'contain',
     height: '100%',
-    backgroundRepeat: 'no-repeat no-repeat',
+    // backgroundRepeat: 'no-repeat no-repeat',
     backgroundPosition: '100%'
   },
   center: {
-    marginLeft: '12vh',
-    marginTop: '6vh',
+    // marginLeft: '12vh',
+    // marginTop: '6vh',
     textAlign: 'center'
   },
   menuTop: {
@@ -101,6 +102,7 @@ class MenuBoard extends Component {
         <div className={classes.center}>
           <Grid className={classes.menuTop}>
             <h1>Menu Board</h1>
+            <QuestionStepper/>
           </Grid>
           <Grid container spacing={24}>
             <Grid className={classes.innerMenu} item xs={6}>
