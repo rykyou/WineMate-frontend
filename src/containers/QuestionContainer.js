@@ -28,7 +28,9 @@ const styles = theme => ({
   backgroundImage: {
     backgroundImage: 'url(' + background + ')',
     backgroundSize: 'cover',
-    height: '100%'
+    backgroundPosition: '100%',
+    height: '100%',
+    overflow: 'hidden',
   }
 });
 
