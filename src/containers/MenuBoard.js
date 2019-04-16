@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Grid, Typography, withStyles } from '@material-ui/core';
+import { Button, Grid, withStyles } from '@material-ui/core';
 // import menuboard from '../images/menuboard.png';
 
 const styles = theme => ({
@@ -33,7 +33,11 @@ class MenuBoard extends Component {
   chosenFood = () => {
     return this.props.chosenFoodObjects().map(food =>
       <div key={food.id}>
-        <Typography variant="h5" key={food.id}>{food.name}</Typography>
+        <Button
+          key={food.id}
+          onClick={(e) => this.props.handleRemoveFoodFromMenu(e.target.innerHTML)}>
+          {food.name}
+        </Button>
       </div>
     )
   }

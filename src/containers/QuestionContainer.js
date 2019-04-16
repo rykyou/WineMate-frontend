@@ -129,9 +129,16 @@ class QuestionContainer extends Component {
         [event.target.value]: event.target.checked
       }
     });
-
-    // const checkedFood = event.target.value
   };
+
+  handleRemoveFoodFromMenu = (foodName) => {
+    this.setState({
+      foodChecks: {
+        ...this.state.foodChecks,
+        [foodName]: false
+      }
+    });
+  }
 
   handlePrepChange = (prepName) => {
     let foodChecksCopy = {...this.state.foodChecks}
@@ -364,7 +371,10 @@ class QuestionContainer extends Component {
           >
             <Grid item sm={12} md={5}>
               <Paper className={classes.menuboard}>
-                <MenuBoard chosenFoodObjects={this.chosenFoodObjects} />
+                <MenuBoard
+                  chosenFoodObjects={this.chosenFoodObjects}
+                  handleRemoveFoodFromMenu={this.handleRemoveFoodFromMenu}
+                />
               </Paper>
             </Grid>
             <Grid item sm={12} md={7}>
