@@ -18,13 +18,13 @@ import background from '../images/question-background2.jpg';
 const styles = theme => ({
   root: {
     flexGrow: 1,
-    margin: '5vh'
+    margin: '5vh',
   },
   paper: {
     padding: '5vh',
     textAlign: 'center',
     color: theme.palette.text.secondary,
-    minHeight: '75vh'
+    height: '75vh'
   },
   menuboard: {
     minHeight: '50vh'

@@ -17,11 +17,15 @@ const styles = {
     marginLeft: -12,
     marginRight: 20,
   },
-  text: {
+  rightButton: {
     color: "#ffffff",
     fontFamily: 'Sriracha'
+  },
+  leftButton: {
+    color: "#ffffff",
+    fontFamily: 'Sriracha',
+    marginRight: '2vh'
   }
-
 };
 
 class HomeNavBar extends React.Component {
@@ -56,16 +60,14 @@ class HomeNavBar extends React.Component {
               height="30"
             />
           </Link>
-          {}
           <Typography variant="h6" className={classes.flex}>
           </Typography>
-          <Button className={classes.text} component={Link} to="/questionnaire">
+          <Button className={classes.leftButton} component={Link} to="/questionnaire">
             Find New Pairing
           </Button>
-          <Button className={classes.text} onClick={this.props.handleClickDialog}>
+          <Button className={classes.rightButton} onClick={this.props.handleClickDialog}>
             How it works
           </Button>
-
         </Toolbar>
       </AppBar>
     );

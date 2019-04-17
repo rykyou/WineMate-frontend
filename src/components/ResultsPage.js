@@ -13,9 +13,8 @@ const styles = theme => ({
     marginTop: '30vh',
   },
   formMiddle: {
-    height: '40vh',
-    marginLeft: '3vh',
-    paddingTop: '5vh'
+    marginTop: '3vh',
+    paddingBottom: '5vh',
   },
   newPairingButton: {
     height: '8vh',
@@ -25,9 +24,12 @@ const styles = theme => ({
     marginTop: '5vh',
     height: "25vh"
   },
+  text: {
+    fontFamily: 'Sriracha'
+  },
   h1: {
     color: theme.palette.primary.main,
-    fontFamily: 'Sriracha, cursive'
+    fontFamily: 'Sriracha, cursive',
   },
 });
 
@@ -72,25 +74,28 @@ class ResultsPage extends Component {
               <h2>Here's your perfect wine style match based on your menu...</h2>
             </Grid>
             <Grid className={classes.formMiddle}>
-              <Grid container spacing={24}>
-                <Grid item xs={4}>
-                  <Button
-                    component={Link}
-                    to={`/winestyles/${wineStyle.slug}`}
-                    size="large"
-                  >
+              <Button
+                component={Link}
+                to={`/winestyles/${wineStyle.slug}`}
+                size="large"
+                className={classes.formMiddle}
+              >
+                <Grid container spacing={8}>
+                  <Grid item xs={4}>
                     <img
                       src={require(`../images/${wineStyle.slug}.png`)}
                       alt={wineStyle.name}
                       className={classes.wineImage}
                     />
-                  </Button>
+                  </Grid>
+                  <Grid item xs={7}>
+                    <h1 className={classes.h1}>{wineStyle.name}</h1>
+                    <Typography variant="body1" className={classes.text}>
+                      {wineStyle.short_description}
+                    </Typography>
+                  </Grid>
                 </Grid>
-                <Grid item xs={7}>
-                  <h1 className={classes.h1}>{wineStyle.name}</h1>
-                  <h3>{wineStyle.short_description}</h3>
-                </Grid>
-              </Grid>
+              </Button>
             </Grid>
             <Button
               variant="contained"
