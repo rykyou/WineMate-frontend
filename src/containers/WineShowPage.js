@@ -23,6 +23,9 @@ const styles = theme => ({
   navigation: {
     marginTop: '3vh'
   },
+  h1: {
+    fontFamily: 'Sriracha, cursive'
+  },
   text: {
     textAlign: 'center',
     margin: '3vh'
@@ -64,7 +67,7 @@ class WineShowPage extends Component {
                 />
               </Grid>
 
-              <h1>{this.props.chosenWineStyleObj.name}</h1>
+              <h1 className={classes.h1}>{this.props.chosenWineStyleObj.name}</h1>
 
               <Grid className={classes.descriptionContainer} container spacing={24}>
                 <Grid item xs={6}>

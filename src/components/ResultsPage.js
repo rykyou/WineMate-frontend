@@ -12,21 +12,23 @@ const styles = theme => ({
   progress: {
     marginTop: '30vh',
   },
-  formTop: {
-    height: '5vh'
-  },
   formMiddle: {
     height: '40vh',
     marginLeft: '3vh',
     paddingTop: '5vh'
   },
   newPairingButton: {
-    color: theme.palette.secondary.dark,
+    height: '8vh',
+    width: '18vh'
   },
   wineImage: {
     marginTop: '5vh',
     height: "25vh"
-  }
+  },
+  h1: {
+    color: theme.palette.primary.main,
+    fontFamily: 'Sriracha, cursive'
+  },
 });
 
 class ResultsPage extends Component {
@@ -69,34 +71,31 @@ class ResultsPage extends Component {
             <Grid className={classes.formTop}>
               <h2>Here's your perfect wine style match based on your menu...</h2>
             </Grid>
-            <Grid className={classes.formTop}>
-              <h1>{wineStyle.name}</h1>
-            </Grid>
             <Grid className={classes.formMiddle}>
               <Grid container spacing={24}>
                 <Grid item xs={4}>
-                  <img
-                    src={require(`../images/${wineStyle.slug}.png`)}
-                    alt={wineStyle.name}
-                    className={classes.wineImage}
-                  />
-                </Grid>
-                <Grid item xs={7}>
-                  <h3>{wineStyle.short_description}</h3>
-                    <Button
+                  <Button
                     component={Link}
                     to={`/winestyles/${wineStyle.slug}`}
-                    variant="contained"
-                    className={classes.newPairingButton}
-                    >
-                    Click for more details
-                    </Button>
+                    size="large"
+                  >
+                    <img
+                      src={require(`../images/${wineStyle.slug}.png`)}
+                      alt={wineStyle.name}
+                      className={classes.wineImage}
+                    />
+                  </Button>
+                </Grid>
+                <Grid item xs={7}>
+                  <h1 className={classes.h1}>{wineStyle.name}</h1>
+                  <h3>{wineStyle.short_description}</h3>
                 </Grid>
               </Grid>
             </Grid>
             <Button
               variant="contained"
               color="secondary"
+              className={classes.newPairingButton}
               onClick={this.props.goBackToFirstQuestion}
             >
               Find New Pairing

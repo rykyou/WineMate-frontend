@@ -17,17 +17,16 @@ const styles = theme => ({
     marginBottom: '3vh',
   },
   container: {
-    overflow: 'auto',
+    overflow: 'scroll',
     display: 'flex',
     flexDirection: 'column',
     flexWrap: 'wrap',
     maxHeight: '70vh',
-    margin: '5%'
+    margin: '2vh',
+    alignItems: 'center'
   },
   button: {
-    margin: '1vh',
-    minWidth: '25%',
-    minHeight: '5vh'
+    fontFamily: 'Permanent Marker'
   }
 });
 
@@ -37,7 +36,8 @@ class MenuBoard extends Component {
     return this.props.chosenFoodObjects().map(food =>
       <Button
         key={food.id}
-        variant="contained"
+        color="primary"
+        size="large"
         className={this.props.classes.button}
         onClick={(e) => this.removeFoodFromMenu(e.target.innerHTML)}>
         {food.name}

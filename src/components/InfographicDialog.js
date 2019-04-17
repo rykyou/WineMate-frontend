@@ -17,6 +17,7 @@ const styles = theme => ({
   },
   flex: {
     flex: 1,
+    fontFamily: 'Sriracha'
   },
   dialogContent: {
     margin: '3vh'
@@ -24,6 +25,7 @@ const styles = theme => ({
   title: {
     marginBottom: '3vh',
     color: theme.palette.primary.main,
+    fontFamily: 'Sriracha'
   },
   image: {
     maxWidth: '100%'
@@ -31,6 +33,7 @@ const styles = theme => ({
   subTitle: {
     color: theme.palette.primary.main,
     margin: '1vh',
+    fontFamily: 'Sriracha'
   },
   textBottomMargin: {
     marginLeft: '3vh',
