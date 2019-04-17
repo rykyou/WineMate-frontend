@@ -32,7 +32,7 @@ const styles = theme => ({
     fontFamily: 'Sriracha',
   },
   errorMessage: {
-    margin: '40% 5% 10% 5%',
+    margin: '30% 5% 10% 5%',
     fontFamily: 'Sriracha'
   }
 });
@@ -74,38 +74,37 @@ class ResultsPage extends Component {
       <div className={classes.root}>
         {query === 'success' ? (
           <div>
-              {wineStyle !== null ? (
-                <Grid className={classes.formTop}>
-                  <h2>Here's your perfect wine style match based on your menu...</h2>
-                  <Grid className={classes.formMiddle}>
-                    <Button
-                      component={Link}
-                      to={`/winestyles/${wineStyle.slug}`}
-                      size="large"
-                      className={classes.formMiddle}
-                      >
-                      <Grid container spacing={8}>
-                        <Grid item xs={4}>
-                          <img
-                            src={require(`../images/${wineStyle.slug}.png`)}
-                            alt={wineStyle.name}
-                            className={classes.wineImage}
-                            />
-                        </Grid>
-                        <Grid item xs={7}>
-                          <h1 className={classes.h1}>{wineStyle.name}</h1>
-                          <Typography variant="body1" className={classes.text}>
-                            {wineStyle.short_description}
-                          </Typography>
-                        </Grid>
+            {wineStyle !== null ? (
+              <Grid className={classes.formTop}>
+                <h2>Here's your perfect wine style match based on your menu...</h2>
+                <Grid className={classes.formMiddle}>
+                  <Button
+                    component={Link}
+                    to={`/winestyles/${wineStyle.slug}`}
+                    size="large"
+                    className={classes.formMiddle}
+                    >
+                    <Grid container spacing={8}>
+                      <Grid item xs={4}>
+                        <img
+                          src={require(`../images/${wineStyle.slug}.png`)}
+                          alt={wineStyle.name}
+                          className={classes.wineImage}
+                          />
                       </Grid>
-                    </Button>
-                  </Grid>
+                      <Grid item xs={7}>
+                        <h1 className={classes.h1}>{wineStyle.name}</h1>
+                        <Typography variant="body1" className={classes.text}>
+                          {wineStyle.short_description}
+                        </Typography>
+                      </Grid>
+                    </Grid>
+                  </Button>
                 </Grid>
-              ) : (
-                <h2 className={classes.errorMessage}>Sorry, you have to pick at least one food item or prep method for us to match you up with a wine style!</h2>
-              )}
-
+              </Grid>
+            ) : (
+              <h2 className={classes.errorMessage}>Sorry, you have to pick at least one food item or prep method for us to match you up with a wine style!</h2>
+            )}
             <Button
               variant="contained"
               color="secondary"
