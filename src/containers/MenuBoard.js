@@ -1,129 +1,68 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Button, Grid, withStyles } from '@material-ui/core';
-import menuboard from '../images/menuboard.png';
+// import menuboard from '../images/menuboard.png';
 
 const styles = theme => ({
   paper: {
     padding: theme.spacing.unit * 2,
     color: theme.palette.text.secondary,
     minHeight: '80vh',
-    maxHeight: '70vh',
-    backgroundImage: 'url(' + menuboard + ')',
-    backgroundSize: 'contain',
+    maxHeight: '80vh',
     height: '100%',
-    backgroundRepeat: 'no-repeat no-repeat',
-    backgroundPosition: '100%'
-  },
-  center: {
-    marginLeft: '12vh',
-    marginTop: '6vh',
+    backgroundPosition: '100%',
     textAlign: 'center'
   },
   menuTop: {
     marginBottom: '3vh',
   },
-  innerMenu: {
-    minHeight: '15vh'
+  container: {
+    overflow: 'scroll',
+    display: 'flex',
+    flexDirection: 'column',
+    flexWrap: 'wrap',
+    maxHeight: '70vh',
+    margin: '2vh',
+    alignItems: 'center'
   },
+  button: {
+    fontFamily: 'Permanent Marker'
+  }
 });
 
 
 class MenuBoard extends Component {
-  chosenMeat = () => {
-    let meatObjects = this.props.chosenFoodObjects().filter(food => food.category === "Meat")
-    return meatObjects.map(meat =>
-      <div key={meat.id}>
-        <Button onClick={() => this.props.handleMenuItemClick(2)} key={meat.id}>{meat.name}</Button>
-      </div>
+  chosenFood = () => {
+    return this.props.chosenFoodObjects().map(food =>
+      <Button
+        key={food.id}
+        color="primary"
+        size="large"
+        className={this.props.classes.button}
+        onClick={(e) => this.removeFoodFromMenu(e.target.innerHTML)}>
+        {food.name}
+      </Button>
     )
   }
 
-  chosenSweet = () => {
-    const sweetObjects = this.props.chosenFoodObjects().filter(food => food.category === "Sweet")
-    return sweetObjects.map(sweet =>
-      <div key={sweet.id}>
-        <Button onClick={() => this.props.handleMenuItemClick(8)} key={sweet.id}>{sweet.name}</Button>
-      </div>
-    )
+  sanitizedFoodName = (textToChange) => {
+    return textToChange.split(' ').map(char => char === "&amp;" ? "&" : char).join(' ')
   }
 
-  chosenVeggie = () => {
-    const veggieObjects = this.props.chosenFoodObjects().filter(food => food.category === "Vegetable")
-    return veggieObjects.map(veggie =>
-      <div key={veggie.id}>
-        <Button onClick={() => this.props.handleMenuItemClick(3)} key={veggie.id}>{veggie.name}</Button>
-      </div>
-    )
+  removeFoodFromMenu = (text) => {
+    this.props.handleRemoveFoodFromMenu(this.sanitizedFoodName(text))
   }
-
-  chosenStarch = () => {
-    const starchObjects = this.props.chosenFoodObjects().filter(food => food.category === "Starch")
-    return starchObjects.map(starch =>
-      <div key={starch.id}>
-        <Button onClick={() => this.props.handleMenuItemClick(4)} key={starch.id}>{starch.name}</Button>
-      </div>
-    )
-  }
-
-  chosenDairy = () => {
-    const dairyObjects = this.props.chosenFoodObjects().filter(food => food.category === "Dairy")
-    return dairyObjects.map(dairy =>
-      <div key={dairy.id}>
-        <Button onClick={() => this.props.handleMenuItemClick(5)} key={dairy.id}>{dairy.name}</Button>
-      </div>
-    )
-  }
-
-  chosenHerb = () => {
-    const herbObjects = this.props.chosenFoodObjects().filter(food => food.category === "Herb & Spice")
-    return herbObjects.map(herb =>
-      <div key={herb.id}>
-        <Button onClick={() => this.props.handleMenuItemClick(6)} key={herb.id}>{herb.name}</Button>
-      </div>
-    )
-  }
-
-  chosenPrep = () => {
-    const prepObjects = this.props.chosenFoodObjects().filter(food => food.category === "Preparation")
-    return prepObjects.map(prep =>
-      <div key={prep.id}>
-        <Button onClick={() => this.props.handleMenuItemClick(7)} key={prep.id}>{prep.name}</Button>
-      </div>
-    )
-  }
-
 
   render() {
     const { classes } = this.props;
     return (
       <div className={classes.paper}>
-        <div className={classes.center}>
-          <Grid className={classes.menuTop}>
-            <h1>Menu Board</h1>
-          </Grid>
-          <Grid container spacing={24}>
-            <Grid className={classes.innerMenu} item xs={6}>
-              {this.chosenMeat()}
-              {this.chosenSweet()}
-            </Grid>
-            <Grid className={classes.innerMenu} item xs={6}>
-              {this.chosenVeggie()}
-            </Grid>
-            <Grid className={classes.innerMenu} item xs={6}>
-              {this.chosenStarch()}
-            </Grid>
-            <Grid className={classes.innerMenu} item xs={6}>
-              {this.chosenDairy()}
-            </Grid>
-            <Grid className={classes.innerMenu} item xs={6}>
-              {this.chosenHerb()}
-            </Grid>
-            <Grid className={classes.innerMenu} item xs={6}>
-              {this.chosenPrep()}
-            </Grid>
-          </Grid>
-        </div>
+        <Grid className={classes.menuTop}>
+          <h1>Menu Board</h1>
+        </Grid>
+        <Grid className={classes.container}>
+          {this.chosenFood()}
+        </Grid>
       </div>
     )
   }

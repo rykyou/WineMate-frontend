@@ -10,22 +10,30 @@ const styles = theme => ({
     alignItems: 'center',
   },
   progress: {
-    marginTop: '25vh',
-  },
-  formTop: {
-    height: '5vh'
+    marginTop: '30vh',
   },
   formMiddle: {
-    height: '40vh',
-    marginLeft: '3vh',
-    paddingTop: '5vh'
+    marginTop: '3vh',
+    paddingBottom: '5vh',
   },
   newPairingButton: {
-    color: theme.palette.secondary.dark,
+    height: '8vh',
+    width: '18vh'
   },
   wineImage: {
     marginTop: '5vh',
     height: "25vh"
+  },
+  text: {
+    fontFamily: 'Sriracha'
+  },
+  h1: {
+    color: theme.palette.primary.main,
+    fontFamily: 'Sriracha',
+  },
+  errorMessage: {
+    margin: '30% 5% 10% 5%',
+    fontFamily: 'Sriracha'
   }
 });
 
@@ -39,64 +47,68 @@ class ResultsPage extends Component {
       this.setState({
         query: 'success',
       });
-    }, 2500);
+    }, 2000);
   };
 
-  wineIdWithHighestScore = () => {
+  wineWithHighestScore = () => {
     let highestScore = 0;
-    let highestScoreWineId = 1;
+    let highestScoreWineId = 0;
     this.props.finalScoresArray().forEach(wineInfo => {
       if (wineInfo.finalScore > highestScore) {
         highestScoreWineId = wineInfo.wine_id;
         highestScore = wineInfo.finalScore;
       }
     })
-    return highestScoreWineId;
-  }
-
-  wineObjWithHighestScore = () => {
-    return this.props.allWineStyles.find(wineStyle => wineStyle.id === this.wineIdWithHighestScore())
+    if (highestScore === 0) {
+      return null
+    } else {
+      return this.props.allWineStyles.find(wineStyle => wineStyle.id === highestScoreWineId)
+    }
   }
 
   render() {
     const { classes } = this.props;
     const { query } = this.state;
-    const wineStyle = this.wineObjWithHighestScore()
+    const wineStyle = this.wineWithHighestScore()
     return (
       <div className={classes.root}>
         {query === 'success' ? (
           <div>
-            <Grid className={classes.formTop}>
-              <h2>Here's your perfect wine style match based on your menu...</h2>
-            </Grid>
-            <Grid className={classes.formTop}>
-              <h1>{wineStyle.name}</h1>
-            </Grid>
-            <Grid className={classes.formMiddle}>
-              <Grid container spacing={24}>
-                <Grid item xs={4}>
-                  <img
-                    src={require(`../images/${wineStyle.slug}.png`)}
-                    alt={wineStyle.name}
-                    className={classes.wineImage}
-                  />
-                </Grid>
-                <Grid item xs={7}>
-                  <h3>{wineStyle.short_description}</h3>
-                    <Button
+            {wineStyle !== null ? (
+              <Grid className={classes.formTop}>
+                <h2>Here's your perfect wine style match based on your menu...</h2>
+                <Grid className={classes.formMiddle}>
+                  <Button
                     component={Link}
                     to={`/winestyles/${wineStyle.slug}`}
-                    variant="contained"
-                    className={classes.newPairingButton}
+                    size="large"
+                    className={classes.formMiddle}
                     >
-                    Click for more details
-                    </Button>
+                    <Grid container spacing={8}>
+                      <Grid item xs={4}>
+                        <img
+                          src={require(`../images/${wineStyle.slug}.png`)}
+                          alt={wineStyle.name}
+                          className={classes.wineImage}
+                          />
+                      </Grid>
+                      <Grid item xs={7}>
+                        <h1 className={classes.h1}>{wineStyle.name}</h1>
+                        <Typography variant="body1" className={classes.text}>
+                          {wineStyle.short_description}
+                        </Typography>
+                      </Grid>
+                    </Grid>
+                  </Button>
                 </Grid>
               </Grid>
-            </Grid>
+            ) : (
+              <h2 className={classes.errorMessage}>Sorry, you have to pick at least one food item or prep method for us to match you up with a wine style!</h2>
+            )}
             <Button
               variant="contained"
               color="secondary"
+              className={classes.newPairingButton}
               onClick={this.props.goBackToFirstQuestion}
             >
               Find New Pairing

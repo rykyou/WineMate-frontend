@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import {AppBar, Button, Toolbar, Typography, withStyles} from '@material-ui/core';
-import mainLogo from '../images/winemate-logo.png';
+import mainLogo from '../images/logo.png';
 // IconButton, Menu, MenuItem,
 // import MenuIcon from '@material-ui/icons/Menu';
 // import AccountCircle from '@material-ui/icons/AccountCircle';
@@ -22,7 +22,8 @@ const styles = {
     marginRight: 20,
   },
   text: {
-    color: "#ffffff"
+    color: "#ffffff",
+    fontFamily: 'Sriracha'
   }
 
 };
@@ -58,7 +59,7 @@ class MenuAppBar extends React.Component {
             <img
               src={mainLogo}
               alt=""
-              height="70"
+              height="30"
             />
           </Link>
           <Typography variant="h6" className={classes.flex}>

@@ -12,23 +12,29 @@ import Question6 from '../components/Question6';
 import Question7 from '../components/Question7';
 import Question8 from '../components/Question8';
 import ResultsPage from '../components/ResultsPage';
+import QuestionStepper from '../components/QuestionStepper';
 import background from '../images/question-background2.jpg';
 
 const styles = theme => ({
   root: {
     flexGrow: 1,
-    margin: '5vh'
+    margin: '5vh',
   },
   paper: {
     padding: '5vh',
     textAlign: 'center',
     color: theme.palette.text.secondary,
-    minHeight: '70vh'
+    height: '75vh'
+  },
+  menuboard: {
+    minHeight: '50vh'
   },
   backgroundImage: {
     backgroundImage: 'url(' + background + ')',
     backgroundSize: 'cover',
-    height: '100%'
+    backgroundPosition: '100%',
+    height: '100%',
+    overflow: 'hidden',
   }
 });
 
@@ -123,9 +129,16 @@ class QuestionContainer extends Component {
         [event.target.value]: event.target.checked
       }
     });
-
-    // const checkedFood = event.target.value
   };
+
+  handleRemoveFoodFromMenu = (foodName) => {
+    this.setState({
+      foodChecks: {
+        ...this.state.foodChecks,
+        [foodName]: false
+      }
+    });
+  }
 
   handlePrepChange = (prepName) => {
     let foodChecksCopy = {...this.state.foodChecks}
@@ -357,13 +370,25 @@ class QuestionContainer extends Component {
             style={{ minHeight: '70vh' }}
           >
             <Grid item sm={12} md={5}>
-              <MenuBoard
-                chosenFoodObjects={this.chosenFoodObjects}
-                handleMenuItemClick={this.handleMenuItemClick}
-              />
+              <Paper className={classes.menuboard}>
+                <MenuBoard
+                  chosenFoodObjects={this.chosenFoodObjects}
+                  handleRemoveFoodFromMenu={this.handleRemoveFoodFromMenu}
+                />
+              </Paper>
             </Grid>
             <Grid item sm={12} md={7}>
-              <Paper className={classes.paper}>{this.questionComponentToRender()}</Paper>
+              <Paper className={classes.paper}>
+                {this.state.questionNum > 1 && this.state.questionNum < 8 ?
+                  <QuestionStepper
+                    questionNum={this.state.questionNum}
+                    handleMenuItemClick={this.handleMenuItemClick}
+                  />
+                :
+                  null
+                }
+                {this.questionComponentToRender()}
+              </Paper>
             </Grid>
           </Grid>
         </Grid>

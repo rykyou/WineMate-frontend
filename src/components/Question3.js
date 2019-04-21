@@ -6,10 +6,10 @@ import CheckBoxIcon from '@material-ui/icons/CheckBox';
 
 const styles = theme => ({
   formTop: {
-    height: '10vh'
+    height: '5vh'
   },
   formMiddle: {
-    height: '40vh',
+    height: '45vh',
     marginLeft: '5vh'
   },
   button: {
@@ -20,28 +20,9 @@ const styles = theme => ({
 });
 
 class Question3 extends Component {
-  firstVegetableCheckboxes = () => {
+  vegetableCheckboxes = (index1, index2) => {
     const veggieArr = this.props.allFood.filter(food => food.category === "Vegetable")
-    return veggieArr.slice(0, 6).map((veggie, index) => (
-      <FormControlLabel
-          key={veggie.id}
-          label={(veggie.examples) ? `${veggie.name} (${veggie.examples})` : `${veggie.name}`}
-          control={
-            <Checkbox
-              icon={<CheckBoxOutlineBlankIcon fontSize="large" />}
-              checkedIcon={<CheckBoxIcon fontSize="large" />}
-              checked={this.props.foodChecks[veggie.name]}
-              value={veggie.name}
-              onChange={(e) => this.props.handleCheckboxClick(e)}
-            />
-          }
-      />)
-    )
-  }
-
-  secondVegetableCheckboxes = () => {
-    const veggieArr = this.props.allFood.filter(food => food.category === "Vegetable")
-    return veggieArr.slice(6, 11).map((veggie, index) => (
+    return veggieArr.slice(index1, index2).map((veggie, index) => (
       <FormControlLabel
           key={veggie.id}
           label={(veggie.examples) ? `${veggie.name} (${veggie.examples})` : `${veggie.name}`}
@@ -68,12 +49,12 @@ class Question3 extends Component {
         <Grid container spacing={0} className={classes.formMiddle}>
           <Grid item xs={6}>
             <FormGroup>
-              {this.firstVegetableCheckboxes()}
+              {this.vegetableCheckboxes(0, 6)}
             </FormGroup>
           </Grid>
           <Grid item xs={6}>
             <FormGroup>
-              {this.secondVegetableCheckboxes()}
+              {this.vegetableCheckboxes(6, 11)}
             </FormGroup>
           </Grid>
         </Grid>

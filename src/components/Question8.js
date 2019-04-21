@@ -21,28 +21,9 @@ const styles = theme => ({
 });
 
 class Question8 extends Component {
-  firstDessertCheckboxes = () => {
+  dessertCheckboxes = (index1, index2) => {
     const dessertArr = this.props.allFood.filter(food => food.category === "Sweet")
-    return dessertArr.slice(0, 3).map((dessert, index) => (
-      <FormControlLabel
-          key={dessert.id}
-          label={(dessert.examples) ? `${dessert.name} (${dessert.examples})` : `${dessert.name}`}
-          control={
-            <Checkbox
-              icon={<CheckBoxOutlineBlankIcon fontSize="large" />}
-              checkedIcon={<CheckBoxIcon fontSize="large" />}
-              checked={this.props.foodChecks[dessert.name]}
-              value={dessert.name}
-              onChange={(e) => this.props.handleCheckboxClick(e)}
-            />
-          }
-      />)
-    )
-  }
-
-  secondDessertCheckboxes = () => {
-    const dessertArr = this.props.allFood.filter(food => food.category === "Sweet")
-    return dessertArr.slice(3, 6).map((dessert, index) => (
+    return dessertArr.slice(index1, index2).map((dessert, index) => (
       <FormControlLabel
           key={dessert.id}
           label={(dessert.examples) ? `${dessert.name} (${dessert.examples})` : `${dessert.name}`}
@@ -69,12 +50,12 @@ class Question8 extends Component {
         <Grid container spacing={0} className={classes.formMiddle}>
           <Grid item xs={6}>
             <FormGroup>
-              {this.firstDessertCheckboxes()}
+              {this.dessertCheckboxes(0, 3)}
             </FormGroup>
           </Grid>
           <Grid item xs={6}>
             <FormGroup>
-              {this.secondDessertCheckboxes()}
+              {this.dessertCheckboxes(3, 6)}
             </FormGroup>
           </Grid>
         </Grid>

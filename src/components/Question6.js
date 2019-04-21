@@ -6,10 +6,10 @@ import CheckBoxIcon from '@material-ui/icons/CheckBox';
 
 const styles = theme => ({
   formTop: {
-    height: '10vh'
+    height: '5vh'
   },
   formMiddle: {
-    height: '40vh',
+    height: '45vh',
     marginLeft: '5vh'
   },
   button: {
@@ -20,28 +20,9 @@ const styles = theme => ({
 });
 
 class Question6 extends Component {
-  firstHerbsCheckboxes = () => {
+  herbsCheckboxes = (index1, index2) => {
     const herbsArr = this.props.allFood.filter(food => food.category === "Herb & Spice")
-    return herbsArr.slice(0, 6).map((herb, index) => (
-      <FormControlLabel
-          key={herb.id}
-          label={(herb.examples) ? `${herb.name} (${herb.examples})` : `${herb.name}`}
-          control={
-            <Checkbox
-              icon={<CheckBoxOutlineBlankIcon fontSize="large" />}
-              checkedIcon={<CheckBoxIcon fontSize="large" />}
-              checked={this.props.foodChecks[herb.name]}
-              value={herb.name}
-              onChange={(e) => this.props.handleCheckboxClick(e)}
-            />
-          }
-      />)
-    )
-  }
-
-  secondHerbsCheckboxes = () => {
-    const herbsArr = this.props.allFood.filter(food => food.category === "Herb & Spice")
-    return herbsArr.slice(6, 12).map((herb, index) => (
+    return herbsArr.slice(index1, index2).map((herb, index) => (
       <FormControlLabel
           key={herb.id}
           label={(herb.examples) ? `${herb.name} (${herb.examples})` : `${herb.name}`}
@@ -68,12 +49,12 @@ class Question6 extends Component {
         <Grid container spacing={0} className={classes.formMiddle}>
           <Grid item xs={6}>
             <FormGroup>
-              {this.firstHerbsCheckboxes()}
+              {this.herbsCheckboxes(0, 6)}
             </FormGroup>
           </Grid>
           <Grid item xs={6}>
             <FormGroup>
-              {this.secondHerbsCheckboxes()}
+              {this.herbsCheckboxes(6, 12)}
             </FormGroup>
           </Grid>
         </Grid>

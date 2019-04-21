@@ -20,7 +20,8 @@ const styles = theme => ({
     text: {
       color: theme.palette.secondary.main,
       textAlign: 'center',
-      textSize: '20vh'
+      textSize: '20vh',
+      fontFamily: 'Sriracha'
     }
 });
 

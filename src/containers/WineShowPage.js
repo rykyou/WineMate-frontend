@@ -14,23 +14,24 @@ const styles = theme => ({
   wholePage: {
     margin: '2%'
   },
-  paperContainer: {
-    margin: '2vh'
-  },
   descriptionContainer: {
-    margin: '2% 10%'
+    margin: '2% 8%'
   },
   navigation: {
     marginTop: '3vh'
   },
+  h1: {
+    fontFamily: 'Sriracha, cursive'
+  },
   text: {
-    textAlign: 'center',
-    margin: '3vh'
+    textAlign: 'left',
+    margin: '5vh'
   },
   rightBottomPaper: {
     marginTop: '2vh',
     minHeight: "15vh",
-    // paddingTop: '1vh',
+    paddingTop: theme.spacing.unit * 2,
+    paddingBottom: theme.spacing.unit * 2,
   },
   martiniIcon: {
     maxWidth: '5vh',
@@ -63,18 +64,16 @@ class WineShowPage extends Component {
                   selectedWineStyle={this.props.selectedWineStyle}
                 />
               </Grid>
-
-              <h1>{this.props.chosenWineStyleObj.name}</h1>
-
+              <h1 className={classes.h1}>{this.props.chosenWineStyleObj.name}</h1>
               <Grid className={classes.descriptionContainer} container spacing={24}>
-                <Grid item xs={6}>
+                <Grid item sm={12}>
                   <Paper className={classes.root} elevation={1}>
                     <Typography className={classes.text} variant="h5" component="h5">
                       {this.props.chosenWineStyleObj.description}
                     </Typography>
                   </Paper>
                 </Grid>
-                <Grid item xs={6}>
+                <Grid item sm={12} md={6}>
                   <Paper className={classes.root} elevation={1}>
                     <Typography className={classes.text} variant="h5" component="h5">
                       <img src={require(`../images/star-icon.png`)}
@@ -102,17 +101,17 @@ class WineShowPage extends Component {
                       {this.props.chosenWineStyleObj.serving_temp}
                     </Typography>
                   </Paper>
-                  <Paper className={classes.rightBottomPaper} elevation={1}>
+                </Grid>
+                <Grid item sm={12} md={6}>
+                  <Paper className={classes.root} elevation={1}>
                     <Typography className={classes.text} variant="h5" component="h5">
                       Examples
                     </Typography>
-
-                    {this.props.chosenWineStyleObj.wines.map(wine => {return (
+                    {this.props.chosenWineStyleObj.wines.map(wine =>
                       <Typography className={classes.text} variant="body1" key={wine.name}>
                         {wine.name}
                       </Typography>
-                    )})}
-
+                    )}
                   </Paper>
                 </Grid>
               </Grid>
