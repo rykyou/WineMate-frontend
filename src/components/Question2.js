@@ -13,7 +13,7 @@ const styles = theme => ({
   },
   formMiddle: {
     height: '45vh',
-    marginLeft: '5vh'
+    marginLeft: '3vh'
   },
   button: {
     margin: '2vh',
@@ -23,9 +23,9 @@ const styles = theme => ({
 });
 
 class Question2 extends Component {
-  meatCheckboxes = () => {
+  meatCheckboxes = (index1, index2) => {
     const meatArr = this.props.allFood.filter(food => food.category === "Meat")
-    return meatArr.map((meat, index) => (
+    return meatArr.slice(index1, index2).map((meat, index) => (
       <FormControlLabel
           key={meat.id}
           label={`${meat.name} (${meat.examples})`}
@@ -49,10 +49,17 @@ class Question2 extends Component {
         <Grid className={classes.formTop}>
           <h1>Protein:</h1>
         </Grid>
-        <Grid className={classes.formMiddle}>
-          <FormGroup>
-            {this.meatCheckboxes()}
-          </FormGroup>
+        <Grid container spacing={0} className={classes.formMiddle}>
+          <Grid item xs={6}>
+            <FormGroup>
+              {this.meatCheckboxes(0, 4)}
+            </FormGroup>
+          </Grid>
+          <Grid item xs={6}>
+            <FormGroup>
+              {this.meatCheckboxes(4, 7)}
+            </FormGroup>
+          </Grid>
         </Grid>
         <Grid container justify="space-between">
           <Button
