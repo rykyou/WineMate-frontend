@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 import InfographicDialog from '../components/InfographicDialog';
 import HomePage from './HomePage';
+import Footer from '../components/Footer';
 import QuestionContainer from './QuestionContainer';
 import WineShowPage from './WineShowPage';
 
@@ -69,6 +70,8 @@ class App extends Component {
             selectedWineStyle={wineStyleSlugInUrl}
           />)}}
         />
+
+      <Footer />
 
       </div>
     );
