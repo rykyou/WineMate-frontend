@@ -21,13 +21,16 @@ const styles = theme => ({
     marginTop: '3vh'
   },
   h1: {
-    fontFamily: 'Sriracha, cursive'
+    marginTop: '5vh',
+    fontFamily: 'Sriracha, cursive',
+    textAlign: 'center'
   },
   text: {
-    textAlign: 'left',
+    textAlign: 'center',
     margin: '5vh'
   },
   rightBottomPaper: {
+    ...theme.mixins.gutters(),
     marginTop: '2vh',
     minHeight: "15vh",
     paddingTop: theme.spacing.unit * 2,
@@ -74,11 +77,7 @@ class WineShowPage extends Component {
                 </Grid>
                 <Grid item sm={12} md={6}>
                   <Paper className={classes.root} elevation={1}>
-                    <Typography className={classes.text} variant="h5" component="h5">
-                      <img src={require(`../images/star-icon.png`)}
-                        alt='star glass'
-                        className={classes.martiniIcon}
-                      />
+                    <Typography className={classes.h1} variant="h5" component="h5">
                       Food Pairing Affinities
                     </Typography>
                     <Typography className={classes.text} variant="h6" component="h6">
@@ -89,11 +88,7 @@ class WineShowPage extends Component {
                     </Typography>
                   </Paper>
                   <Paper className={classes.rightBottomPaper} elevation={1}>
-                    <Typography className={classes.text} variant="h5" component="h5">
-                      <img src={require(`../images/martini-icon.png`)}
-                        alt='martini glass'
-                        className={classes.martiniIcon}
-                      />
+                    <Typography className={classes.h1} variant="h5" component="h5">
                       Serving Temperature
                     </Typography>
                     <Typography className={classes.text} variant="h6" component="h6">
@@ -103,11 +98,11 @@ class WineShowPage extends Component {
                 </Grid>
                 <Grid item sm={12} md={6}>
                   <Paper className={classes.root} elevation={1}>
-                    <Typography className={classes.text} variant="h5" component="h5">
+                    <Typography className={classes.h1} variant="h5" component="h5">
                       Examples
                     </Typography>
                     {this.props.chosenWineStyleObj.wines.map(wine =>
-                      <Typography className={classes.text} variant="body1" key={wine.name}>
+                      <Typography className={classes.text} variant="h6" key={wine.name}>
                         {wine.name}
                       </Typography>
                     )}
