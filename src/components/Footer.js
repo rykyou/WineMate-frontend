@@ -15,7 +15,6 @@ const styles = {
   logoImg: {
     position: 'relative',
     marginLeft: '.5vh',
-    // paddingBottom: '3vh',
   },
 };
 
@@ -25,7 +24,13 @@ class Footer extends React.Component {
     return (
       <div className={classes.root}>
         <Typography variant="subtitle2">
-          Coded by Robin Kim ©2019 || Data Retrieved from and Inspired by
+          Coded by <a
+            href='https://github.com/rykyou'
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{textDecoration: 'none'}}
+          >Robin Kim
+          </a> ©2019 || Data Retrieved from and Inspired by
         </Typography>
         <a
           href='https://winefolly.com/hidden/the-9-major-wine-styles/'
