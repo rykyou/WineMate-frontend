@@ -112,7 +112,7 @@ class QuestionContainer extends Component {
   }
 
   getAllFood = () => {
-    fetch('https://winemate-api.herokuapp.com/foods')
+    fetch('https://winemate-api.herokuapp.com/api/v1/foods')
     .then(res => res.json())
     .then(data => {
       this.setState({
