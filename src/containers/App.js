@@ -18,7 +18,7 @@ class App extends Component {
   }
 
   getAllWineStyles = () => {
-    fetch('http://localhost:3000/api/v1/wine_styles')
+    fetch('https://winemate-api.herokuapp.com/wine_styles')
     .then(res => res.json())
     .then(data => {
       this.setState({
