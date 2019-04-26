@@ -360,7 +360,7 @@ class QuestionContainer extends Component {
   render() {
     const { classes } = this.props;
     return (
-      <div className={classes.backgroundImage}>
+      <div>
         <NavBar handleClickDialog={this.props.handleClickDialog}/>
         <Grid className={classes.root}>
           <Grid container

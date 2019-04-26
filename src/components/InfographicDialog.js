@@ -5,6 +5,7 @@ import {AppBar, Button, Dialog, DialogContent, Grid, IconButton,
 import CloseIcon from '@material-ui/icons/Close';
 import infographicImage from '../images/wine-folly-infographic.png';
 import LargerInfographicDialog from './LargerInfographicDialog';
+import winefollyLogo from '../images/winefolly-logo.png';
 // import redCircle from '../images/circle-red.png';
 // import purpleCircle from '../images/circle-purple.png';
 // import blueCircle from '../images/circle-blue.png';
@@ -38,6 +39,13 @@ const styles = theme => ({
   textBottomMargin: {
     marginLeft: '3vh',
     marginBottom: '3vh'
+  },
+  winefolly:{
+    flex: 1,
+    bottom: 0,
+    left: 0,
+    right: 0,
+    textAlign: 'center'
   },
   // circle: {
     // <div className={classes.circle} style={{backgroundImage: 'url(' + greenCircle + ')'}}>
@@ -138,6 +146,22 @@ class InfographicDialog extends React.Component {
                 <Typography variant="body1" className={classes.textBottomMargin}>
                   So what are you waiting for? The perfect wine style match for your dinner (lunch or breakfast - shhh we’ll keep it a secret) is only a quick survey away!
                 </Typography>
+                <Grid className={classes.winefolly}>
+                  <a
+                    href='https://winefolly.com/hidden/the-9-major-wine-styles/'
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <img
+                      src={winefollyLogo}
+                      alt="winefolly"
+                      height="50"
+                    />
+                  </a>
+                  <Typography variant="body1">
+                    Click to learn more
+                  </Typography>
+                </Grid>
               </Grid>
             </Grid>
           </DialogContent>

@@ -1,17 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Typography, withStyles } from '@material-ui/core/';
+import winefollyLogo from '../images/winefolly-logo.png';
 
 const styles = {
   root: {
-    flexGrow: 1,
+    display: 'flex',
     bottom: 0,
     left: 0,
     right: 0,
-    textAlign: 'center'
+    margin: '2%',
+    justifyContent: 'center'
   },
-  flex: {
-    flex: 1,
+  logoImg: {
+    position: 'relative',
+    marginLeft: '.5vh',
+    // paddingBottom: '3vh',
   },
 };
 
@@ -19,7 +23,23 @@ class Footer extends React.Component {
   render() {
     const { classes } = this.props;
     return (
-      <Typography className={classes.root} variant="subtitle1">Coded by Robin Kim.</Typography>
+      <div className={classes.root}>
+        <Typography variant="subtitle2">
+          Coded by Robin Kim ©2019 || Data Retrieved from and Inspired by
+        </Typography>
+        <a
+          href='https://winefolly.com/hidden/the-9-major-wine-styles/'
+          target="_blank"
+          rel="noopener noreferrer"
+          className={classes.logoImg}
+        >
+          <img
+          src={winefollyLogo}
+          alt="winefolly"
+          height="30"
+          />
+        </a>
+      </div>
     )
   }
 }
