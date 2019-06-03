@@ -19,19 +19,44 @@ const styles = theme => ({
   },
 });
 
-class Question4 extends Component {
-  starchCheckboxes = (index1, index2) => {
-    const starchArr = this.props.allFood.filter(food => food.category === "Starch")
-    return starchArr.slice(index1, index2).map((starch, index) => (
+class Question extends Component {
+
+  checkboxGrid = (category) => {
+    const foodArr = this.props.allFood.filter(food => food.category === this.props.questionCategory)
+    const midpoint = Math.round(foodArr.length/2)
+
+    if (midpoint > 3) {
+      const firstFoodArr = foodArr.slice(0, midpoint)
+      const secondFoodArr = foodArr.slice(midpoint)
+
+      return <React.Fragment>
+        <Grid item xs={6}>
+          <FormGroup>
+            {this.checkboxes(firstFoodArr)}
+          </FormGroup>
+        </Grid>
+        <Grid item xs={6}>
+          <FormGroup>
+            {this.checkboxes(secondFoodArr)}
+          </FormGroup>
+        </Grid>
+      </React.Fragment>
+    } else {
+      return <FormGroup>{this.checkboxes(foodArr)}</FormGroup>
+    }
+  }
+
+  checkboxes = (arr) => {
+    return arr.map((food, index) => (
       <FormControlLabel
-          key={starch.id}
-          label={(starch.examples) ? `${starch.name} (${starch.examples})` : `${starch.name}`}
+          key={food.id}
+          label={(food.examples) ? `${food.name} (${food.examples})` : `${food.name}`}
           control={
             <Checkbox
               icon={<CheckBoxOutlineBlankIcon fontSize="large" />}
               checkedIcon={<CheckBoxIcon fontSize="large" />}
-              checked={this.props.foodChecks[starch.name]}
-              value={starch.name}
+              checked={this.props.foodChecks[food.name]}
+              value={food.name}
               onChange={(e) => this.props.handleCheckboxClick(e)}
             />
           }
@@ -44,33 +69,24 @@ class Question4 extends Component {
     return (
       <div>
         <Grid className={classes.formTop}>
-          <h1>Starch:</h1>
+          <h1>{this.props.questionCategory}:</h1>
         </Grid>
         <Grid container spacing={0} className={classes.formMiddle}>
-          <Grid item xs={6}>
-            <FormGroup>
-              {this.starchCheckboxes(0, 4)}
-            </FormGroup>
-          </Grid>
-          <Grid item xs={6}>
-            <FormGroup>
-              {this.starchCheckboxes(4, 8)}
-            </FormGroup>
-          </Grid>
+          {this.checkboxGrid(this.props.questionCategory)}
         </Grid>
         <Grid container justify="space-between">
           <Button
             variant="contained"
             color="secondary"
             className={classes.button}
-            onClick={this.props.goToPreviousQuestion}>
+            onClick={() => this.props.changeQuestionNumber(this.props.questionNum - 1)}>
               Back
           </Button>
           <Button
             variant="contained"
             color="secondary"
             className={classes.button}
-            onClick={this.props.goToNextQuestion}>
+            onClick={() => this.props.changeQuestionNumber(this.props.questionNum + 1)}>
               Next
           </Button>
         </Grid>
@@ -79,8 +95,8 @@ class Question4 extends Component {
   }
 }
 
-Question4.propTypes = {
+Question.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(Question4);
+export default withStyles(styles)(Question);
