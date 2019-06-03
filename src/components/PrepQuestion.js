@@ -87,7 +87,7 @@ class PrepQuestion extends Component {
             variant="contained"
             color="secondary"
             className={classes.button}
-            onClick={this.props.goToPreviousQuestion}>
+            onClick={() => this.props.changeQuestionNumber(6)}>
               Back
           </Button>
           <Button

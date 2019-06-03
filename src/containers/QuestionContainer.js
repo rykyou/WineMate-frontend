@@ -5,12 +5,7 @@ import NavBar from '../components/NavBar';
 import MenuBoard from './MenuBoard';
 import StartingQuestion from '../components/StartingQuestion';
 import Question from '../components/Question';
-// import Question3 from '../components/Question3';
-// import Question4 from '../components/Question4';
-// import Question5 from '../components/Question5';
-// import Question6 from '../components/Question6';
 import PrepQuestion from '../components/PrepQuestion';
-// import Question8 from '../components/Question8';
 import ResultsPage from '../components/ResultsPage';
 import QuestionStepper from '../components/QuestionStepper';
 import background from '../images/question-background2.jpg';
@@ -123,51 +118,32 @@ class QuestionContainer extends Component {
   }
 
 
-  handleCheckboxClick = (event) => {
-    this.setState({
-      foodChecks: {
-        ...this.state.foodChecks,
-        [event.target.value]: event.target.checked
-      }
-    });
-  };
 
-  handleRemoveFoodFromMenu = (foodName) => {
-    this.setState({
-      foodChecks: {
-        ...this.state.foodChecks,
-        [foodName]: false
-      }
-    });
+  //////////  HANDLERS TO DIRECT TO CORRECT QUEST COMPONENT ///////////
+
+  changeQuestionNumber = (num) => {
+    if (num === 1 || (this.state.questionNum === 8 && num < 8)) {
+      //hitting "Back" from either "Meat" Question(2) OR "Sweets" Question(8) will direct to StartingQuestion
+      this.goBackToFirstQuestion()
+    } else if (this.state.questionNum > 6 && num > 7) {
+      //hitting "Next" button on either PrepQuestion(7) or Sweets Question(8) will direct to ResultsPage(9)
+      this.setState({
+        questionNum: 9,
+        questionCategory: null
+      })
+      this.compileWineScores()
+    } else {
+      this.setState({
+        questionNum: num,
+        questionCategory: this.categoryVariable(num)
+      })
+    }
   }
 
-  handlePrepChange = (prepName) => {
-    let foodChecksCopy = {...this.state.foodChecks}
-    foodChecksCopy["Grilled or Barbecued"] = false
-    foodChecksCopy["Sautéed or Fried"] = false
-    foodChecksCopy["Smoked"] = false
-    foodChecksCopy["Roasted"] = false
-    foodChecksCopy["Poached or Steamed"] = false
-
-    this.setState({
-      foodChecks: {
-        ...foodChecksCopy,
-        [prepName]: true
-      }
-    })
+  categoryVariable = (num) => {
+    const categoryObj = {2: "Meat", 3: "Vegetable", 4: "Starch", 5: "Dairy", 6: "Herb & Spice", 7: "Preparation", 8: "Sweet"}
+    return categoryObj[num]
   }
-
-  // goToNextQuestion = () => {
-  //   this.setState({
-  //     questionNum: this.state.questionNum + 1
-  //   })
-  // }
-
-  // goToPreviousQuestion = () => {
-  //   this.setState({
-  //     questionNum: this.state.questionNum - 1
-  //   })
-  // }
 
   goBackToFirstQuestion = () => {
     let resetFoodChecks = {};
@@ -188,18 +164,65 @@ class QuestionContainer extends Component {
     })
   }
 
-  // skipToDessertQuestion = () => {
-  //   this.setState({
-  //     questionNum: 8
-  //   })
-  // }
+  questionComponentToRender() {
+    if (this.state.questionNum === 1) {
+      return <StartingQuestion
+        changeQuestionNumber={this.changeQuestionNumber}
+        />
+    } else if (this.state.questionNum === 7) {
+      return <PrepQuestion
+        questionNum={this.state.questionNum}
+        questionCategory={this.state.questionCategory}
+        allFood={this.state.allFood}
+        handlePrepChange={this.handlePrepChange}
+        changeQuestionNumber={this.changeQuestionNumber}
+        />
+    } else if (this.state.questionNum === 9) {
+      return <ResultsPage
+        allWineStyles={this.props.allWineStyles}
+        finalScoresArray={this.finalScoresArray}
+        goBackToFirstQuestion={this.goBackToFirstQuestion}
+        />
+    } else {
+      return <Question
+        questionNum={this.state.questionNum}
+        questionCategory={this.state.questionCategory}
+        allFood={this.state.allFood}
+        foodChecks={this.state.foodChecks}
+        handleCheckboxClick={this.handleCheckboxClick}
+        changeQuestionNumber={this.changeQuestionNumber}
+        />
+    }
+  }
+  /////////////////////////////////////////////////////////////////
 
-  // goToResultsPage = () => {
-  //   this.compileWineScores()
-  //   this.setState({
-  //     questionNum: 9
-  //   })
-  // }
+
+
+  //////////////////////  HANDLING CHOSEN FOODS  /////////////////////
+  handleCheckboxClick = (event) => {
+    this.setState({
+      foodChecks: {
+        ...this.state.foodChecks,
+        [event.target.value]: event.target.checked
+      }
+    });
+  };
+
+  handlePrepChange = (prepName) => {
+    let foodChecksCopy = {...this.state.foodChecks}
+    foodChecksCopy["Grilled or Barbecued"] = false
+    foodChecksCopy["Sautéed or Fried"] = false
+    foodChecksCopy["Smoked"] = false
+    foodChecksCopy["Roasted"] = false
+    foodChecksCopy["Poached or Steamed"] = false
+
+    this.setState({
+      foodChecks: {
+        ...foodChecksCopy,
+        [prepName]: true
+      }
+    })
+  }
 
   handleMenuItemClick = (num) => {
     this.setState({
@@ -208,30 +231,15 @@ class QuestionContainer extends Component {
     })
   }
 
-  categoryVariable = (num) => {
-    const categoryObj = {2: "Meat", 3: "Vegetable", 4: "Starch", 5: "Dairy", 6: "Herb & Spice", 7: "Preparation", 8: "Sweet"}
-    return categoryObj[num]
+  handleRemoveFoodFromMenu = (foodName) => {
+    this.setState({
+      foodChecks: {
+        ...this.state.foodChecks,
+        [foodName]: false
+      }
+    });
   }
 
-  // !!!! CHANGES !!!!
-  changeQuestionNumber = (num) => {
-    if (num === 1) {
-      this.goBackToFirstQuestion()
-    } else if (this.state.questionCategory === "Preparation" || this.state.questionCategory === "Sweet") {
-      this.setState({
-        questionNum: 9,
-        questionCategory: null
-      })
-      this.compileWineScores()
-    } else {
-      this.setState({
-        questionNum: num,
-        questionCategory: this.categoryVariable(num)
-      })
-    }
-  }
-
-  // chosenFoods = ["Poultry"]
   chosenFoodNames = () => {
     let foodNames = [];
     for (const key in this.state.foodChecks) {
@@ -249,7 +257,11 @@ class QuestionContainer extends Component {
     })
     return chosenFoodObjects
   }
+  ////////////////////////////////////////////////////////////
 
+
+
+  ////////////////////  COMPILING WINE SCORES  /////////////////////
   compileWineScores = () => {
     let updatedBoldRedScore = this.state.boldRedScore
     let updatedMediumRedScore = this.state.mediumRedScore
@@ -287,127 +299,19 @@ class QuestionContainer extends Component {
   }
 
   finalScoresArray = () => {
-    let finalScoresArr = [];
-    const boldRedScore = this.state.boldRedScore;
-    finalScoresArr.push({wine_id: 1, finalScore: boldRedScore})
-    const mediumRedScore = this.state.mediumRedScore;
-    finalScoresArr.push({wine_id: 2, finalScore: mediumRedScore})
-    const lightRedScore = this.state.lightRedScore;
-    finalScoresArr.push({wine_id: 3, finalScore: lightRedScore})
-    const roseScore = this.state.roseScore;
-    finalScoresArr.push({wine_id: 4, finalScore: roseScore})
-    const richWhiteScore = this.state.richWhiteScore;
-    finalScoresArr.push({wine_id: 5, finalScore: richWhiteScore})
-    const lightWhiteScore = this.state.lightWhiteScore;
-    finalScoresArr.push({wine_id: 6, finalScore: lightWhiteScore})
-    const sparklingScore = this.state.sparklingScore;
-    finalScoresArr.push({wine_id: 7, finalScore: sparklingScore})
-    const sweetWhiteScore = this.state.sweetWhiteScore;
-    finalScoresArr.push({wine_id: 8, finalScore: sweetWhiteScore})
-    const dessertScore = this.state.dessertScore;
-    finalScoresArr.push({wine_id: 9, finalScore: dessertScore})
-    return finalScoresArr
+    return [
+      {wine_id: 1, finalScore: this.state.boldRedScore},
+      {wine_id: 2, finalScore: this.state.mediumRedScore},
+      {wine_id: 3, finalScore: this.state.lightRedScore},
+      {wine_id: 4, finalScore: this.state.roseScore},
+      {wine_id: 5, finalScore: this.state.richWhiteScore},
+      {wine_id: 6, finalScore: this.state.lightWhiteScore},
+      {wine_id: 7, finalScore: this.state.sparklingScore},
+      {wine_id: 8, finalScore: this.state.sweetWhiteScore},
+      {wine_id: 9, finalScore: this.state.dessertScore}
+    ]
   }
-
-
-  questionComponentToRender() {
-    if (this.state.questionNum === 1) {
-      return <StartingQuestion
-        changeQuestionNumber={this.changeQuestionNumber}
-        />
-    } else if (this.state.questionNum === 7) {
-      return <PrepQuestion
-        questionNum={this.state.questionNum}
-        questionCategory={this.state.questionCategory}
-        allFood={this.state.allFood}
-        handlePrepChange={this.handlePrepChange}
-        changeQuestionNumber={this.changeQuestionNumber}
-        />
-    } else if (this.state.questionNum === 9) {
-      return <ResultsPage
-        allWineStyles={this.props.allWineStyles}
-        finalScoresArray={this.finalScoresArray}
-        goBackToFirstQuestion={this.goBackToFirstQuestion}
-        />
-    } else {
-      return <Question
-        questionNum={this.state.questionNum}
-        questionCategory={this.state.questionCategory}
-        allFood={this.state.allFood}
-        foodChecks={this.state.foodChecks}
-        handleCheckboxClick={this.handleCheckboxClick}
-        changeQuestionNumber={this.changeQuestionNumber}
-        />
-    }
-    // switch(this.state.questionNum) {
-    //   case 1:
-    //     return <Question1
-    //       changeQuestionNumber={this.changeQuestionNumber}
-    //       />
-    //   case 2:
-    //     return <Question2
-    //       allFood={this.state.allFood}
-    //       foodChecks={this.state.foodChecks}
-    //       handleCheckboxClick={this.handleCheckboxClick}
-    //       goBackToFirstQuestion={this.goBackToFirstQuestion}
-    //       goToNextQuestion={this.goToNextQuestion}
-    //       />
-    //   case 3:
-    //     return <Question3
-    //       allFood={this.state.allFood}
-    //       foodChecks={this.state.foodChecks}
-    //       handleCheckboxClick={this.handleCheckboxClick}
-    //       goToPreviousQuestion={this.goToPreviousQuestion}
-    //       goToNextQuestion={this.goToNextQuestion}
-    //       />
-    //   case 4:
-    //     return <Question4
-    //       allFood={this.state.allFood}
-    //       foodChecks={this.state.foodChecks}
-    //       handleCheckboxClick={this.handleCheckboxClick}
-    //       goToPreviousQuestion={this.goToPreviousQuestion}
-    //       goToNextQuestion={this.goToNextQuestion}
-    //       />
-    //   case 5:
-    //     return <Question5
-    //       allFood={this.state.allFood}
-    //       foodChecks={this.state.foodChecks}
-    //       handleCheckboxClick={this.handleCheckboxClick}
-    //       goToPreviousQuestion={this.goToPreviousQuestion}
-    //       goToNextQuestion={this.goToNextQuestion}
-    //       />
-    //   case 6:
-    //     return <Question6
-    //       allFood={this.state.allFood}
-    //       foodChecks={this.state.foodChecks}
-    //       handleCheckboxClick={this.handleCheckboxClick}
-    //       goToPreviousQuestion={this.goToPreviousQuestion}
-    //       goToNextQuestion={this.goToNextQuestion}
-    //       />
-    //   case 7:
-    //     return <Question7
-    //       allFood={this.state.allFood}
-    //       handlePrepChange={this.handlePrepChange}
-    //       goToPreviousQuestion={this.goToPreviousQuestion}
-    //       goToResultsPage={this.goToResultsPage}
-    //       />
-    //   case 8:
-    //     return <Question8
-    //       allFood={this.state.allFood}
-    //       foodChecks={this.state.foodChecks}
-    //       handleCheckboxClick={this.handleCheckboxClick}
-    //       goBackToFirstQuestion={this.goBackToFirstQuestion}
-    //       goToResultsPage={this.goToResultsPage}
-    //       />
-    //   case 9:
-    //     return <ResultsPage
-    //       allWineStyles={this.props.allWineStyles}
-    //       finalScoresArray={this.finalScoresArray}
-    //       goBackToFirstQuestion={this.goBackToFirstQuestion}
-    //       />
-    //   default:
-    // }
-  }
+  ///////////////////////////////////////////////////////////////
 
   render() {
     const { classes } = this.props;

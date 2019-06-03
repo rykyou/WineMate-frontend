@@ -21,9 +21,32 @@ const styles = theme => ({
 
 class Question extends Component {
 
-  checkboxes = (category) => {
-    const arr = this.props.allFood.filter(food => food.category === this.props.questionCategory)
-    // return arr.slice(index1, index2).map((veggie, index) => (
+  checkboxGrid = (category) => {
+    const foodArr = this.props.allFood.filter(food => food.category === this.props.questionCategory)
+    const midpoint = Math.round(foodArr.length/2)
+
+    if (midpoint > 3) {
+      const firstFoodArr = foodArr.slice(0, midpoint)
+      const secondFoodArr = foodArr.slice(midpoint)
+
+      return <React.Fragment>
+        <Grid item xs={6}>
+          <FormGroup>
+            {this.checkboxes(firstFoodArr)}
+          </FormGroup>
+        </Grid>
+        <Grid item xs={6}>
+          <FormGroup>
+            {this.checkboxes(secondFoodArr)}
+          </FormGroup>
+        </Grid>
+      </React.Fragment>
+    } else {
+      return <FormGroup>{this.checkboxes(foodArr)}</FormGroup>
+    }
+  }
+
+  checkboxes = (arr) => {
     return arr.map((food, index) => (
       <FormControlLabel
           key={food.id}
@@ -49,16 +72,7 @@ class Question extends Component {
           <h1>{this.props.questionCategory}:</h1>
         </Grid>
         <Grid container spacing={0} className={classes.formMiddle}>
-          <Grid item xs={6}>
-            <FormGroup>
-              {this.checkboxes(this.props.questionCategory)}
-            </FormGroup>
-          </Grid>
-          <Grid item xs={6}>
-            <FormGroup>
-              {this.checkboxes(this.props.questionCategory)}
-            </FormGroup>
-          </Grid>
+          {this.checkboxGrid(this.props.questionCategory)}
         </Grid>
         <Grid container justify="space-between">
           <Button
