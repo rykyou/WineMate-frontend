@@ -25,7 +25,7 @@ class Question extends Component {
     const foodArr = this.props.allFood.filter(food => food.category === this.props.questionCategory)
     const midpoint = Math.round(foodArr.length/2)
 
-    if (midpoint > 3) {
+    if (midpoint > 2) {
       const firstFoodArr = foodArr.slice(0, midpoint)
       const secondFoodArr = foodArr.slice(midpoint)
 

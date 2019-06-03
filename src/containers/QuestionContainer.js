@@ -123,7 +123,7 @@ class QuestionContainer extends Component {
 
   changeQuestionNumber = (num) => {
     if (num === 1 || (this.state.questionNum === 8 && num < 8)) {
-      //hitting "Back" from either "Meat" Question(2) OR "Sweets" Question(8) will direct to StartingQuestion
+      //hitting "Back" from either "Meat" Question(2) OR "Sweets" Question(8) will direct to StartingQuestion(1)
       this.goBackToFirstQuestion()
     } else if (this.state.questionNum > 6 && num > 7) {
       //hitting "Next" button on either PrepQuestion(7) or Sweets Question(8) will direct to ResultsPage(9)
