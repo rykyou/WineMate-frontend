@@ -26,7 +26,7 @@ const styles = theme => ({
   },
 });
 
-class Question7 extends Component {
+class PrepQuestion extends Component {
   state = {
     prepMethod: '',
     labelWidth: 0,
@@ -94,7 +94,7 @@ class Question7 extends Component {
             variant="contained"
             color="secondary"
             className={classes.button}
-            onClick={this.props.goToResultsPage}>
+            onClick={() => this.props.changeQuestionNumber(this.props.questionNum + 1)}>
               Find My Pairing!
           </Button>
         </Grid>
@@ -103,8 +103,8 @@ class Question7 extends Component {
   }
 }
 
-Question7.propTypes = {
+PrepQuestion.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(Question7);
+export default withStyles(styles)(PrepQuestion);

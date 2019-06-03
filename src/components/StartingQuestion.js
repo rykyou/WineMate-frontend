@@ -20,7 +20,7 @@ const styles = theme => ({
   }
 });
 
-class Question1 extends Component {
+class StartingQuestion extends Component {
   render() {
     const { classes } = this.props;
     return (
@@ -34,7 +34,7 @@ class Question1 extends Component {
               variant="contained"
               color="secondary"
               className={classes.button}
-              onClick={this.props.skipToDessertQuestion}>
+              onClick={() => this.props.changeQuestionNumber(8)}>
                 Something Sweet <br/>
                 (This will be a short one!)
             </Button>
@@ -44,7 +44,7 @@ class Question1 extends Component {
               variant="contained"
               color="secondary"
               className={classes.button}
-              onClick={this.props.goToNextQuestion}>
+              onClick={() => this.props.changeQuestionNumber(2)}>
                 Something Savory
             </Button>
           </Grid>
@@ -54,8 +54,8 @@ class Question1 extends Component {
   }
 }
 
-Question1.propTypes = {
+StartingQuestion.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(Question1);
+export default withStyles(styles)(StartingQuestion);

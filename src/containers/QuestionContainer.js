@@ -3,14 +3,14 @@ import PropTypes from 'prop-types';
 import { Grid, Paper, withStyles } from '@material-ui/core';
 import NavBar from '../components/NavBar';
 import MenuBoard from './MenuBoard';
-import Question1 from '../components/Question1';
-import Question2 from '../components/Question2';
-import Question3 from '../components/Question3';
-import Question4 from '../components/Question4';
-import Question5 from '../components/Question5';
-import Question6 from '../components/Question6';
-import Question7 from '../components/Question7';
-import Question8 from '../components/Question8';
+import StartingQuestion from '../components/StartingQuestion';
+import Question from '../components/Question';
+// import Question3 from '../components/Question3';
+// import Question4 from '../components/Question4';
+// import Question5 from '../components/Question5';
+// import Question6 from '../components/Question6';
+import PrepQuestion from '../components/PrepQuestion';
+// import Question8 from '../components/Question8';
 import ResultsPage from '../components/ResultsPage';
 import QuestionStepper from '../components/QuestionStepper';
 import background from '../images/question-background2.jpg';
@@ -42,6 +42,7 @@ class QuestionContainer extends Component {
   state = {
     allFood: [],
     questionNum: 1,
+    questionCategory: null,
     boldRedScore: 0,
     mediumRedScore: 0,
     lightRedScore: 0,
@@ -156,17 +157,17 @@ class QuestionContainer extends Component {
     })
   }
 
-  goToNextQuestion = () => {
-    this.setState({
-      questionNum: this.state.questionNum + 1
-    })
-  }
+  // goToNextQuestion = () => {
+  //   this.setState({
+  //     questionNum: this.state.questionNum + 1
+  //   })
+  // }
 
-  goToPreviousQuestion = () => {
-    this.setState({
-      questionNum: this.state.questionNum - 1
-    })
-  }
+  // goToPreviousQuestion = () => {
+  //   this.setState({
+  //     questionNum: this.state.questionNum - 1
+  //   })
+  // }
 
   goBackToFirstQuestion = () => {
     let resetFoodChecks = {};
@@ -187,23 +188,47 @@ class QuestionContainer extends Component {
     })
   }
 
-  skipToDessertQuestion = () => {
-    this.setState({
-      questionNum: 8
-    })
-  }
+  // skipToDessertQuestion = () => {
+  //   this.setState({
+  //     questionNum: 8
+  //   })
+  // }
 
-  goToResultsPage = () => {
-    this.compileWineScores()
-    this.setState({
-      questionNum: 9
-    })
-  }
+  // goToResultsPage = () => {
+  //   this.compileWineScores()
+  //   this.setState({
+  //     questionNum: 9
+  //   })
+  // }
 
   handleMenuItemClick = (num) => {
     this.setState({
-      questionNum: num
+      questionNum: num,
+      questionCategory: this.categoryVariable(num)
     })
+  }
+
+  categoryVariable = (num) => {
+    const categoryObj = {2: "Meat", 3: "Vegetable", 4: "Starch", 5: "Dairy", 6: "Herb & Spice", 7: "Preparation", 8: "Sweet"}
+    return categoryObj[num]
+  }
+
+  // !!!! CHANGES !!!!
+  changeQuestionNumber = (num) => {
+    if (num === 1) {
+      this.goBackToFirstQuestion()
+    } else if (this.state.questionCategory === "Preparation" || this.state.questionCategory === "Sweet") {
+      this.setState({
+        questionNum: 9,
+        questionCategory: null
+      })
+      this.compileWineScores()
+    } else {
+      this.setState({
+        questionNum: num,
+        questionCategory: this.categoryVariable(num)
+      })
+    }
   }
 
   // chosenFoods = ["Poultry"]
@@ -286,75 +311,102 @@ class QuestionContainer extends Component {
 
 
   questionComponentToRender() {
-    switch(this.state.questionNum) {
-      case 1:
-        return <Question1
-          skipToDessertQuestion={this.skipToDessertQuestion}
-          goToNextQuestion={this.goToNextQuestion}
-          />
-      case 2:
-        return <Question2
-          allFood={this.state.allFood}
-          foodChecks={this.state.foodChecks}
-          handleCheckboxClick={this.handleCheckboxClick}
-          goBackToFirstQuestion={this.goBackToFirstQuestion}
-          goToNextQuestion={this.goToNextQuestion}
-          />
-      case 3:
-        return <Question3
-          allFood={this.state.allFood}
-          foodChecks={this.state.foodChecks}
-          handleCheckboxClick={this.handleCheckboxClick}
-          goToPreviousQuestion={this.goToPreviousQuestion}
-          goToNextQuestion={this.goToNextQuestion}
-          />
-      case 4:
-        return <Question4
-          allFood={this.state.allFood}
-          foodChecks={this.state.foodChecks}
-          handleCheckboxClick={this.handleCheckboxClick}
-          goToPreviousQuestion={this.goToPreviousQuestion}
-          goToNextQuestion={this.goToNextQuestion}
-          />
-      case 5:
-        return <Question5
-          allFood={this.state.allFood}
-          foodChecks={this.state.foodChecks}
-          handleCheckboxClick={this.handleCheckboxClick}
-          goToPreviousQuestion={this.goToPreviousQuestion}
-          goToNextQuestion={this.goToNextQuestion}
-          />
-      case 6:
-        return <Question6
-          allFood={this.state.allFood}
-          foodChecks={this.state.foodChecks}
-          handleCheckboxClick={this.handleCheckboxClick}
-          goToPreviousQuestion={this.goToPreviousQuestion}
-          goToNextQuestion={this.goToNextQuestion}
-          />
-      case 7:
-        return <Question7
-          allFood={this.state.allFood}
-          handlePrepChange={this.handlePrepChange}
-          goToPreviousQuestion={this.goToPreviousQuestion}
-          goToResultsPage={this.goToResultsPage}
-          />
-      case 8:
-        return <Question8
-          allFood={this.state.allFood}
-          foodChecks={this.state.foodChecks}
-          handleCheckboxClick={this.handleCheckboxClick}
-          goBackToFirstQuestion={this.goBackToFirstQuestion}
-          goToResultsPage={this.goToResultsPage}
-          />
-      case 9:
-        return <ResultsPage
-          allWineStyles={this.props.allWineStyles}
-          finalScoresArray={this.finalScoresArray}
-          goBackToFirstQuestion={this.goBackToFirstQuestion}
-          />
-      default:
+    if (this.state.questionNum === 1) {
+      return <StartingQuestion
+        changeQuestionNumber={this.changeQuestionNumber}
+        />
+    } else if (this.state.questionNum === 7) {
+      return <PrepQuestion
+        questionNum={this.state.questionNum}
+        questionCategory={this.state.questionCategory}
+        allFood={this.state.allFood}
+        handlePrepChange={this.handlePrepChange}
+        changeQuestionNumber={this.changeQuestionNumber}
+        />
+    } else if (this.state.questionNum === 9) {
+      return <ResultsPage
+        allWineStyles={this.props.allWineStyles}
+        finalScoresArray={this.finalScoresArray}
+        goBackToFirstQuestion={this.goBackToFirstQuestion}
+        />
+    } else {
+      return <Question
+        questionNum={this.state.questionNum}
+        questionCategory={this.state.questionCategory}
+        allFood={this.state.allFood}
+        foodChecks={this.state.foodChecks}
+        handleCheckboxClick={this.handleCheckboxClick}
+        changeQuestionNumber={this.changeQuestionNumber}
+        />
     }
+    // switch(this.state.questionNum) {
+    //   case 1:
+    //     return <Question1
+    //       changeQuestionNumber={this.changeQuestionNumber}
+    //       />
+    //   case 2:
+    //     return <Question2
+    //       allFood={this.state.allFood}
+    //       foodChecks={this.state.foodChecks}
+    //       handleCheckboxClick={this.handleCheckboxClick}
+    //       goBackToFirstQuestion={this.goBackToFirstQuestion}
+    //       goToNextQuestion={this.goToNextQuestion}
+    //       />
+    //   case 3:
+    //     return <Question3
+    //       allFood={this.state.allFood}
+    //       foodChecks={this.state.foodChecks}
+    //       handleCheckboxClick={this.handleCheckboxClick}
+    //       goToPreviousQuestion={this.goToPreviousQuestion}
+    //       goToNextQuestion={this.goToNextQuestion}
+    //       />
+    //   case 4:
+    //     return <Question4
+    //       allFood={this.state.allFood}
+    //       foodChecks={this.state.foodChecks}
+    //       handleCheckboxClick={this.handleCheckboxClick}
+    //       goToPreviousQuestion={this.goToPreviousQuestion}
+    //       goToNextQuestion={this.goToNextQuestion}
+    //       />
+    //   case 5:
+    //     return <Question5
+    //       allFood={this.state.allFood}
+    //       foodChecks={this.state.foodChecks}
+    //       handleCheckboxClick={this.handleCheckboxClick}
+    //       goToPreviousQuestion={this.goToPreviousQuestion}
+    //       goToNextQuestion={this.goToNextQuestion}
+    //       />
+    //   case 6:
+    //     return <Question6
+    //       allFood={this.state.allFood}
+    //       foodChecks={this.state.foodChecks}
+    //       handleCheckboxClick={this.handleCheckboxClick}
+    //       goToPreviousQuestion={this.goToPreviousQuestion}
+    //       goToNextQuestion={this.goToNextQuestion}
+    //       />
+    //   case 7:
+    //     return <Question7
+    //       allFood={this.state.allFood}
+    //       handlePrepChange={this.handlePrepChange}
+    //       goToPreviousQuestion={this.goToPreviousQuestion}
+    //       goToResultsPage={this.goToResultsPage}
+    //       />
+    //   case 8:
+    //     return <Question8
+    //       allFood={this.state.allFood}
+    //       foodChecks={this.state.foodChecks}
+    //       handleCheckboxClick={this.handleCheckboxClick}
+    //       goBackToFirstQuestion={this.goBackToFirstQuestion}
+    //       goToResultsPage={this.goToResultsPage}
+    //       />
+    //   case 9:
+    //     return <ResultsPage
+    //       allWineStyles={this.props.allWineStyles}
+    //       finalScoresArray={this.finalScoresArray}
+    //       goBackToFirstQuestion={this.goBackToFirstQuestion}
+    //       />
+    //   default:
+    // }
   }
 
   render() {

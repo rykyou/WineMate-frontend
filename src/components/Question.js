@@ -5,36 +5,35 @@ import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
 import CheckBoxIcon from '@material-ui/icons/CheckBox';
 
 const styles = theme => ({
-  root: {
-    flexGrow: 1,
-  },
   formTop: {
     height: '5vh'
   },
   formMiddle: {
     height: '45vh',
-    marginLeft: '3vh'
+    marginLeft: '5vh'
   },
   button: {
     margin: '2vh',
-    height: '8vh',
-    width: '12vh'
+    minHeight: '8vh',
+    minWidth: '12vh'
   },
 });
 
-class Question2 extends Component {
-  checkboxes = (index1, index2) => {
-    const meatArr = this.props.allFood.filter(food => food.category === "Meat")
-    return meatArr.slice(index1, index2).map((meat, index) => (
+class Question extends Component {
+
+  checkboxes = (category) => {
+    const arr = this.props.allFood.filter(food => food.category === this.props.questionCategory)
+    // return arr.slice(index1, index2).map((veggie, index) => (
+    return arr.map((food, index) => (
       <FormControlLabel
-          key={meat.id}
-          label={`${meat.name} (${meat.examples})`}
+          key={food.id}
+          label={(food.examples) ? `${food.name} (${food.examples})` : `${food.name}`}
           control={
             <Checkbox
               icon={<CheckBoxOutlineBlankIcon fontSize="large" />}
               checkedIcon={<CheckBoxIcon fontSize="large" />}
-              checked={this.props.foodChecks[meat.name]}
-              value={meat.name}
+              checked={this.props.foodChecks[food.name]}
+              value={food.name}
               onChange={(e) => this.props.handleCheckboxClick(e)}
             />
           }
@@ -44,21 +43,20 @@ class Question2 extends Component {
 
   render() {
     const { classes } = this.props;
-    // debugger
     return (
-      <div className={classes.root}>
+      <div>
         <Grid className={classes.formTop}>
-          <h1>Protein:</h1>
+          <h1>{this.props.questionCategory}:</h1>
         </Grid>
         <Grid container spacing={0} className={classes.formMiddle}>
           <Grid item xs={6}>
             <FormGroup>
-              {this.checkboxes(0, 4)}
+              {this.checkboxes(this.props.questionCategory)}
             </FormGroup>
           </Grid>
           <Grid item xs={6}>
             <FormGroup>
-              {this.checkboxes(4, 7)}
+              {this.checkboxes(this.props.questionCategory)}
             </FormGroup>
           </Grid>
         </Grid>
@@ -67,14 +65,14 @@ class Question2 extends Component {
             variant="contained"
             color="secondary"
             className={classes.button}
-            onClick={() => this.props.changeQuestionNumber(1)}>
+            onClick={() => this.props.changeQuestionNumber(this.props.questionNum - 1)}>
               Back
           </Button>
           <Button
             variant="contained"
             color="secondary"
             className={classes.button}
-            onClick={() => this.props.changeQuestionNumber(3)}>
+            onClick={() => this.props.changeQuestionNumber(this.props.questionNum + 1)}>
               Next
           </Button>
         </Grid>
@@ -83,9 +81,8 @@ class Question2 extends Component {
   }
 }
 
-
-Question2.propTypes = {
+Question.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(Question2);
+export default withStyles(styles)(Question);
