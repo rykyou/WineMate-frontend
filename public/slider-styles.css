@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css?family=Lato:300,400,700,900');
+@import url("https://fonts.googleapis.com/css?family=Lato:300,400,700,900");
 
 body {
-  font-family: 'Lato', sans-serif;
+  font-family: "Lato", sans-serif;
   box-sizing: border-box;
   /* padding-top: 75px; */
 }
@@ -20,7 +20,7 @@ header section {
   max-width: 1300px;
   margin: auto;
   padding: 20px;
-  background: #FFD800;
+  background: #ffd800;
 }
 
 @media (max-width: 1515px) {
@@ -44,13 +44,13 @@ header section a {
 
 button {
   -webkit-appearance: none;
-          appearance: none;
+  appearance: none;
   -webkit-filter: drop-shadow(0 5px 5px rgba(0, 0, 0, 0.1));
-          filter: drop-shadow(0 5px 5px rgba(0, 0, 0, 0.1));
-  -webkit-transition: all .5s ease;
-         filter: drop-shadow(0 5px 5px rgba(0, 0, 0, 0.1));
-  -webkit-transition: all .5s ease;
-          transition: all .5s ease;
+  filter: drop-shadow(0 5px 5px rgba(0, 0, 0, 0.1));
+  -webkit-transition: all 0.5s ease;
+  filter: drop-shadow(0 5px 5px rgba(0, 0, 0, 0.1));
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
   border: none;
   background: #a8899a;
   border-radius: 30px;
@@ -63,10 +63,10 @@ button {
 }
 
 button:hover {
-  color: #FFFFFF;
+  color: #ffffff;
   background: #222222;
   -webkit-filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.2));
-          filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.2));
+  filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.2));
 }
 
 .wrapper {
@@ -97,27 +97,34 @@ button:hover {
 }
 
 .slide::before {
-    content: '';
-    display: block;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: -webkit-gradient(linear, left top, left bottom, from(transparent), to(rgba(0, 0, 0, 0.9)));
-    background: linear-gradient(transparent, rgba(0, 0, 0, 0.9));
-    bottom: 0;
-    left: 0;
+  content: "";
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    from(transparent),
+    to(rgba(0, 0, 0, 0.9))
+  );
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.9));
+  bottom: 0;
+  left: 0;
 }
 
-.previousButton, .nextButton {
-		position: absolute;
-		top: 50%;
-		/* transform: translateY(-50%); */
-		z-index: 100;
-		background: url('./arrow.png') no-repeat center center / 6vh;
-		width: 10vh;
-		height: 3vh;
-		text-indent: -9999px;
-		cursor: pointer;
+.previousButton,
+.nextButton {
+  position: absolute;
+  top: 50%;
+  /* transform: translateY(-50%); */
+  z-index: 100;
+  background: url("./arrow.png") no-repeat center center / 6vh;
+  width: 10vh;
+  height: 3vh;
+  text-indent: -9999px;
+  cursor: pointer;
 }
 
 .previousButton {
@@ -150,25 +157,25 @@ button:hover {
   top: 50%;
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 }
 
-.slider-content .inner button{
+.slider-content .inner button {
   -webkit-transition-delay: 0s;
-          transition-delay: 0s;
+  transition-delay: 0s;
 }
 
 .slider-content .inner h1 {
   font-weight: 900;
   margin: 0 auto;
   max-width: 800px;
-  color: #FFFFFF;
-  font-size: 50px;
+  color: #ffffff;
+  font-size: 45px;
   line-height: 1;
 }
 
 .slider-content .inner p {
-  color: #FFFFFF;
+  color: #ffffff;
   font-size: 18px;
   line-height: 1.5;
   margin: 20px auto 30px;
@@ -182,7 +189,7 @@ button:hover {
 }
 
 .slider-content section span {
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .slider-content section span {
@@ -204,31 +211,30 @@ button:hover {
 }
 
 .slider-content section span strong {
-  color: #FFFFFF;
+  color: #ffffff;
   font-size: 14px;
   display: block;
 }
 
 @media (max-height: 500px) {
-  .slider-wrapper, .slide {
+  .slider-wrapper,
+  .slide {
     height: calc(100vh - 75px);
   }
 }
 
 @media (max-width: 640px) {
-  .slider-wrapper, .slide {
+  .slider-wrapper,
+  .slide {
     height: calc(80vh - 75px);
-  }
-}
-
-@media (max-height: 600px) {
-  .slider-content .inner h1 {
-    font-size: 32px;
   }
 }
 
 @media (max-width: 640px) {
   .slider-content .inner h1 {
-    font-size: 32px;
+    font-size: 22px;
+  }
+  .slider-content .inner p {
+    font-size: 14px;
   }
 }

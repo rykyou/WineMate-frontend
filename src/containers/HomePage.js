@@ -21,7 +21,10 @@ const styles = theme => ({
     color: theme.palette.secondary.main,
     textAlign: "center",
     textSize: "20vh",
-    fontFamily: "Sriracha"
+    fontFamily: "Sriracha",
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "20px"
+    }
   },
   navigation: {
     padding: "2%"
