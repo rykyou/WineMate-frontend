@@ -16,6 +16,9 @@ const styles = theme => ({
     position: "absolute",
     zIndex: 1000
   },
+  toolBar: {
+    minHeight: "75px"
+  },
   flex: {
     flex: 1
   },
@@ -69,7 +72,7 @@ class HomeNavBar extends React.Component {
         position="static"
         style={{ background: "transparent", boxShadow: "none" }}
       >
-        <Toolbar>
+        <Toolbar className={classes.toolBar}>
           <Link to="/">
             <img src={mainLogo} alt="" height="20" />
           </Link>

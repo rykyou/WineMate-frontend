@@ -22,7 +22,10 @@ const styles = theme => ({
   },
   flex: {
     flex: 1,
-    fontFamily: "Sriracha"
+    fontFamily: "Sriracha",
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "16px"
+    }
   },
   dialogContent: {
     margin: "3vh"
