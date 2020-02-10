@@ -22,7 +22,6 @@ const styles = theme => ({
   },
   flex: {
     flex: 1,
-    fontFamily: "Sriracha",
     [theme.breakpoints.down("xs")]: {
       fontSize: "16px"
     }
@@ -32,16 +31,14 @@ const styles = theme => ({
   },
   title: {
     marginBottom: "3vh",
-    color: theme.palette.primary.main,
-    fontFamily: "Sriracha"
+    color: theme.palette.primary.main
   },
   image: {
     maxWidth: "100%"
   },
   subTitle: {
     color: theme.palette.primary.main,
-    margin: "1vh",
-    fontFamily: "Sriracha"
+    margin: "1vh"
   },
   textBottomMargin: {
     marginLeft: "3vh",
@@ -54,14 +51,6 @@ const styles = theme => ({
     right: 0,
     textAlign: "center"
   }
-  // circle: {
-  // <div className={classes.circle} style={{backgroundImage: 'url(' + greenCircle + ')'}}>
-  // background: 'url(' + redCircle + ')',
-  // maxheight: '10vh',
-  //   backgroundSize: 'contain',
-  //   backgroundRepeat: 'no-repeat',
-  //   backgroundPosition: 'left'
-  // },
 });
 
 function Transition(props) {

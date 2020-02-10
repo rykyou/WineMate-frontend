@@ -19,9 +19,10 @@ const styles = theme => ({
   },
   text: {
     color: theme.palette.secondary.main,
+    // fontFamily: ["Permanent Marker", "cursive"],
     textAlign: "center",
     textSize: "20vh",
-    fontFamily: "Sriracha",
+    marginTop: "25px",
     [theme.breakpoints.down("xs")]: {
       fontSize: "20px"
     }

@@ -1,7 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Typography, withStyles } from "@material-ui/core/";
-import winefollyLogo from "../images/winefolly-logo.png";
 
 const styles = theme => ({
   root: {
@@ -35,21 +34,8 @@ class Footer extends React.Component {
           >
             Robin Kim
           </a>{" "}
-          ©2019
+          ©2020
         </Typography>
-        <div className={classes.winefollyLine}>
-          <Typography variant="subtitle2">
-            Data Retrieved from and Inspired by
-          </Typography>
-          <a
-            href="https://winefolly.com/hidden/the-9-major-wine-styles/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={classes.logoImg}
-          >
-            <img src={winefollyLogo} alt="winefolly" height="30" />
-          </a>
-        </div>
       </div>
     );
   }

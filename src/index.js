@@ -1,43 +1,38 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { BrowserRouter as Router} from 'react-router-dom';
-import './index.css';
-import App from './containers/App';
-import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
-import * as serviceWorker from './serviceWorker';
+import React from "react";
+import ReactDOM from "react-dom";
+import { BrowserRouter as Router } from "react-router-dom";
+import "./index.css";
+import App from "./containers/App";
+import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
+import * as serviceWorker from "./serviceWorker";
 
 const theme = createMuiTheme({
   palette: {
     primary: {
-      light: '#8a437c',
-      main: '#5b2350',
-      dark: '#2f0028',
-      contrastText: '#fff'
+      light: "#8a437c",
+      main: "#5b2350",
+      dark: "#2f0028",
+      contrastText: "#fff"
     },
     secondary: {
-      light: '#dab9cb',
-      main: '#a8899a',
-      dark: '#795c6c',
-      contrastText: '#fff',
-      mainGradient: "linear-gradient(180deg, #a8899a 10%, #fff 60%)",
+      light: "#dab9cb",
+      main: "#a8899a",
+      dark: "#795c6c",
+      contrastText: "#fff",
+      mainGradient: "linear-gradient(180deg, #a8899a 10%, #fff 60%)"
     }
   },
   typography: {
     fontFamily: [
-      'Lato',
-      '-apple-system',
-      'BlinkMacSystemFont',
-      '"Segoe UI"',
-      'Roboto',
-      '"Helvetica Neue"',
-      'Arial',
-      'sans-serif',
-      '"Apple Color Emoji"',
-      '"Segoe UI Emoji"',
-      '"Segoe UI Symbol"',
-    ].join(','),
-    useNextVariants: true,
-  },
+      "Source Sans Pro",
+      "sans-serif",
+      "-apple-system",
+      "BlinkMacSystemFont",
+      "Arial",
+      "sans-serif"
+    ].join(","),
+    useNextVariants: true
+  }
 });
 
 ReactDOM.render(
@@ -46,7 +41,7 @@ ReactDOM.render(
       <App />
     </MuiThemeProvider>
   </Router>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
 
 // If you want your app to work offline and load faster, you can change

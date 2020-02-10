@@ -25,7 +25,7 @@ const styles = theme => ({
   },
   text: {
     color: "#ffffff",
-    fontFamily: "Sriracha",
+    fontSize: "16px",
     [theme.breakpoints.down("xs")]: {
       fontSize: "12px"
     }

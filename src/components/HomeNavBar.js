@@ -28,18 +28,16 @@ const styles = theme => ({
   },
   rightButton: {
     color: "#ffffff",
-    fontFamily: "Sriracha",
+    fontSize: "16px",
     [theme.breakpoints.down("xs")]: {
-      fontSize: "12px",
       display: "none"
     }
   },
   leftButton: {
     color: "#ffffff",
-    fontFamily: "Sriracha",
     marginRight: "2vh",
+    fontSize: "16px",
     [theme.breakpoints.down("xs")]: {
-      fontSize: "12px",
       display: "none"
     }
   }

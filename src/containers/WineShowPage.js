@@ -22,7 +22,6 @@ const styles = theme => ({
   },
   h1: {
     marginTop: "5vh",
-    fontFamily: "Sriracha, cursive",
     textAlign: "center",
     [theme.breakpoints.down("xs")]: {
       fontSize: "20px"
@@ -30,7 +29,6 @@ const styles = theme => ({
   },
   h2: {
     marginTop: "3vh",
-    fontFamily: "Sriracha, cursive",
     textAlign: "center",
     [theme.breakpoints.down("xs")]: {
       fontSize: "18px"
@@ -123,15 +121,15 @@ class WineShowPage extends Component {
                     </Typography>
                     <Typography
                       className={classes.text}
-                      variant="h6"
-                      component="h6"
+                      variant="h5"
+                      component="h5"
                     >
                       {this.props.chosenWineStyleObj.cuisine_title}
                     </Typography>
                     <Typography
                       className={classes.text}
-                      variant="h6"
-                      component="h6"
+                      variant="h5"
+                      component="h5"
                     >
                       Like...{" "}
                       {this.props.chosenWineStyleObj.cuisine_description}
@@ -147,8 +145,8 @@ class WineShowPage extends Component {
                     </Typography>
                     <Typography
                       className={classes.text}
-                      variant="h6"
-                      component="h6"
+                      variant="h5"
+                      component="h5"
                     >
                       {this.props.chosenWineStyleObj.serving_temp}
                     </Typography>
@@ -166,7 +164,7 @@ class WineShowPage extends Component {
                     {this.props.chosenWineStyleObj.wines.map(wine => (
                       <Typography
                         className={classes.text}
-                        variant="h6"
+                        variant="h5"
                         key={wine.name}
                       >
                         {wine.name}

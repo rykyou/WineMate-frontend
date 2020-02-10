@@ -1,9 +1,8 @@
 @import url("https://fonts.googleapis.com/css?family=Lato:300,400,700,900");
 
 body {
-  font-family: "Lato", sans-serif;
+  font-family: "Source Sans Pro", sans-serif;
   box-sizing: border-box;
-  /* padding-top: 75px; */
 }
 
 header {
@@ -118,7 +117,6 @@ button:hover {
 .nextButton {
   position: absolute;
   top: 50%;
-  /* transform: translateY(-50%); */
   z-index: 100;
   background: url("./arrow.png") no-repeat center center / 6vh;
   width: 10vh;
@@ -136,14 +134,6 @@ button:hover {
 .nextButton {
   right: 0;
 }
-
-/* .previousButton:hover {
-  left: -1vh;
-} */
-
-/* .nextButton:hover {
-  right: -1vh;
-} */
 
 .slider-content {
   text-align: center;
@@ -167,6 +157,7 @@ button:hover {
 
 .slider-content .inner h1 {
   font-weight: 900;
+  font-family: "Permanent Marker", cursive;
   margin: 0 auto;
   max-width: 800px;
   color: #ffffff;
@@ -232,7 +223,7 @@ button:hover {
 
 @media (max-width: 640px) {
   .slider-content .inner h1 {
-    font-size: 22px;
+    font-size: 28px;
   }
   .slider-content .inner p {
     font-size: 14px;
