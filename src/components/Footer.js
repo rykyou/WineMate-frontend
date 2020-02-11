@@ -27,7 +27,7 @@ class Footer extends React.Component {
         <Typography variant="subtitle2">
           Coded by{" "}
           <a
-            href="https://github.com/rykyou"
+            href="https://github.com/imrobinkim"
             target="_blank"
             rel="noopener noreferrer"
             style={{ textDecoration: "none" }}

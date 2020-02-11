@@ -27,7 +27,8 @@ const styles = theme => ({
     }
   },
   navigation: {
-    padding: "2%"
+    padding: "2%",
+    overflowX: "scroll"
   }
 });
 

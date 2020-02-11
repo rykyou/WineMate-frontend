@@ -13,7 +13,6 @@ const styles = {
     flexGrow: 1,
     flexShrink: 2,
     minHeight: "30vh",
-    overflowX: "scroll",
     justifyContent: "unset"
   },
   wineImage: {

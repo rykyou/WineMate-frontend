@@ -18,7 +18,8 @@ const styles = theme => ({
     margin: "2% 8%"
   },
   navigation: {
-    marginTop: "3vh"
+    marginTop: "3vh",
+    overflowX: "scroll"
   },
   h1: {
     marginTop: "5vh",

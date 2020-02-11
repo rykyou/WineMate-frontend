@@ -38,7 +38,8 @@ const styles = theme => ({
     marginRight: "2vh",
     fontSize: "16px",
     [theme.breakpoints.down("xs")]: {
-      display: "none"
+      marginRight: "-8px",
+      fontSize: "12px"
     }
   }
 });
