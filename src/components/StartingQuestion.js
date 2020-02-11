@@ -7,18 +7,22 @@ const styles = theme => ({
     flexGrow: 1
   },
   button: {
-    margin: theme.spacing.unit,
-    height: "25vh",
-    width: "25vh"
-  },
-  formTop: {
-    height: "10vh"
+    margin: "20px",
+    height: "250px",
+    width: "250px",
+    [theme.breakpoints.down("md")]: {
+      margin: theme.spacing.unit,
+      height: "200px",
+      width: "200px"
+    }
   },
   formMiddle: {
-    height: "25vh",
-    marginTop: "10vh",
+    marginTop: "80px",
+    margin: "auto",
+    maxWidth: "fit-content",
     [theme.breakpoints.down("md")]: {
-      marginTop: "1vh"
+      display: "block",
+      marginTop: "0"
     }
   }
 });
@@ -28,11 +32,11 @@ class StartingQuestion extends Component {
     const { classes } = this.props;
     return (
       <div className={classes.root}>
-        <Grid className={classes.formTop}>
-          <h1>What are you eating today?</h1>
+        <Grid>
+          <h2>What are you eating today?</h2>
         </Grid>
-        <Grid container spacing={16} className={classes.formMiddle}>
-          <Grid item md={12} lg={6}>
+        <Grid container className={classes.formMiddle}>
+          <Grid item sm={12} md={6} lg={6}>
             <Button
               variant="contained"
               color="secondary"
@@ -43,7 +47,7 @@ class StartingQuestion extends Component {
               (This will be a short one!)
             </Button>
           </Grid>
-          <Grid item md={12} lg={6}>
+          <Grid item sm={12} md={6} lg={6}>
             <Button
               variant="contained"
               color="secondary"

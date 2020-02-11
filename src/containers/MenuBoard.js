@@ -63,7 +63,7 @@ class MenuBoard extends Component {
     return (
       <div className={classes.paper}>
         <Grid className={classes.menuTop}>
-          <h1>Menu Board</h1>
+          <h2>Menu Board</h2>
         </Grid>
         <Grid className={classes.container}>{this.chosenFood()}</Grid>
       </div>

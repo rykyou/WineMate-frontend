@@ -1,31 +1,32 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
-import Stepper from '@material-ui/core/Stepper';
-import Step from '@material-ui/core/Step';
-import StepButton from '@material-ui/core/StepButton';
+import React from "react";
+import PropTypes from "prop-types";
+import { withStyles } from "@material-ui/core/styles";
+import Stepper from "@material-ui/core/Stepper";
+import Step from "@material-ui/core/Step";
+import StepButton from "@material-ui/core/StepButton";
 
 const styles = theme => ({
   root: {
-    width: '100%',
+    width: "100%",
+    overflowX: "scroll"
   },
   button: {
-    marginRight: theme.spacing.unit,
+    marginRight: theme.spacing.unit
   },
   backButton: {
-    marginRight: theme.spacing.unit,
+    marginRight: theme.spacing.unit
   },
   completed: {
-    display: 'inline-block',
+    display: "inline-block"
   },
   instructions: {
     marginTop: theme.spacing.unit,
-    marginBottom: theme.spacing.unit,
-  },
+    marginBottom: theme.spacing.unit
+  }
 });
 
 function getSteps() {
-  return ['Meat', 'Veggies', 'Starch', 'Dairy', 'Herbs', 'Prep'];
+  return ["Meat", "Veggies", "Starch", "Dairy", "Herbs", "Prep"];
 }
 
 class QuestionStepper extends React.Component {
@@ -34,9 +35,9 @@ class QuestionStepper extends React.Component {
   };
 
   handleStepClick = step => () => {
-    this.props.handleMenuItemClick(step + 2)
+    this.props.handleMenuItemClick(step + 2);
     this.setState({
-      activeStep: step,
+      activeStep: step
     });
   };
 
@@ -46,12 +47,19 @@ class QuestionStepper extends React.Component {
 
     return (
       <div className={classes.root}>
-        <Stepper alternativeLabel nonLinear activeStep={this.props.questionNum - 2}>
+        <Stepper
+          alternativeLabel
+          nonLinear
+          activeStep={this.props.questionNum - 2}
+        >
           {steps.map((label, index) => {
             const props = {};
             const buttonProps = {};
             return (
-              <Step key={label} {...props}>
+              // Give each Step component id of i.e. "question-step-2" so that
+              // we can scrollIntoView when screen width is too small to show
+              // full entire QuestionStepper.
+              <Step key={label} {...props} id={"question-step-" + index}>
                 <StepButton
                   onClick={this.handleStepClick(index)}
                   {...buttonProps}
@@ -68,7 +76,7 @@ class QuestionStepper extends React.Component {
 }
 
 QuestionStepper.propTypes = {
-  classes: PropTypes.object,
+  classes: PropTypes.object
 };
 
 export default withStyles(styles)(QuestionStepper);

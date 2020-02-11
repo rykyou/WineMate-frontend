@@ -118,7 +118,7 @@ class QuestionContainer extends Component {
       });
   };
 
-  //////////  HANDLERS TO DIRECT TO CORRECT QUEST COMPONENT ///////////
+  //////////  HANDLERS TO DIRECT TO CORRECT QUESTION COMPONENT ///////////
 
   changeQuestionNumber = num => {
     if (num === 1 || (this.state.questionNum === 8 && num < 8)) {
@@ -136,6 +136,10 @@ class QuestionContainer extends Component {
         questionNum: num,
         questionCategory: this.categoryVariable(num)
       });
+
+      // Scroll correct Step into view (from QuestionStepper) if screen width is too small.
+      let questionStep = document.getElementById(`question-step-${num - 2}`);
+      if (questionStep) questionStep.scrollIntoView();
     }
   };
 
@@ -347,7 +351,7 @@ class QuestionContainer extends Component {
                 />
               </Paper>
             </Grid>
-            <Grid item sm={12} md={7}>
+            <Grid item xs={12} sm={12} md={7}>
               <Paper className={classes.paper}>
                 {this.state.questionNum > 1 && this.state.questionNum < 8 ? (
                   <QuestionStepper

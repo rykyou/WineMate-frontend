@@ -17,25 +17,33 @@ const styles = theme => ({
     alignItems: "center"
   },
   progress: {
-    marginTop: "30vh"
+    marginTop: "10vh"
+  },
+  formTop: {
+    marginLeft: "-20px",
+    marginRight: "-20px"
   },
   formMiddle: {
-    marginTop: "3vh",
-    paddingBottom: "5vh"
+    marginTop: "2vh",
+    paddingBottom: "5vh",
+    margin: "-20px"
   },
   newPairingButton: {
     height: "8vh",
     width: "18vh"
   },
   wineImage: {
-    marginTop: "5vh",
+    marginTop: "1vh",
     height: "25vh"
   },
-  h1: {
+  h2: {
     color: theme.palette.primary.main
   },
   errorMessage: {
-    margin: "30% 5% 10% 5%"
+    margin: "100px auto 100px auto",
+    [theme.breakpoints.down("md")]: {
+      margin: "50px auto 50px auto"
+    }
   }
 });
 
@@ -79,8 +87,8 @@ class ResultsPage extends Component {
         {query === "success" ? (
           <div>
             {wineStyle !== null ? (
-              <Grid className={classes.formTop}>
-                <h2>
+              <Grid>
+                <h2 className={classes.formTop}>
                   Here's your perfect wine style match based on your menu...
                 </h2>
                 <Grid className={classes.formMiddle}>
@@ -91,15 +99,15 @@ class ResultsPage extends Component {
                     className={classes.formMiddle}
                   >
                     <Grid container spacing={8}>
-                      <Grid item xs={4}>
+                      <Grid item xs={12} sm={4}>
                         <img
                           src={require(`../images/${wineStyle.slug}.png`)}
                           alt={wineStyle.name}
                           className={classes.wineImage}
                         />
                       </Grid>
-                      <Grid item xs={7}>
-                        <h1 className={classes.h1}>{wineStyle.name}</h1>
+                      <Grid item xs={12} sm={7}>
+                        <h2 className={classes.h2}>{wineStyle.name}</h2>
                         <Typography variant="body1">
                           {wineStyle.short_description}
                         </Typography>

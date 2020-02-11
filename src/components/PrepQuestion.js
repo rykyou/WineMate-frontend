@@ -1,40 +1,48 @@
-import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
-import PropTypes from 'prop-types';
-import { Button, FormControl, Grid, InputLabel, MenuItem, OutlinedInput,
-  Select, withStyles } from '@material-ui/core';
+import React, { Component } from "react";
+import ReactDOM from "react-dom";
+import PropTypes from "prop-types";
+import {
+  Button,
+  FormControl,
+  Grid,
+  InputLabel,
+  MenuItem,
+  OutlinedInput,
+  Select,
+  withStyles
+} from "@material-ui/core";
 
 const styles = theme => ({
   root: {
-    display: 'flex',
-    flexWrap: 'wrap',
+    display: "flex",
+    flexWrap: "wrap"
   },
   formControl: {
-    margin: '10%',
-    width: '90%',
+    margin: "auto",
+    marginTop: "20px",
+    width: "90%"
   },
   formTop: {
-    height: '5vh'
+    height: "5vh"
   },
   formMiddle: {
-    height: '45vh',
+    height: "45vh"
   },
   button: {
-    margin: '2vh',
-    minHeight: '8vh',
-    minWidth: '12vh'
-  },
+    minHeight: "8vh",
+    minWidth: "9vh"
+  }
 });
 
 class PrepQuestion extends Component {
   state = {
-    prepMethod: '',
-    labelWidth: 0,
+    prepMethod: "",
+    labelWidth: 0
   };
 
   componentDidMount() {
     this.setState({
-      labelWidth: ReactDOM.findDOMNode(this.InputLabelRef).offsetWidth,
+      labelWidth: ReactDOM.findDOMNode(this.InputLabelRef).offsetWidth
     });
   }
 
@@ -44,16 +52,22 @@ class PrepQuestion extends Component {
   };
 
   prepMenuItems = () => {
-    const prepArr = this.props.allFood.filter(food => food.category === "Preparation")
-    return prepArr.map(prep => <MenuItem key={prep.id} value={prep.name}>{prep.name}</MenuItem>)
-  }
+    const prepArr = this.props.allFood.filter(
+      food => food.category === "Preparation"
+    );
+    return prepArr.map(prep => (
+      <MenuItem key={prep.id} value={prep.name}>
+        {prep.name}
+      </MenuItem>
+    ));
+  };
 
   render() {
     const { classes } = this.props;
     return (
       <div>
         <Grid className={classes.formTop}>
-          <h1>How will this be prepared?</h1>
+          <h2>How will this be prepared?</h2>
         </Grid>
         <Grid className={classes.formMiddle}>
           <form className={classes.root} autoComplete="off">
@@ -87,24 +101,28 @@ class PrepQuestion extends Component {
             variant="contained"
             color="secondary"
             className={classes.button}
-            onClick={() => this.props.changeQuestionNumber(6)}>
-              Back
+            onClick={() => this.props.changeQuestionNumber(6)}
+          >
+            Back
           </Button>
           <Button
             variant="contained"
             color="secondary"
             className={classes.button}
-            onClick={() => this.props.changeQuestionNumber(this.props.questionNum + 1)}>
-              Find My Pairing!
+            onClick={() =>
+              this.props.changeQuestionNumber(this.props.questionNum + 1)
+            }
+          >
+            Find My Pairing!
           </Button>
         </Grid>
       </div>
-    )
+    );
   }
 }
 
 PrepQuestion.propTypes = {
-  classes: PropTypes.object.isRequired,
+  classes: PropTypes.object.isRequired
 };
 
 export default withStyles(styles)(PrepQuestion);
