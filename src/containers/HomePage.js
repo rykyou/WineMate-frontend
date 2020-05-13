@@ -5,17 +5,17 @@ import AnimatedSlider from "../components/AnimatedSlider";
 import WineStylesNavigation from "./WineStylesNavigation";
 import HomeNavBar from "../components/HomeNavBar";
 
-const styles = theme => ({
+const styles = (theme) => ({
   button: {
     width: "250px",
     height: "150px",
-    marginLeft: "1350px"
+    marginLeft: "1350px",
   },
   empty: {
-    height: "300px"
+    height: "300px",
   },
   smallEmpty: {
-    height: "100px"
+    height: "100px",
   },
   text: {
     color: theme.palette.secondary.main,
@@ -23,13 +23,13 @@ const styles = theme => ({
     marginTop: "25px",
     marginBottom: "0",
     [theme.breakpoints.down("xs")]: {
-      fontSize: "20px"
-    }
+      fontSize: "20px",
+    },
   },
   navigation: {
     padding: "2%",
-    overflowX: "scroll"
-  }
+    overflowX: "scroll",
+  },
 });
 
 class HomePage extends Component {
@@ -42,7 +42,7 @@ class HomePage extends Component {
           handleClickDialog={this.props.handleClickDialog}
           wineStyleToGoTo={this.props.wineStyleToGoTo}
         />
-        <h1 className={classes.text}>Explore by Wine Style</h1>
+        <h2 className={classes.text}>Explore by Wine Style</h2>
         <Grid container className={classes.navigation}>
           <WineStylesNavigation
             allWineStyles={this.props.allWineStyles}
@@ -56,7 +56,7 @@ class HomePage extends Component {
 }
 
 HomePage.propTypes = {
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
 };
 
 export default withStyles(styles)(HomePage);

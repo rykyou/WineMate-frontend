@@ -8,30 +8,22 @@ import Question from "../components/Question";
 import PrepQuestion from "../components/PrepQuestion";
 import ResultsPage from "../components/ResultsPage";
 import QuestionStepper from "../components/QuestionStepper";
-import background from "../images/question-background2.jpg";
 
-const styles = theme => ({
+const styles = (theme) => ({
   root: {
     flexGrow: 1,
-    margin: "5vh"
+    margin: "5vh",
   },
   paper: {
     padding: "5vh",
     textAlign: "center",
     color: theme.palette.text.secondary,
     minHeight: "50vh",
-    contain: "content"
+    contain: "content",
   },
   menuboard: {
-    minHeight: "50vh"
+    minHeight: "50vh",
   },
-  backgroundImage: {
-    backgroundImage: "url(" + background + ")",
-    backgroundSize: "cover",
-    backgroundPosition: "100%",
-    height: "100%",
-    overflow: "hidden"
-  }
 });
 
 class QuestionContainer extends Component {
@@ -100,8 +92,8 @@ class QuestionContainer extends Component {
       "Ice Cream": false,
       Caramel: false,
       Chocolate: false,
-      Coffee: false
-    }
+      Coffee: false,
+    },
   };
 
   componentDidMount() {
@@ -110,17 +102,17 @@ class QuestionContainer extends Component {
 
   getAllFood = () => {
     fetch("https://winemate-api.herokuapp.com/api/v1/foods")
-      .then(res => res.json())
-      .then(data => {
+      .then((res) => res.json())
+      .then((data) => {
         this.setState({
-          allFood: data
+          allFood: data,
         });
       });
   };
 
   //////////  HANDLERS TO DIRECT TO CORRECT QUESTION COMPONENT ///////////
 
-  changeQuestionNumber = num => {
+  changeQuestionNumber = (num) => {
     if (num === 1 || (this.state.questionNum === 8 && num < 8)) {
       //hitting "Back" from either "Meat" Question(2) OR "Sweets" Question(8) will direct to StartingQuestion(1)
       this.goBackToFirstQuestion();
@@ -128,13 +120,13 @@ class QuestionContainer extends Component {
       //hitting "Next" button on either PrepQuestion(7) or Sweets Question(8) will direct to ResultsPage(9)
       this.setState({
         questionNum: 9,
-        questionCategory: null
+        questionCategory: null,
       });
       this.compileWineScores();
     } else {
       this.setState({
         questionNum: num,
-        questionCategory: this.categoryVariable(num)
+        questionCategory: this.categoryVariable(num),
       });
 
       // Scroll correct Step into view (from QuestionStepper) if screen width is too small.
@@ -143,7 +135,7 @@ class QuestionContainer extends Component {
     }
   };
 
-  categoryVariable = num => {
+  categoryVariable = (num) => {
     const categoryObj = {
       2: "Meat",
       3: "Vegetable",
@@ -151,7 +143,7 @@ class QuestionContainer extends Component {
       5: "Dairy",
       6: "Herb & Spice",
       7: "Preparation",
-      8: "Sweet"
+      8: "Sweet",
     };
     return categoryObj[num];
   };
@@ -173,7 +165,7 @@ class QuestionContainer extends Component {
       sparklingScore: 0,
       sweetWhiteScore: 0,
       dessertScore: 0,
-      foodChecks: resetFoodChecks
+      foodChecks: resetFoodChecks,
     });
   };
 
@@ -216,16 +208,16 @@ class QuestionContainer extends Component {
   /////////////////////////////////////////////////////////////////
 
   //////////////////////  HANDLING CHOSEN FOODS  /////////////////////
-  handleCheckboxClick = event => {
+  handleCheckboxClick = (event) => {
     this.setState({
       foodChecks: {
         ...this.state.foodChecks,
-        [event.target.value]: event.target.checked
-      }
+        [event.target.value]: event.target.checked,
+      },
     });
   };
 
-  handlePrepChange = prepName => {
+  handlePrepChange = (prepName) => {
     let foodChecksCopy = { ...this.state.foodChecks };
     foodChecksCopy["Grilled or Barbecued"] = false;
     foodChecksCopy["Sautéed or Fried"] = false;
@@ -236,24 +228,24 @@ class QuestionContainer extends Component {
     this.setState({
       foodChecks: {
         ...foodChecksCopy,
-        [prepName]: true
-      }
+        [prepName]: true,
+      },
     });
   };
 
-  handleMenuItemClick = num => {
+  handleMenuItemClick = (num) => {
     this.setState({
       questionNum: num,
-      questionCategory: this.categoryVariable(num)
+      questionCategory: this.categoryVariable(num),
     });
   };
 
-  handleRemoveFoodFromMenu = foodName => {
+  handleRemoveFoodFromMenu = (foodName) => {
     this.setState({
       foodChecks: {
         ...this.state.foodChecks,
-        [foodName]: false
-      }
+        [foodName]: false,
+      },
     });
   };
 
@@ -269,9 +261,9 @@ class QuestionContainer extends Component {
 
   chosenFoodObjects = () => {
     let chosenFoodObjects = [];
-    this.chosenFoodNames().forEach(foodName => {
+    this.chosenFoodNames().forEach((foodName) => {
       chosenFoodObjects.push(
-        this.state.allFood.find(food => food.name === foodName)
+        this.state.allFood.find((food) => food.name === foodName)
       );
     });
     return chosenFoodObjects;
@@ -290,7 +282,7 @@ class QuestionContainer extends Component {
     let updatedSweetWhiteScore = this.state.sweetWhiteScore;
     let updatedDessertScore = this.state.dessertScore;
 
-    this.chosenFoodObjects().forEach(food => {
+    this.chosenFoodObjects().forEach((food) => {
       updatedBoldRedScore += food.matches[0].match_score;
       updatedMediumRedScore += food.matches[1].match_score;
       updatedLightRedScore += food.matches[2].match_score;
@@ -311,7 +303,7 @@ class QuestionContainer extends Component {
       lightWhiteScore: updatedLightWhiteScore,
       sparklingScore: updatedSparklingScore,
       sweetWhiteScore: updatedSweetWhiteScore,
-      dessertScore: updatedDessertScore
+      dessertScore: updatedDessertScore,
     });
   };
 
@@ -325,7 +317,7 @@ class QuestionContainer extends Component {
       { wine_id: 6, finalScore: this.state.lightWhiteScore },
       { wine_id: 7, finalScore: this.state.sparklingScore },
       { wine_id: 8, finalScore: this.state.sweetWhiteScore },
-      { wine_id: 9, finalScore: this.state.dessertScore }
+      { wine_id: 9, finalScore: this.state.dessertScore },
     ];
   };
   ///////////////////////////////////////////////////////////////
@@ -370,7 +362,7 @@ class QuestionContainer extends Component {
 }
 
 QuestionContainer.propTypes = {
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
 };
 
 export default withStyles(styles)(QuestionContainer);
